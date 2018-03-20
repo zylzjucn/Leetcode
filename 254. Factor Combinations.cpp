@@ -13,11 +13,10 @@ public:
             res.push_back(path);
             path.pop_back();
         }
-        for (int i = max(2, left); i <= sqrt(right); i++) {
+        for (int i = max(2, left); i <= sqrt(right); i++)
             if (right % i == 0) {
                 find (i, right / i, res, path);
                 path.pop_back();
             }
-        }
     }
 };
