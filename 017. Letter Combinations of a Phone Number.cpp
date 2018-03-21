@@ -1,7 +1,6 @@
 class Solution {
 public:
-    vector<string> letterCombinations(string digits) 
-    {
+    vector<string> letterCombinations(string digits) {
         vector<string> v;
         if (digits.length() == 0)
             return v;
