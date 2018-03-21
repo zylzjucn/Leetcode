@@ -5,10 +5,10 @@ public:
         int i = s.length()-1;
         int sum = m[s[i]];
         for (; i != 0; i--) {
-            if (m[s[i-1]] < m[s[i]])
-                sum -= m[s[i-1]];
+            if (m[s[i - 1]] < m[s[i]])
+                sum -= m[s[i - 1]];
             else
-                sum += m[s[i-1]];
+                sum += m[s[i - 1]];
         }
         return sum;
     }
