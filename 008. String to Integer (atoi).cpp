@@ -1,7 +1,6 @@
 class Solution {
 public:
-    int myAtoi(string s) 
-    {
+    int myAtoi(string s) {
         int i = 0, sum = 0, flag = 1;
         while (s[i] == ' ')
             i++;
