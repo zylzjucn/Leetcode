@@ -1,7 +1,6 @@
 class Solution {
 public:
-    string convert(string s, int n) 
-    {
+    string convert(string s, int n) {
         if(n <= 1)
             return s;
         string *sn = new string[n];
@@ -10,7 +9,7 @@ public:
             sn[row].push_back(s[i]);
             if (row == 0)
                 step = 1;
-            else if (row == n-1)
+            else if (row == n - 1)
                 step = -1;
             row += step;
         }
