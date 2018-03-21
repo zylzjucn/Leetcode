@@ -14,7 +14,7 @@ public:
         ListNode *p;
         p = head;
         int sum;
-        while(l1 || l2 || extra) {
+        while (l1 || l2 || extra) {
             sum = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + extra;
             extra = sum / 10;
             p->next = new ListNode(sum % 10);
