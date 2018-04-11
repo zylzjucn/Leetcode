@@ -3,8 +3,7 @@ public:
     vector<vector<int>> combinationSum(vector<int>& can, int t) {
         vector<vector<int>> res;
         vector<int> v;
-        sort(can.begin(), can.end());
-        path(can, t, v, res, can.size() - 1);
+        path(can, t, v, res, 0);
         return res;
     }
 private:
@@ -12,13 +11,12 @@ private:
         if (t <= 0) {
             if (t == 0)
                 res.push_back(v);
-            v.pop_back();
-            return;
         }
-        for (int i = index; i >= 0; --i) {
-            v.push_back(can[i]);
-            path(can, t - can[i], v, res, i);
-        }
+        else
+            for (int i = index; i < can.size(); ++i) {
+                v.push_back(can[i]);
+                path(can, t - can[i], v, res, i);
+            }
         v.pop_back();  // like a roll-back
     }
 };
