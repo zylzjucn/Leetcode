@@ -1,2 +1,2 @@
 # Leetcode
-The original solutions of Leetcode
+> Leetcode solutions in cpp
