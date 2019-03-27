@@ -27,7 +27,7 @@ Recursively solved(but got an amazingly fast result). For each recursion:
 - reverse current part by inserting the head before tail, while counting down
 - return new head
 
-#### 32. Longest Valid Parentheses
+#### 32. Longest Valid Parentheses [#f03c15](https://placehold.it/15/f03c15/000000?text=+)
 
 > O(n)
 
