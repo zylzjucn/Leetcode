@@ -24,8 +24,8 @@ Use 2 pointers starting at very left and right, then shrink to middle by replaci
 
 Recursively solved(but got an amazingly fast result). For each recursion:
 - Get the tail for current part (the head of next part) by recursion of next part
-- reverse current part by inserting the head before tail, while counting down
-- return new head
+- Reverse current part by inserting the head before tail, while counting down
+- Return new head
 
 #### 32. Longest Valid Parentheses ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
 
@@ -34,6 +34,15 @@ Recursively solved(but got an amazingly fast result). For each recursion:
 > 12ms (61.98%)
 
 The others used stack while I used unordered_map. Not that fast but unique. '(' labelled +1 while ')' labelled -1 so we can get a graph like a skyline of the pyramids. In map, the key is height(y in graph) and the value is index(x in graph). When a ')' comes in, update the result with the bigger i - m[h].
+
+#### 37. Sudoku Solver ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
+
+> 8ms (92.73%)
+
+Recursively solved. For each recursion:
+- Try 1~9. If no conflict, go to next recursion
+- If filled up, set found = true
+- If found == false, retreat current step
 
 ### Classification (to be updated)
 
