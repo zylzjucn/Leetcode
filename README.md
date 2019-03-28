@@ -44,5 +44,15 @@ Recursively solved. For each recursion:
 - If filled up, set found = true
 - If found == false, retreat current step
 
+#### 148. Sort List ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
+
+> O(nlgn)
+
+> 44ms (99.36%)
+
+Implementation of classic Merge Sort. 2 functions:
+- Sort. Split the linked list by half, return head of the merged list of 2 half lists.
+- Merge. Merge 2 sorted linked list to 1 sorted list. return the new head.
+
 ### Classification (to be updated)
 
