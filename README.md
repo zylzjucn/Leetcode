@@ -74,7 +74,7 @@ For each i, check every valid next step to get the farthest point this i could r
 
 > 8ms (N/A)
 
-Swap is a good choice for in-place operation. We can swap the elements by 0, 45, 90, 135 degree and by combining them, we can get what we want.
+Swap is a good choice for in-place operation. Swap the elements by 0, 45, 90, 135 degree and by combining them, we can get what we want.
 
 #### 148. Sort List ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
 
