@@ -46,6 +46,28 @@ Recursively solved. For each recursion:
 - If filled up, set found = true
 - If found == false, retreat current step
 
+#### 39. Combination Sum ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
+
+> 8ms (100.00%)
+
+Recursively like No.39. Start from last i to avoid duplicates results.
+
+#### 42. Trapping Rain Water ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
+
+> O(n)
+
+> 4ms (100.00%)
+
+Retrieve from left to right and reverse to find the left and right wall.
+
+#### 45. Jump Game II ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
+
+> O(n^2)
+
+> 12ms (99.33%)
+
+For each i, check every valid next step to get the farthest point this i could reach. while reach the last one, return.
+
 #### 148. Sort List ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
 
 > O(nlgn)
@@ -55,6 +77,8 @@ Recursively solved. For each recursion:
 Implementation of classic Merge Sort. 2 functions:
 - Sort. Split the linked list by half, return head of the merged list of 2 half lists.
 - Merge. Merge 2 sorted linked list to 1 sorted list. return the new head.
+
+
 
 ### Classification (to be updated)
 
