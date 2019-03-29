@@ -86,6 +86,13 @@ Implementation of classic Merge Sort. 2 functions:
 - Sort. Split the linked list by half, return head of the merged list of 2 half lists.
 - Merge. Merge 2 sorted linked list to 1 sorted list. return the new head.
 
+#### 149. Max Points on a Line ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
+
+> O(n^2)
+
+> 20ms (57.54%)
+
+Use a pair to represent a line. The pair is also the key for the map. We must devide the GCD of the pair elements so that the same slopes share the same pair. Not just using a k cuz difficulty of comparing to float value.
 
 
 ### Classification (to be updated)
