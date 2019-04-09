@@ -92,6 +92,17 @@ Classic DP using a matrix. The elements in the matrix stands for the number of t
 
 2 functions. The maxPathSum function calls the maxBranch function and keeps a variable to store the max value(the result), the maxBranch one calls itself recursively and return the branch with the max sum containing the current node.
 
+#### 138. Copy List with Random Pointer ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
+
+> O(n)
+
+> 28ms (100.00%)
+
+Very tricky. 3 steps:
+- Add a new node after every old ones
+- Build the random pointer for the new ones according to the relative positions of the old ones.
+- Seperate 2 groups of the nodes.
+
 #### 148. Sort List ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
 
 > O(nlgn)
