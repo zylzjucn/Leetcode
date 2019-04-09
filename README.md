@@ -76,6 +76,22 @@ For each i, check every valid next step to get the farthest point this i could r
 
 Swap is a good choice for in-place operation. Swap the elements by 0, 45, 90, 135 degree and by combining them, we can get what we want.
 
+#### 115. Distinct Subsequences ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
+
+> O(n^2)
+
+> 4ms (100.00%)
+
+Classic DP using a matrix. The elements in the matrix stands for the number of the subsequences of S.substr(0, i) equals T.substr(0, j). Initialize the first row with 0 and first colume with 1, then update the rest. If 2 char do not equal, then keep the old result. Else, add the upleft result.
+
+#### 124. Binary Tree Maximum Path Sum ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
+
+> O(n)
+
+> 36ms (98.14%)
+
+2 functions. The maxPathSum function calls the maxBranch function and keeps a variable to store the max value(the result), the maxBranch one calls itself recursively and return the branch with the max sum containing the current node.
+
 #### 148. Sort List ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
 
 > O(nlgn)
@@ -92,7 +108,9 @@ Implementation of classic Merge Sort. 2 functions:
 
 > 20ms (57.54%)
 
-Use a pair to represent a line. The pair is also the key for the map. We must devide the GCD of the pair elements so that the same slopes share the same pair. Not just using a k cuz difficulty of comparing to float value.
+Use a pair to represent a line. The pair is also the key for the map. We must devide the GCD of the pair elements so that the same slopes share the same pair. Not just using a k cuz difficulty comparison of float values.
+
+
 
 
 ### Classification (to be updated)
