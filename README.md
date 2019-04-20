@@ -121,6 +121,14 @@ Implementation of classic Merge Sort. 2 functions:
 
 Use a pair to represent a line. The pair is also the key for the map. We must devide the GCD of the pair elements so that the same slopes share the same pair. Not just using a k cuz difficulty comparison of float values.
 
+#### 419. Battleships in a Board ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
+
+> O(n)
+
+> 8ms (98.74%)
+
+We only count the first cell(left-top one of a battleship) to avoid duplicate counting. Every valid first cells have no left or top 'X'.
+
 #### 424. Longest Repeating Character Replacement ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
 
 > O(n)
@@ -128,7 +136,6 @@ Use a pair to represent a line. The pair is also the key for the map. We must de
 > 8ms (100.00%)
 
 Sliding window. Use 2 pointers and always add the end while adjust start in the inner loop to meet the requirement of the substring. The biggist trick here is we only need to update the maxCount while there is a bigger count, instead of reducing it while the actual maxCount decrease, since we only wants the longer substring instead of the shorter result.
-
 
 
 ### Classification (to be updated)
