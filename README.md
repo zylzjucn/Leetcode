@@ -127,7 +127,7 @@ Use a pair to represent a line. The pair is also the key for the map. We must de
 
 > 8ms (98.74%)
 
-We only count the first cell(left-top one of a battleship) to avoid duplicate counting. Every valid first cells have no left or top 'X'.
+We only count the first cell(left-top one of a battleship) to avoid duplicate counting. Every valid first cells have no left or up 'X'.
 
 #### 424. Longest Repeating Character Replacement ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
 
