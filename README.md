@@ -137,6 +137,14 @@ We only count the first cell(left-top one of a battleship) to avoid duplicate co
 
 Sliding window. Use 2 pointers and always add the end while adjust start in the inner loop to meet the requirement of the substring. The biggist trick here is we only need to update the maxCount while there is a bigger count, instead of reducing it while the actual maxCount decrease, since we only wants the longer substring instead of the shorter result.
 
+#### 442. Find All Duplicates in an Array ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
+
+> O(n)
+
+> 116ms (95.60%)
+
+O(n) required. So we use the index itself to track the element show times in the array. We flip the element on the specific position to negative thus next time we come here, we know this is the second time.
+
 
 ### Classification (to be updated)
 
