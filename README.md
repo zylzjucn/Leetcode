@@ -145,6 +145,13 @@ Sliding window. Use 2 pointers and always add the end while adjust start in the 
 
 O(n) required. So we use the index itself to track the element show times in the array. We flip the element on the specific position to negative thus next time we come here, we know this is the second time.
 
+#### 542. 01 Matrix ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
+
+> O(n)
+
+> 208ms (56.84%)
+
+BFS. Shares the same idea with many other matrix and tree problems. We only need to keep the height(distance here) and traverse the elements level by level.
 
 ### Classification (to be updated)
 
