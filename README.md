@@ -1,7 +1,5 @@
 ## Leetcode
 
-> Welcome Lenka!!!
-
 ### Summary (updating)
 
 - ![#1589F0](https://placehold.it/15/008000/000000?text=+) `Easy`
