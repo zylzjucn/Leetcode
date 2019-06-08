@@ -6,7 +6,7 @@
 - ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+) `Medium`
 - ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `Hard`
 
-|-|-|-|
+|---|---|---|
 |#|Title|Solution|
 |1|Two Sum|用unordered_map，降至O(n)|
 |2|Add Two Numbers|一个变量存储进位，当l1,l2,进位非均为空时，继续计算|
