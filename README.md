@@ -6,8 +6,8 @@
 - ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+) `Medium`
 - ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `Hard`
 
-|---|---|---|
 |#|Title|Solution|
+|---|---|---|
 |1|Two Sum|用unordered_map，降至O(n)|
 |2|Add Two Numbers|一个变量存储进位，当l1,l2,进位非均为空时，继续计算|
 |3|Longest Substring Without Repeating Characters|用一个数组存储字符出现的次数。if为0，则没出现过，end++; else出现过，start++。每步操作都要修改数组|
