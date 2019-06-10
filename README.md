@@ -27,6 +27,9 @@
 |18|4Sum|同15。通过sort减少一层时间复杂度。通过和与目标值的大小关系决定3进或4退|
 |19|Remove Nth Node From End of List|**链表倒数**。设置快慢2个游标，快的先跑差速步，然后同时跑即可|
 |21|Merge Two Sorted Lists|递归。比较2个链表第1个node大小，取小的，递归剩余|
+|22|Generate Parentheses|递归。每次记录剩余左括号和右括号（或者较左括号多）的数量，依此确定是否终止|
+|24|Swap Nodes in Pairs|new一个新的头。很适合这种头node会变的情况|
+
 
 
 
