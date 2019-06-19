@@ -85,6 +85,9 @@
 |91|Decode Ways|**f(n) = f(n-1) + f(n-2)**|
 |92|Reverse Linked List II|**链表反转。** 将要反转的部分中的头node逐一推向tail之后，就不需要原tail指向它，也就避免了链表中最讨厌的问题，记录tail|
 |93|Restore IP Addresses|暴力四循环。之后检查每个地址是否合法以及总长度是否满足要求即可|
+|94|Binary Tree Inorder Traversal|**树的遍历**|
+|95|Unique Binary Search Trees II|**递归。** new一个node，左右子指向左右子vector返回的结果|
+|96|Unique Binary Search Trees|**通项公式** f(n) = $$\sum_{j=0}^{i} {f(j)\*f(i-j-1)}$$|
 
 
 左右边界模板
