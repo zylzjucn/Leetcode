@@ -65,7 +65,7 @@
 |67|Add Binary||
 |68|Text Justification|很直接。检查每行能放几个，另写一个函数拼成每一行的string|
 |69|Sqrt(x)|牛顿迭代。每步更新为(res + x / res) /2。注意溢出，可以用long|
-|70|Climbing Stairs|**f(n) = f(n-1) + f(n-2)**|
+|70|Climbing Stairs|**通项公式。** f(n) = f(n-1) + f(n-2)|
 |71|Simplify Path|区分好各种可能出现的substring形式即可|
 |**72**|Edit Distance|**[i][j] = f([i-1][j], [i][j-1])。** 空间换时间。用一个矩阵存储，其中元素表示所在行列数对应的2个string相互转换需要的步数|
 |**73**|Set Matrix Zeroes|用首行和首列的元素来储存这一行/列是否应该置0。所以对于第一行和第一列来说，需要额外一个变量来储存首行/首列的状态。剩下的首列/首行自然放在[0][0]中|
@@ -82,12 +82,16 @@
 |86|Partition List||
 |88|Merge Sorted Array|三个指针，从后往前，2个指针比较大小，1个存储。从后往前的原因是不会写到有用的数据，而只会写到分配好的空间里|
 |90|Subsets II|用map记录每个元素出现几次，然后生成每个元素的res，再将它们进行全组合|
-|91|Decode Ways|**f(n) = f(n-1) + f(n-2)**|
+|91|Decode Ways|**通项公式。** f(n) = f(n-1) + f(n-2)|
 |92|Reverse Linked List II|**链表反转。** 将要反转的部分中的头node逐一推向tail之后，就不需要原tail指向它，也就避免了链表中最讨厌的问题，记录tail|
 |93|Restore IP Addresses|暴力四循环。之后检查每个地址是否合法以及总长度是否满足要求即可|
 |94|Binary Tree Inorder Traversal|**树的遍历**|
 |95|Unique Binary Search Trees II|**递归。** new一个node，左右子指向左右子vector返回的结果|
-|96|Unique Binary Search Trees|**通项公式** f(n) = $$\sum_{j=0}^{i} {f(j)\*f(i-j-1)}$$|
+|96|Unique Binary Search Trees|**通项公式** f(n)+=f(j)\*f(i-j-1)|
+|97|Interleaving String||
+|98|Validate Binary Search Tree|**树的遍历**|
+|99|Recover Binary Search Tree|**树的遍历。** 找到2个位置不对的点，swap|
+|100|Same Tree|**树的遍历。** 递归也快，return cur相等 && 左树相等 && 右树相等|
 
 
 左右边界模板
