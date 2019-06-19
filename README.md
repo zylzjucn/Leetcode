@@ -1,7 +1,5 @@
 ## Leetcode
 
-> $\sum^{x \to \infty}_{y \to 0}{\frac{x}{y}}$
-
 ### Summary (updating)
 
 - ![#1589F0](https://placehold.it/15/008000/000000?text=+) `Easy`
