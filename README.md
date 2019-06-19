@@ -1,6 +1,6 @@
 ## Leetcode
 
-$$ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} $$
+$k_n^2$
 
 ### Summary (updating)
 
