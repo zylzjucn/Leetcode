@@ -1,6 +1,6 @@
 ## Leetcode
 
-> $$ c^2 = a^2 + b^2 $$
+> $\sum^{x \to \infty}_{y \to 0}{\frac{x}{y}}$
 
 ### Summary (updating)
 
