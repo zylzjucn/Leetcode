@@ -92,9 +92,20 @@
 |98|Validate Binary Search Tree|**树的遍历**|
 |99|Recover Binary Search Tree|**树的遍历。** 找到2个位置不对的点，swap|
 |100|Same Tree|**树的遍历。** 递归也快，return cur相等 && 左树相等 && 右树相等|
+|101|Symmetric Tree|**递归**|
+|102|Binary Tree Level Order Traversal|**广搜。** 树的层级遍历|
+|103|Binary Tree Zigzag Level Order Traversal|**广搜。** 树的层级遍历|
+|104|Maximum Depth of Binary Tree|**递归。** f(root) = max(f(left), f(right)) + 1|
+|105|Construct Binary Tree from Preorder and Inorder Traversal|**树模板。** f(root) = g(f(left), f(right))。分成左右两个sub vector|
+|106|Construct Binary Tree from Inorder and Postorder Traversal|**树模板。** f(root) = g(f(left), f(right))|
+|108|Convert Sorted Array to Binary Search Tree|**树模板**|
+|109|Convert Sorted List to Binary Search Tree|**树模板**|
+
 
 
 左右边界模板
+
+树模板
 
 滑窗双指针模板
 
