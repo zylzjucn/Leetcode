@@ -100,6 +100,13 @@
 |106|Construct Binary Tree from Inorder and Postorder Traversal|**树模板。** f(root) = g(f(left), f(right))|
 |108|Convert Sorted Array to Binary Search Tree|**树模板**|
 |109|Convert Sorted List to Binary Search Tree|**树模板**|
+|110|Balanced Binary Tree|递归。如果左右高度>0且差<=1，则返回树高，否则返回-1|
+|111|Minimum Depth of Binary Tree|递归返回较短边|
+|112|Path Sum|递归。左右返回值取或返回|
+|113|Path Sum II|**深搜**|
+|114|Flatten Binary Tree to Linked List|单循环，不断拼接即可|
+|115|Distinct Subsequences||
+
 
 
 
