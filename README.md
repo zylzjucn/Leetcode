@@ -1,6 +1,6 @@
 ## Leetcode
 
-### Summary (updating)
+### 总结 (updating)
 
 - ![#1589F0](https://placehold.it/15/008000/000000?text=+) `Easy`
 - ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+) `Medium`
@@ -49,7 +49,7 @@
 |50|Pow(x, n)|**递归。** 很多种方法。处理好0，INT_MIN和负数就可以。递归中写清楚幂为奇数或偶数的情况|
 |51|N-Queens|**深搜。** 嵌套循环。另写一个函数检查是否valid。类似数独|
 |52|N-Queens II|**深搜。** 同上|
-|53|Maximum Subarray|遍历整个vector，每次检查以当前点结束的subarray是否比之前的结果更优。这是O(n2)降至O(n)的好方法|
+|53|Maximum Subarray|**结束于此，向回看。**遍历整个vector，每次检查以当前点结束的subarray是否比之前的结果更优。这是O(n2)降至O(n)的好方法|
 |54|Spiral Matrix|注意边界的变化即可|
 |55|Jump Game|在循环中不断更新能达到的最远步数，最远步数也是这个循环不断变化的边界|
 |56|Merge Intervals|先sort，然后逐一判断新进来的interval与上一个是否有重叠|
@@ -106,42 +106,101 @@
 |113|Path Sum II|**深搜**|
 |114|Flatten Binary Tree to Linked List|单循环，不断拼接即可|
 |115|Distinct Subsequences||
+|120|Triangle|用一个矩阵来记录|
+|121|Best Time to Buy and Sell Stock|**结束于此，向回看。**找到最小值，比较|
+|122|Best Time to Buy and Sell Stock II|记录所有上坡|
+|128|Longest Consecutive Sequence|用set，进行对比|
 
+### 模板
 
+深搜
+> 37,39,40,51,52,77,113
 
+```
+vector<vector<string>> solveNQueens(int n) {
+    vector<vector<int>> res;
+    vector<int> v;
+    solve(res, v, n);
+    // 一个用来存储最终的所有返回结果，一个用来记录本次递归结果
+    // 剩下参数用来判断是否合法
+    return res;
+}
+void solve(vector<vector<int>> &res, vector<int> &v, int n) {
+    if (v.size() == n) { // 如果找到的本次结果合法
+        res.push_back(v);
+        v.pop_back();
+        return;
+    }
+    for (int col = 0; col < n; col++) {
+        if (valid(v, col)) { // 如果本次操作合法
+            v.push_back(col);
+            solve(res, v, n);
+        }
+    }
+    v.pop_back(); // 退位，继续找
+}
+```
 
-左右边界模板
+左右边界
+> 42, 84
+
+```
+int trap(vector<int>& h) {
+    if (h.size() == 0)
+        return 0;
+    int left[h.size()];
+    int right[h.size()];
+    // 初始化这2个数组
+    
+    for (int i = 1; i < h.size(); i++) {
+        // 根据条件，对2个数组赋值
+    }
+    for (int i = h.size() - 2; i >= 0; i--) {
+        // 根据条件，对2个数组赋值
+    }
+    int res;
+    for (int i = 0; i < h.size(); i++) {
+        res = f(left[], right[]);
+    }
+    return res;
+}
+```
 
 树模板
+
+```
+
+```
 
 滑窗双指针模板
 
 ```
 int findSubstring(string s){
-        vector<int> map(128,0);
-        int counter; // check whether the substring is valid
-        int begin=0, end=0;
-        int d; //the length of substring
+	vector<int> map(128,0);
+	int counter; // check whether the substring is valid
+	int begin=0, end=0;
+	int d; //the length of substring
 
-        for() { /* initialize the hash map here */ }
+	for() { /* initialize the hash map here */ }
 
-        while(end<s.size()){
+	while(end<s.size()){
 
-            if(map[s[end++]]-- ?){  /* modify counter here */ }
+		if(map[s[end++]]-- ?){  /* modify counter here */ }
 
-            while(/* counter condition */){ 
-                 
-                 /* update d here if finding minimum*/
-
-                //increase begin to make it invalid/valid again
+		while(/* counter condition */){ 
                 
-                if(map[s[begin++]]++ ?){ /*modify counter here*/ }
-            }  
+			/* update d here if finding minimum*/
+
+			//increase begin to make it invalid/valid again
+		
+			if(map[s[begin++]]++ ?)
+				{ /*modify counter here*/ }
+		}  
 
             /* update d here if finding maximum*/
-        }
+ 	}
         return d;
-  }
+}
 ```
 
 
