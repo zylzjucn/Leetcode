@@ -106,15 +106,21 @@
 |113|Path Sum II|**深搜**|
 |114|Flatten Binary Tree to Linked List|单循环，不断拼接即可|
 |115|Distinct Subsequences||
+|119|Pascal's Triangle II|用一个vector即可。从后往前初始化可以再节省一个变量|
 |120|Triangle|用一个矩阵来记录|
 |121|Best Time to Buy and Sell Stock|**结束于此，向回看。**找到最小值，比较|
 |122|Best Time to Buy and Sell Stock II|记录所有上坡|
 |128|Longest Consecutive Sequence|用set，进行对比|
+|129|Sum Root to Leaf Numbers|用一个sum记录，符合条件就+=|
+|130|Surrounded Regions|从四条边上递归寻找所有没有被包围的点|
+|131|Palindrome Partitioning|**深搜**|
+||||
+
 
 ### 模板
 
 深搜
-> 37,39,40,51,52,77,113
+> 37,39,40,51,52,77,113,131
 
 ```
 vector<vector<string>> solveNQueens(int n) {
