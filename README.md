@@ -114,7 +114,11 @@
 |129|Sum Root to Leaf Numbers|用一个sum记录，符合条件就+=|
 |130|Surrounded Regions|从四条边上递归寻找所有没有被包围的点|
 |131|Palindrome Partitioning|**深搜**|
-||||
+|134|Gas Station|从最低点出发即可。寻找最低点|
+|136|Single Number|用异或">="|
+|**138**|Copy List with Random Pointer|随机指针麻烦的就在于无法确定位置。可以在每个已经确定相对关系的node后，new一个node，用已知带动未知的点。相对位置确定之后，再将两者分离为2个独立的list|
+|**139**|Word Break|类似于jump game. 每次都更新自己能跳到哪里，将那里置true，继续在true里找下一次能调到的地方|
+
 
 
 ### 模板
@@ -209,6 +213,9 @@ int findSubstring(string s){
 }
 ```
 
+异或模板
+```
+```
 
 
 
