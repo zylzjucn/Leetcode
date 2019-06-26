@@ -119,7 +119,14 @@
 |**138**|Copy List with Random Pointer|随机指针麻烦的就在于无法确定位置。可以在每个已经确定相对关系的node后，new一个node，用已知带动未知的点。相对位置确定之后，再将两者分离为2个独立的list|
 |**139**|Word Break|类似于jump game. 每次都更新自己能跳到哪里，将那里置true，继续在true里找下一次能调到的地方|
 |141|Linked List Cycle|快慢指针即可。因为如果有环，快指针就会出现在后面，因此一定会遇到慢指针|
-|142|||
+|142|Linked List Cycle II|快慢指针，先确定是否有循环，再用2个指针，1个继续从交汇的地方出发，另1个从头出发，就会相遇在环的起点。因为这两个起始点相对于环的相位相等|
+|143|Reorder List|三步。分半，反转，合并|
+|144|Binary Tree Preorder Traversal|**树模板**|
+|145|Binary Tree Postorder Traversal|**树模板**|
+|147|Insertion Sort List|两个指针，一个遍历，一个定位插入的位置|
+|148|Sort List|标准版merge sort，快。函数1分半，返回时调用函数2合并的结果|
+|**149**|Max Points on a Line|双层循环遍历所有点，得到所有2个点组成的线的组合。用斜率（需要用到最小公约数）来储存这条直线。因为都过第一个点，所以斜率相等，就在同一条线上。注意一下水平和竖直的线即可|
+|150|Evaluate Reverse Polish Notation|后缀表达式当然要用stack|
 
 
 
