@@ -132,7 +132,7 @@
 |153|Find Minimum in Rotated Sorted Array|**二分法**|
 |154|Find Minimum in Rotated Sorted Array II|**二分法。**一个避免重复元素的小技巧是，如果左中右三者相等，那么就可能中间两侧有元素比较小，此时就可以同时将左右往中间缩1|
 |155|Min Stack|用2个stack，1个stack正常存，另1个存最小值|
-
+||||
 
 
 
