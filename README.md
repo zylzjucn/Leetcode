@@ -132,7 +132,7 @@
 |153|Find Minimum in Rotated Sorted Array|**二分法**|
 |154|Find Minimum in Rotated Sorted Array II|**二分法。**一个避免重复元素的小技巧是，如果左中右三者相等，那么就可能中间两侧有元素比较小，此时就可以同时将左右往中间缩1|
 |155|Min Stack|用2个stack，1个stack正常存，另1个存最小值|
-||||
+|373|Find K Pairs with Smallest Sums|***priority_queue。*** 增删O(lgN), 找最大值或最小值O(1)。如果找最小值，需要自己写compare。这也相当于k-mergesort|
 
 
 
@@ -230,6 +230,41 @@ int findSubstring(string s){
 
 异或模板
 ```
+```
+
+### 语法
+
+> 基于C++，其它语言参考意义不大
+
+```emplace``` 与 ```push``` 的区别（373）:
+
+```push``` 只能传入构造好的对象，或者在传入时构造对象
+```emplace``` 除以上2种操作外，还可以直接传入构造对象需要的元素，自己调用其构造函数。这样最优，节省内存
+ 
+```
+class data {
+	int a;
+	int b;
+public:
+	data(int x, int y): a(x), b(y) {}
+};
+
+// push:
+
+// 1. 传入构造好的对象：
+
+data d(1,2);
+S.push(d);
+S.emplace(d);
+
+// 2. 传入时构造对象：
+
+S.push(data(1, 2));
+S.emplace(data(1, 2));
+
+// 3. 传入构造对象的元素，自己构造。只有emplace能完成:
+
+S.emplace(1, 2);
 ```
 
 
