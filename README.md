@@ -11,7 +11,7 @@
 |1|Two Sum|用unordered_map，降至O(n)|
 |2|Add Two Numbers|一个变量存储进位，当l1,l2,进位非均为空时，继续计算|
 |3|Longest Substring Without Repeating Characters|用一个数组存储字符出现的次数。if为0，则没出现过，end++; else出现过，start++。每步操作都要修改数组|
-|4|Median of Two Sorted Arrays||
+|**4**|Median of Two Sorted Arrays|**二分法。** 确定了i，就能确定第二个数组里j的位置，在比较大小就可以决定向左还是向右。或者写一个辅助函数，寻找第k个元素，递归辅助函数也可以做|
 |5|Longest Palindromic Substring||
 |6|ZigZag Conversion||
 |7|Reverse Integer||
@@ -132,7 +132,7 @@
 |153|Find Minimum in Rotated Sorted Array|**二分法**|
 |154|Find Minimum in Rotated Sorted Array II|**二分法。**一个避免重复元素的小技巧是，如果左中右三者相等，那么就可能中间两侧有元素比较小，此时就可以同时将左右往中间缩1|
 |155|Min Stack|用2个stack，1个stack正常存，另1个存最小值|
-|373|Find K Pairs with Smallest Sums|***priority_queue。*** 增删O(lgN), 找最大值或最小值O(1)。如果找最小值，需要自己写compare。这也相当于k-mergesort|
+|373|Find K Pairs with Smallest Sums|***priority_queue。*** 增删O(lgN), 找最大值或最小值O(1)。如果找最小值，需要自己写compare。这也相当于k-mergesort。还有一个小技巧是，矩阵中往右的路径全部由一边负责，另一边只负责第一列向下，因为第一列无法通过向右达到|
 
 
 
@@ -229,6 +229,7 @@ int findSubstring(string s){
 ```
 
 异或模板
+
 ```
 ```
 
@@ -265,6 +266,16 @@ S.emplace(data(1, 2));
 // 3. 传入构造对象的元素，自己构造。只有emplace能完成:
 
 S.emplace(1, 2);
+```
+
+decltype 问大佬
+
+加了&快了非常多：
+
+```
+auto comp = [&nums1, &nums2](pair<int, int> a, pair<int, int> b) {
+            return nums1[a.first] + nums2[a.second] > nums1[b.first] + nums2[b.second];
+        };
 ```
 
 
