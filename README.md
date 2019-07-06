@@ -136,6 +136,7 @@
 |153|Find Minimum in Rotated Sorted Array|**二分法**|
 |154|Find Minimum in Rotated Sorted Array II|**二分法。**一个避免重复元素的小技巧是，如果左中右三者相等，那么就可能中间两侧有元素比较小，此时就可以同时将左右往中间缩1|
 |155|Min Stack|用2个stack，1个stack正常存，另1个存最小值|
+|174|Dungeon Game|**矩阵倒序。** 这是遇到的第一个需要倒序遍历矩阵的题目。因为这个点的结果由未来的点决定。所以反向遍历，返回[0][0]|
 |**207**|Course Schedule|拓扑排序。甚至都不需要set或map。用二重vector来存一门课和它*锁住*的课。这样找一门课（有序，用vector就可以不需要map）就可以解禁一层它锁住的课，很好遍历。我们不需要知道是哪门课来解禁的它，只需要计数，计数到0，这门课被完全解禁|
 |**212**|Word Search II|**Trie + 深搜。** 题目要求搜索多个string，可以降低时间复杂度。需要先构建struct Trie，实际上就是一个26叉树。|
 |224|Basic Calculator|用stack。考虑清楚可能出现的char情况，见到（正负反一下即可|
