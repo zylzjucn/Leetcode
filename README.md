@@ -50,7 +50,7 @@
 |50|Pow(x, n)|**递归。** 很多种方法。处理好0，INT_MIN和负数就可以。递归中写清楚幂为奇数或偶数的情况|
 |51|N-Queens|**深搜。** 嵌套循环。另写一个函数检查是否valid。类似数独|
 |52|N-Queens II|**深搜。** 同上|
-|53|Maximum Subarray|**结束于此，向回看。**遍历整个vector，每次检查以当前点结束的subarray是否比之前的结果更优。这是O(n2)降至O(n)的好方法|
+|53|Maximum Subarray|**结束于此，向回看。** 遍历整个vector，每次检查以当前点结束的subarray是否比之前的结果更优。这是O(n2)降至O(n)的好方法|
 |54|Spiral Matrix|注意边界的变化即可|
 |55|Jump Game|在循环中不断更新能达到的最远步数，最远步数也是这个循环不断变化的边界|
 |56|Merge Intervals|先sort，然后逐一判断新进来的interval与上一个是否有重叠|
@@ -110,7 +110,7 @@
 |115|Distinct Subsequences||
 |119|Pascal's Triangle II|用一个vector即可。从后往前初始化可以再节省一个变量|
 |120|Triangle|用一个矩阵来记录|
-|121|Best Time to Buy and Sell Stock|**结束于此，向回看。**找到最小值，比较|
+|121|Best Time to Buy and Sell Stock|**结束于此，向回看。** 找到最小值，比较|
 |122|Best Time to Buy and Sell Stock II|记录所有上坡|
 |128|Longest Consecutive Sequence|用set，进行对比|
 |129|Sum Root to Leaf Numbers|用一个sum记录，符合条件就+=|
@@ -133,9 +133,9 @@
 |**149**|Max Points on a Line|双层循环遍历所有点，得到所有2个点组成的线的组合。用斜率（需要用到最小公约数）来储存这条直线。因为都过第一个点，所以斜率相等，就在同一条线上。注意一下水平和竖直的线即可|
 |150|Evaluate Reverse Polish Notation|后缀表达式当然要用stack|
 |151|Reverse Words in a String|stringstream ss(s), ss >> tmp, 是前往后吐出来，新出来的内容加在前面即可|
-|152|Maximum Product Subarray|**结束于此，向回看。**这是一个将O(n2)将为O(n)很好的方法。同时因为有负数，用两个值来记录出现的最大值和最小值。如果当前为负数，则两个值swap|
+|152|Maximum Product Subarray|**结束于此，向回看。** 这是一个将O(n2)将为O(n)很好的方法。同时因为有负数，用两个值来记录出现的最大值和最小值。如果当前为负数，则两个值swap|
 |153|Find Minimum in Rotated Sorted Array|**二分法**|
-|154|Find Minimum in Rotated Sorted Array II|**二分法。**一个避免重复元素的小技巧是，如果左中右三者相等，那么就可能中间两侧有元素比较小，此时就可以同时将左右往中间缩1|
+|154|Find Minimum in Rotated Sorted Array II|**二分法。** 一个避免重复元素的小技巧是，如果左中右三者相等，那么就可能中间两侧有元素比较小，此时就可以同时将左右往中间缩1|
 |155|Min Stack|用2个stack，1个stack正常存，另1个存最小值|
 |174|Dungeon Game|**矩阵倒序。** 这是遇到的第一个需要倒序遍历矩阵的题目。因为这个点的结果由未来的点决定。所以反向遍历，返回[0][0]|
 |**207**|Course Schedule|拓扑排序。甚至都不需要set或map。用二重vector来存一门课和它*锁住*的课。这样找一门课（有序，用vector就可以不需要map）就可以解禁一层它锁住的课，很好遍历。我们不需要知道是哪门课来解禁的它，只需要计数，计数到0，这门课被完全解禁|
