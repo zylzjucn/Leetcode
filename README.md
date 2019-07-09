@@ -147,6 +147,8 @@
 |224|Basic Calculator|用stack。考虑清楚可能出现的char情况，见到（正负反一下即可|
 |244|Shortest Word Distance II|用map记录所有string出现的位置。2个string就能通过map拿到2个存放这两个string所有出现位置的vector，然后求最小差值即可|
 |227|Basic Calculator II|处理好算符优先级就好。和282一样，多一个变量储存上一个数字|
+|251|Flatten 2D Vector|记录移动和结束的向量指针，同时一个变量计行内数即可。hasnext负责换行，每次next都要call它|
+|**277**|Find the Celebrity|O(n)就能做。第一遍loop，不断把candidate赋值为被别人认识的那个人。这样一圈下来，前一部分人都认识别人，后一部分人can都不认识，所以都不能做can。再2个循环确认这个can是不是真can即可|
 |**282**|Expression Add Operators|**深搜。** 需要**应对运算符优先级不同的小技巧**：需要cur和pre来记录数据。cur代表截至目前直接计算出来的结果，而pre表示上一个数字单元的内容，相当于一个浅栈，如果遇到一个*,就从cur中回退（减）掉pre，pre和现在的数字相乘，放入cur和pre|
 |**296**|Best Meeting Point|二维问题一维化。因为这是不计算斜边的曼哈顿距离，所以实际上就是在x,y方向上找中位数。同时x,y不相干，因此甚至所有点的横纵坐标不需要一一对应，分别找出x,y的中位数即可|
 |373|Find K Pairs with Smallest Sums|***priority_queue。*** 增删O(lgN), 找最大值或最小值O(1)。如果找最小值，需要自己写compare。这也相当于k-mergesort。还有一个小技巧是，矩阵中往右的路径全部由一边负责，另一边只负责第一列向下，因为第一列无法通过向右达到|
