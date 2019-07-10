@@ -150,8 +150,9 @@
 |251|Flatten 2D Vector|记录移动和结束的向量指针，同时一个变量计行内数即可。hasnext负责换行，每次next都要call它。但是hasnext return值我还没搞懂为什么这样可以过|
 |267|Palindrome Permutation II|**深搜**|
 |**277**|Find the Celebrity|O(n)就能做。第一遍loop，不断把candidate赋值为被别人认识的那个人。这样一圈下来，前一部分人都认识别人，后一部分人can都不认识，所以都不能做can。再2个循环确认这个can是不是真can即可|
-|**282**|Expression Add Operators|**深搜。** 需要**应对运算符优先级不同的小技巧**：需要cur和pre来记录数据。cur代表截至目前直接计算出来的结果，而pre表示上一个数字单元的内容，相当于一个浅栈，如果遇到一个*,就从cur中回退（减）掉pre，pre和现在的数字相乘，放入cur和pre|
+|**282**|Expression Add Operators|**深搜。** 需要**应对运算符优先级不同的小技巧**：需要cur和pre来记录数据。cur代表截至目前直接计算出来的结果，而pre表示上一个数字单元的内容，相当于一个浅栈，如果遇到一个\*,就从cur中回退（减）掉pre，pre和现在的数字相乘，放入cur和pre|
 |**296**|Best Meeting Point|二维问题一维化。因为这是不计算斜边的曼哈顿距离，所以实际上就是在x,y方向上找中位数。同时x,y不相干，因此甚至所有点的横纵坐标不需要一一对应，分别找出x,y的中位数即可|
+|**300**|Longest Increasing Subsequence|O(lgn),用lower_bound()可以达到，因为我们迅速定位新来元素应该在的位置。不一定总是插入，如果有更大的元素，就把*更大的元素换成新来的元素*，因为这样有利于后来元素形成更长的序列|
 |**373**|Find K Pairs with Smallest Sums|***priority_queue。*** 增删O(lgN), 找最大值或最小值O(1)。如果找最小值，需要自己写compare。这也相当于k-mergesort。还有一个小技巧是，矩阵中往右的路径全部由一边负责，另一边只负责第一列向下，因为第一列无法通过向右达到|
 |378|Kth Smallest Element in a Sorted Matrix|可以用priority_queue做，但是慢，跟373类似。之后看看别的方法|
 |403|Frog Jump|用的BFS，速度不算快。跟另一个frog差不多，都是走在当下，根据当下来提醒后面能达到的步数。尽量避免set和map的遍历，感觉比较慢，vector就会好一些。类似的写法，java竟然比cpp快很多|
@@ -261,6 +262,8 @@ int findSubstring(string s){
 
 > 基于C++，其它语言参考意义不大
 
+#### Emplace
+
 ```emplace``` 与 ```push``` 的区别（373）:
 
 ```push``` 只能传入构造好的对象，或者在传入时构造对象
@@ -292,6 +295,30 @@ S.emplace(data(1, 2));
 S.emplace(1, 2);
 ```
 
+可以插入，看起来会区分输入的参数：
+
+```
+vector<pair<int, int>> v;
+    v.emplace_back(1, 1);
+    v.emplace_back(3, 3);
+    v.emplace(v.begin() + 1, 2, 2);  // 看这里的参数
+    // v: (1,1),(2,2),(3,3)
+```
+
+#### 游标二分查找
+
+> 用二分实现，所以O(lgn)
+
+```
+vector<int> v = {1,2,3,4,5,6,7,8};
+
+auto it1 = lower_bound(t.begin(),t.end(),4);  // 第一个>=目标的元素
+auto it2 = upper_bound(t.begin(),t.end(),4);  // 第一个>目标的元素
+bool b = binary_search(t.begin(),t.end(),4);  // 是否存在
+```
+
+
+
 decltype 问大佬
 
 加了&快了非常多：
@@ -305,129 +332,7 @@ auto comp = [&nums1, &nums2](pair<int, int> a, pair<int, int> b) {
 
 
 
-#### 32. Longest Valid Parentheses ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
 
-> O(n)
-
-> 12ms (61.98%)
-
-The others used stack while I used unordered_map. Not that fast but unique. '(' labelled +1 while ')' labelled -1 so we can get a graph like a skyline of the pyramids. In map, the key is height(y in graph) and the value is index(x in graph). When a ')' comes in, update the result with the bigger i - m[h].
-
-#### 37. Sudoku Solver ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
-
-> 8ms (92.73%)
-
-Recursively solved. For each recursion:
-- Try 1~9. If no conflict, go to next recursion
-- If filled up, set found = true
-- If found == false, retreat current step
-
-#### 39. Combination Sum ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
-
-> 8ms (100.00%)
-
-Recursively like No.39. Start from last i to avoid duplicates results.
-
-#### 42. Trapping Rain Water ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
-
-> O(n)
-
-> 4ms (100.00%)
-
-Retrieve from left to right and reverse to find the left and right wall.
-
-#### 45. Jump Game II ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
-
-> O(n^2)
-
-> 12ms (99.33%)
-
-For each i, check every valid next step to get the farthest point this i could reach. while reach the last one, return.
-
-#### 48. Rotate Image ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
-
-> O(n^2)
-
-> 8ms (N/A)
-
-Swap is a good choice for in-place operation. Swap the elements by 0, 45, 90, 135 degree and by combining them, we can get what we want.
-
-#### 115. Distinct Subsequences ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
-
-> O(n^2)
-
-> 4ms (100.00%)
-
-Classic DP using a matrix. The elements in the matrix stands for the number of the subsequences of S.substr(0, i) equals T.substr(0, j). Initialize the first row with 0 and first colume with 1, then update the rest. If 2 char do not equal, then keep the old result. Else, add the upleft result.
-
-#### 124. Binary Tree Maximum Path Sum ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
-
-> O(n)
-
-> 36ms (98.14%)
-
-2 functions. The maxPathSum function calls the maxBranch function and keeps a variable to store the max value(the result), the maxBranch one calls itself recursively and return the branch with the max sum containing the current node.
-
-#### 138. Copy List with Random Pointer ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
-
-> O(n)
-
-> 28ms (100.00%)
-
-Very tricky. 3 steps:
-- Add a new node after every old ones
-- Build the random pointer for the new ones according to the relative positions of the old ones.
-- Seperate 2 groups of the nodes.
-
-#### 148. Sort List ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
-
-> O(nlgn)
-
-> 44ms (99.36%)
-
-Implementation of classic Merge Sort. 2 functions:
-- Sort. Split the linked list by half, return head of the merged list of 2 half lists.
-- Merge. Merge 2 sorted linked list to 1 sorted list. return the new head.
-
-#### 149. Max Points on a Line ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
-
-> O(n^2)
-
-> 20ms (57.54%)
-
-Use a pair to represent a line. The pair is also the key for the map. We must devide the GCD of the pair elements so that the same slopes share the same pair. Not just using a k cuz difficulty comparison of float values.
-
-#### 419. Battleships in a Board ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
-
-> O(n)
-
-> 8ms (98.74%)
-
-We only count the first cell(left-top one of a battleship) to avoid duplicate counting. Every valid first cells have no left or up 'X'.
-
-#### 424. Longest Repeating Character Replacement ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
-
-> O(n)
-
-> 8ms (100.00%)
-
-Sliding window. Use 2 pointers and always add the end while adjust start in the inner loop to meet the requirement of the substring. The biggist trick here is we only need to update the maxCount while there is a bigger count, instead of reducing it while the actual maxCount decrease, since we only wants the longer substring instead of the shorter result.
-
-#### 442. Find All Duplicates in an Array ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
-
-> O(n)
-
-> 116ms (95.60%)
-
-O(n) required. So we use the index itself to track the element show times in the array. We flip the element on the specific position to negative thus next time we come here, we know this is the second time.
-
-#### 542. 01 Matrix ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+)
-
-> O(n)
-
-> 208ms (56.84%)
-
-BFS. Shares the same idea with many other matrix and tree problems. We only need to keep the height(distance here) and traverse the elements level by level.
 
 ### Classification (to be updated)
 
