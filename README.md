@@ -167,6 +167,9 @@
 |403|Frog Jump|用的BFS，速度不算快。跟另一个frog差不多，都是走在当下，根据当下来提醒后面能达到的步数。尽量避免set和map的遍历，感觉比较慢，vector就会好一些。类似的写法，java竟然比cpp快很多|
 |454|4Sum II|四循环拆成2个二循环，用一个map，速度还可以|
 |617|Merge Two Binary Trees|有个小trick，如果t1，t2有个点为NULL，那不为NULL的那个也不用往下走了，直接返回它就好|
+|621|Task Scheduler|找出次数最多的进程，可能是多个，return重复足够次数这些进程以及idle，和v.size()的较大值|
+|647|Palindromic Substrings|另写一个extend函数，遍历string过程中不断调用它，给它起始位置，一次奇数，一次偶数，然后满足条件就向两边扩展，同时res++。这个很快。另写了一个方阵dp，还有点麻烦，慢一点|
+|973|K Closest Points to Origin|不难，用multimap，但是好像不快|
 
 
 
@@ -270,76 +273,7 @@ int findSubstring(string s){
 ```
 ```
 
-### 语法
 
-> 基于C++，其它语言参考意义不大
-
-#### Emplace
-
-```emplace``` 与 ```push``` 的区别（373）:
-
-```push``` 只能传入构造好的对象，或者在传入时构造对象
-```emplace``` 除以上2种操作外，还可以直接传入构造对象需要的元素，自己调用其构造函数。这样最优，节省内存
- 
-```
-class data {
-	int a;
-	int b;
-public:
-	data(int x, int y): a(x), b(y) {}
-};
-
-// push:
-
-// 1. 传入构造好的对象：
-
-data d(1,2);
-S.push(d);
-S.emplace(d);
-
-// 2. 传入时构造对象：
-
-S.push(data(1, 2));
-S.emplace(data(1, 2));
-
-// 3. 传入构造对象的元素，自己构造。只有emplace能完成:
-
-S.emplace(1, 2);
-```
-
-可以插入，看起来会区分输入的参数：
-
-```
-vector<pair<int, int>> v;
-    v.emplace_back(1, 1);
-    v.emplace_back(3, 3);
-    v.emplace(v.begin() + 1, 2, 2);  // 看这里的参数
-    // v: (1,1),(2,2),(3,3)
-```
-
-#### 游标二分查找
-
-> 用二分实现，所以O(lgn)
-
-```
-vector<int> v = {1,2,3,4,5,6,7,8};
-
-auto it1 = lower_bound(t.begin(),t.end(),4);  // 第一个>=目标的元素
-auto it2 = upper_bound(t.begin(),t.end(),4);  // 第一个>目标的元素
-bool b = binary_search(t.begin(),t.end(),4);  // 是否存在
-```
-
-
-
-decltype 问大佬
-
-加了&快了非常多：
-
-```
-auto comp = [&nums1, &nums2](pair<int, int> a, pair<int, int> b) {
-            return nums1[a.first] + nums2[a.second] > nums1[b.first] + nums2[b.second];
-        };
-```
 
 
 
