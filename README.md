@@ -47,6 +47,7 @@
 |**44**|Wildcard Matching|**矩阵中寻找斜向路径。** 用矩阵dp能做，但是慢，空间需求大。可以用斜向路径代替矩阵，每次根据情况，决定走i还是j，或者一起。遇到\*会有分叉，但是只需要记录最后一个\*的地方就可以，因为它会使得向下的一整列都是true，就会覆盖之前的结果，也就是之前\*也会到达这个\*会考虑的地方。因此不需要递归，巧妙|
 |45|Jump Game II|双重循环，外层计算步数，内层比较这一步所能走到的点中，哪一步最远，这一步就落脚在哪里|
 |46|Permutations|BFS。层数就是元素个数，从1开始累加至n。每加一个元素，都用内层循环将其插空放置。每个结果都放在queue中|
+|**47**|Permutations II|细节很多：先要sort，确保待排列子vector一直sorted，还要vector传值，只swap一次。我还是没想明白，等回头再看|
 |48|Rotate Image|方阵一共4条轴：水平的平分线以及两条对角线。沿不同的轴进行不同的奇偶次镜像翻转，可以得到不同的结果|
 |49|Group Anagrams|判断2个string是否anagrams，只能通过sort了，这最快|
 |50|Pow(x, n)|**递归。** 很多种方法。处理好0，INT_MIN和负数就可以。递归中写清楚幂为奇数或偶数的情况|
@@ -123,9 +124,9 @@
 |133|Clone Graph|**深搜。** 因为可能会多次遍历到同一个点，所以需要一个map来避免重复，同时记录第一次生成的node地址，往后便利到就拿出来用（不用set的原因）|
 |134|Gas Station|从最低点出发即可。寻找最低点|
 |135|Candy|不难。找到其中的每个局部最低点。因为其它的每个点的值左右会至少有一个支撑边，所以从左和右各遍历一次，更新其它值，即可|
-|136|Single Number|用异或">="|
+|136|Single Number|用异或"^="|
 |**138**|Copy List with Random Pointer|随机指针麻烦的就在于无法确定位置。可以在每个已经确定相对关系的node后，new一个node，用已知带动未知的点。相对位置确定之后，再将两者分离为2个独立的list|
-|**139**|Word Break|类似于jump game. 每次都更新自己能跳到哪里，将那里置true，继续在true里找下一次能调到的地方|
+|**139**|Word Break|类似于jump game. 每次都更新自己能跳到哪里，将那里置true，继续在true里找下一次能跳的地方|
 |141|Linked List Cycle|快慢指针即可。因为如果有环，快指针就会出现在后面，因此一定会遇到慢指针|
 |142|Linked List Cycle II|快慢指针，先确定是否有循环，再用2个指针，1个继续从交汇的地方出发，另1个从头出发，就会相遇在环的起点。因为这两个起始点相对于环的相位相等|
 |143|Reorder List|三步。分半，反转，合并|
@@ -241,30 +242,30 @@ int trap(vector<int>& h) {
 
 ```
 int findSubstring(string s){
-	vector<int> map(128,0);
+	vector<int> v(128,0);
 	int counter; // check whether the substring is valid
 	int begin=0, end=0;
-	int d; //the length of substring
+	int res; //the length of substring
 
 	for() { /* initialize the hash map here */ }
 
 	while(end<s.size()){
 
-		if(map[s[end++]]-- ?){  /* modify counter here */ }
+		if(v[s[end++]]-- ?){  /* modify counter here */ }
 
 		while(/* counter condition */){ 
                 
-			/* update d here if finding minimum*/
+			/* update res here if finding minimum*/
 
 			//increase begin to make it invalid/valid again
 		
-			if(map[s[begin++]]++ ?)
+			if(v[s[begin++]]++ ?)
 				{ /*modify counter here*/ }
 		}  
 
-            /* update d here if finding maximum*/
+            /* update res here if finding maximum*/
  	}
-        return d;
+        return res;
 }
 ```
 

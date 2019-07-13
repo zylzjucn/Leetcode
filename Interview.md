@@ -16,19 +16,25 @@
 |解释执行|低|不依赖|
 |编译执行|高|依赖|
 
-### objects and pointers, matrix, and adjacency list
+### 
 
-Dijkstra and A*
 
-traveling salesman and the knapsack problem （NP）
+
+
 
 
 
 To do:
 
 - 术语，各种术语
+- 线程进程
+- 垃圾回收？java?
+- 分布式
 - 哈希表实现
 - 并行
+- objects and pointers, matrix, and adjacency list
+- traveling salesman and the knapsack problem （NP）
+- Dijkstra and A*
 
 Tips:
 
