@@ -27,6 +27,7 @@
 |17|Letter Combinations of a Phone Number|常规操作,vector即可|
 |18|4Sum|同15。通过sort减少一层时间复杂度。通过和与目标值的大小关系决定3进或4退|
 |19|Remove Nth Node From End of List|**链表倒数。** 设置快慢2个游标，快的先跑差速步，然后同时跑即可|
+|20|Valid Parentheses|用stack，左进，右按条件匹配，出。简单|
 |21|Merge Two Sorted Lists|递归。比较2个链表第1个node大小，取小的，递归剩余|
 |22|Generate Parentheses|递归。每次记录剩余左括号和右括号（或者较左括号多）的数量，依此确定是否终止|
 |24|Swap Nodes in Pairs|new一个新的头。很适合这种头node会变的情况|
@@ -104,6 +105,7 @@
 |104|Maximum Depth of Binary Tree|**递归。** f(root) = max(f(left), f(right)) + 1|
 |105|Construct Binary Tree from Preorder and Inorder Traversal|**树模板。** f(root) = g(f(left), f(right))。分成左右两个sub vector|
 |106|Construct Binary Tree from Inorder and Postorder Traversal|**树模板。** f(root) = g(f(left), f(right))|
+|107|Binary Tree Level Order Traversal II|直截了当地用queue，转vector，然后reverse，也够快|
 |108|Convert Sorted Array to Binary Search Tree|**树模板**|
 |109|Convert Sorted List to Binary Search Tree|**树模板**|
 |110|Balanced Binary Tree|递归。如果左右高度>0且差<=1，则返回树高，否则返回-1|
@@ -166,6 +168,7 @@
 |377|Combination Sum IV|dp解法按理说可以，但是加了一个大case过不了了。就是像楼梯一样，站在这里，把之前所有能到这里的通路个数，加过来，O(n2)就行。还欠一个正确答案|
 |378|Kth Smallest Element in a Sorted Matrix|可以用priority_queue做，但是慢，跟373类似。之后看看别的方法|
 |403|Frog Jump|用的BFS，速度不算快。跟另一个frog差不多，都是走在当下，根据当下来提醒后面能达到的步数。尽量避免set和map的遍历，感觉比较慢，vector就会好一些。类似的写法，java竟然比cpp快很多|
+|450|Delete Node in a BST|处理好最麻烦的case就可以：被删除的节点有左右子。此时可以在左子树中找最大元素，将其值赋给root，然后递归删除这个最大元素。相反走右边也可以|
 |454|4Sum II|四循环拆成2个二循环，用一个map，速度还可以|
 |617|Merge Two Binary Trees|有个小trick，如果t1，t2有个点为NULL，那不为NULL的那个也不用往下走了，直接返回它就好|
 |621|Task Scheduler|找出次数最多的进程，可能是多个，return重复足够次数这些进程以及idle，和v.size()的较大值|
