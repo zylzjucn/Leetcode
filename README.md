@@ -167,8 +167,14 @@
 |**373**|Find K Pairs with Smallest Sums|***priority_queue。*** 增删O(lgN), 找最大值或最小值O(1)。如果找最小值，需要自己写compare。这也相当于k-mergesort。还有一个小技巧是，矩阵中往右的路径全部由一边负责，另一边只负责第一列向下，因为第一列无法通过向右达到|
 |377|Combination Sum IV|dp解法按理说可以，但是加了一个大case过不了了。就是像楼梯一样，站在这里，把之前所有能到这里的通路个数，加过来，O(n2)就行。还欠一个正确答案|
 |378|Kth Smallest Element in a Sorted Matrix|可以用priority_queue做，但是慢，跟373类似。之后看看别的方法|
+|379|Design Phone Directory|set的基本操作|
+|**386**|Lexicographical Numbers|深搜，用stack，很快。分清3种情况：10倍还在范围内，就stack存下这个点，先走下面（*10）；否则，如果右边有路（+1后尾数不会从9变成0），走右边（+1）；否则，退stack，记得+1（stack可能因为第二个条件，尾数连续为9则连续退）。长度到了就break|
+|**390**|Elimination Game|数学方法递归，时间复杂度同二分法。分三步走就很好理解：1，正常求f(n/2)，2，反方向同样求一遍，3，把2的结果用（n/2）替换，然后反转（数组长度+1减去结果），```return n == 1 ? 1 : 2 * (n / 2 + 1 - lastRemaining(n / 2));```|
+|392|Is Subsequence|常规方法简单，但是多string查询的后续问题解法优化要再看一下|
+|396|Rotate Function|数学方法，找出变化的通项公式即可|
 |403|Frog Jump|用的BFS，速度不算快。跟另一个frog差不多，都是走在当下，根据当下来提醒后面能达到的步数。尽量避免set和map的遍历，感觉比较慢，vector就会好一些。类似的写法，java竟然比cpp快很多|
-|450|Delete Node in a BST|处理好最麻烦的case就可以：被删除的节点有左右子。此时可以在左子树中找最大元素，将其值赋给root，然后递归删除这个最大元素。相反走右边也可以|
+|417|Pacific Atlantic Water Flow|**深搜。** 因为水流朝四个方向都有可能，所以不能dp，只能DFS。用2个矩阵分别表示能到达太平洋和大西洋的水，然后均为1，就是我们要的点|
+|450|Delete Node in a BST|处理好最麻烦的case就可以：被删除的节点有左右子。此时可以在左子树中找最大元素，将其值赋给root，然后递归删除这个最大元素。这里不一定要直接删除最大元素，可以一步一步再走到最大元素，否则需要先找到最大元素的父，才能指向它。相反走右边也可以。O(h)，为高度|
 |454|4Sum II|四循环拆成2个二循环，用一个map，速度还可以|
 |617|Merge Two Binary Trees|有个小trick，如果t1，t2有个点为NULL，那不为NULL的那个也不用往下走了，直接返回它就好|
 |621|Task Scheduler|找出次数最多的进程，可能是多个，return重复足够次数这些进程以及idle，和v.size()的较大值|
