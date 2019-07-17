@@ -82,6 +82,17 @@ auto it2 = upper_bound(t.begin(),t.end(),4);  // 第一个>目标的元素
 bool b = binary_search(t.begin(),t.end(),4);  // 是否存在
 ```
 
+### bitset
+
+```
+bitset<4> bitset1;　　//0000
+bitset<8> bitset2(12);　　//00001100
+string s = "100101";
+bitset<10> bitset3(s);　　//0000100101
+char s2[] = "10101";
+bitset<13> bitset4(s2);　　//0000000010101
+```
+
 
 
 decltype 问大佬
