@@ -182,6 +182,8 @@
 |451|Sort Characters By Frequency|两个map就好，其中一个要ordered的|
 |452|Minimum Number of Arrows to Burst Balloons|还是interval问题。这种问题都是先sort，然后greedy，不难|
 |454|4Sum II|四循环拆成2个二循环，用一个map，速度还可以|
+|477|Total Hamming Distance|用两个等长vector，分别存储该位0的个数，和该位1的个数。遍历其长度，两者对应相乘，就是该位总的不一样的数量，累加即可|
+|**560**|Subarray Sum Equals K|**prefix sum。** 这个不错。遍历所有元素，将开始于0，结束于此的sum存入map，这样每步都能检查出，本次sum，减去之前map中的key，也就是之前的sum，得出subarray，的个数（map的value）```res += m[sum - k];```|
 |617|Merge Two Binary Trees|有个小trick，如果t1，t2有个点为NULL，那不为NULL的那个也不用往下走了，直接返回它就好|
 |621|Task Scheduler|找出次数最多的进程，可能是多个，return重复足够次数这些进程以及idle，和v.size()的较大值|
 |647|Palindromic Substrings|另写一个extend函数，遍历string过程中不断调用它，给它起始位置，一次奇数，一次偶数，然后满足条件就向两边扩展，同时res++。这个很快。另写了一个方阵dp，还有点麻烦，慢一点|

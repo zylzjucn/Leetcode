@@ -18,3 +18,19 @@ public:
         return res;
     }
 };
+
+class Solution {
+public:
+    int subarraySum(vector<int>& n, int k) {
+        unordered_map<int, int> m;
+        m[0] = 1;
+        int res = 0;
+        int sum = 0;
+        for (const auto& x : n) {
+            sum += x;
+            res += m[sum - k];
+            m[sum]++;
+        }
+        return res;
+    }
+};
