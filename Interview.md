@@ -16,10 +16,33 @@
 |解释执行|低|不依赖|
 |编译执行|高|依赖|
 
-### 
+### 哈希表
+> used to index large amounts of data
 
+可能会出现collision,解决办法：
+chaining：如果有collision，就存在linked list中
+open addressing:
 
+- linear probing: 如果被占用，则向后找到第一个可填充的位子。到end了则从start再开始。找的时候，同样linear searching
+- plus 3 rehash: 这样能够避免clustering
+- quadratic probing:
+- double hashing
 
+避免collision的办法：把哈希表建的比你需要的长度更长一些。
+> load factor = total number of items stored / size of the array
+优缺点：
+linear probing在正确位置的元素个数不如chaining多，但因为遍历linked list有损耗，所以如果load factor比较低，那么linear probing更优
+
+runtime:
+Best: constant time(O(1))
+Worst: linear time(O(n))
+
+一个常见的 hash algorithm： key modulo n
+
+1. minimize collisions
+2. uniform distribution of the hash values
+3. easy to calculate
+4. resolve any collisions
 
 
 
