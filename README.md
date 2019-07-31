@@ -292,12 +292,36 @@ int findSubstring(string s){
 ```
 ```
 
+dp:
 
+1. recursion
 
+> 重复计算次数多 (2^n)
 
+2. store / memoization
 
+> 重复计算次数少，但是压栈多 (n)
 
+3. bottom-up
 
+> 重复计算次数少，单次过，不压栈 (n)
 
 ### Classification (to be updated)
 
+DP:
+与Greedy不同，在求取最大最小值问题时，DP的题目在每一步保存多个变量，因为这些变量都有可能成为最后的结果。所以题目的空间复杂度就是最少需要同时保存的变量数。
+2个string的关系，用一个矩阵来维护中间变量。初始化第一行与第一列，然后本点的结果与左，上或左上有关系
+
+总体思路：空间换时间，数学归纳法
+
+|题号|题目|本质|特征变量|存储信息|返回值|
+|---|---|---|---|---|---|
+|10|Regular Expression Matching|字符串转换|矩阵m+1,n+1|截至目前是否能相互转换|尾值|
+|32|Longest Valid Parentheses||向量n|截至此处结尾的最长括号|极值|
+|72|Edit Distance|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
+|115|Distinct Subsequences|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
+|123|Best Time to Buy and Sell Stock III||双向量n，一左一右|截至此处左边或右边的最大值|极值|
+|132|Palindrome Partitioning II||向量n+1|截至此处最小切割数（但更新向量时，是身处中心点更新其右端）|尾值|
+|174|Dungeon Game||矩阵mn|逆序，到达此处前所需的最小生命值|首值|
+
+||||||
