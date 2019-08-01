@@ -188,6 +188,7 @@
 |617|Merge Two Binary Trees|有个小trick，如果t1，t2有个点为NULL，那不为NULL的那个也不用往下走了，直接返回它就好|
 |621|Task Scheduler|找出次数最多的进程，可能是多个，return重复足够次数这些进程以及idle，和v.size()的较大值|
 |647|Palindromic Substrings|另写一个extend函数，遍历string过程中不断调用它，给它起始位置，一次奇数，一次偶数，然后满足条件就向两边扩展，同时res++。这个很快。另写了一个方阵dp，还有点麻烦，慢一点|
+|759|Employee Free Time|可以用常规的interval sort，但是不快|
 |973|K Closest Points to Origin|不难，用multimap，但是好像不快|
 
 
@@ -313,6 +314,7 @@ DP:
 2个string的关系，用一个矩阵来维护中间变量。初始化第一行与第一列，然后本点的结果与左，上或左上有关系
 
 总体思路：空间换时间，数学归纳法
+返回值经常是极值或尾值，所以特征变量元素一般与函数签名中返回值类型变量相同
 
 |题号|题目|本质|特征变量|存储信息|返回值|
 |---|---|---|---|---|---|
@@ -323,5 +325,9 @@ DP:
 |123|Best Time to Buy and Sell Stock III||双向量n，一左一右|截至此处左边或右边的最大值|极值|
 |132|Palindrome Partitioning II||向量n+1|截至此处最小切割数（但更新向量时，是身处中心点更新其右端）|尾值|
 |174|Dungeon Game||矩阵mn|逆序，到达此处前所需的最小生命值|首值|
+|**312**|Burst Balloons||矩阵|dp[i][j]表示打破i到j之间所有气球获得的最大金币，可以分为，左边最大值+右边最大值+左边界\*本身\*右边界。同时是逆序往回加，而不是打破。维护它需要left逆序，right顺序，i（本次插入的点）顺序，这样才能提前预置好之后需要的值|首行尾值|
 
-||||||
+bottom up top down?
+
+Greedy:
+
