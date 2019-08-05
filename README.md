@@ -334,5 +334,8 @@ bottom up top down?
 Greedy:
 
 Union find:
-
+|题号|题目|本质|
+|---|---|---|
+|323|Number of Connected Components in an Undirected Graph|**union find** 找到2个元素的”队长“，如果队长不一样，结果-1，队长置为一样的|
+|684|Redundant Connection|**union find**|
 
