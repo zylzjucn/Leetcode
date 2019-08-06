@@ -155,6 +155,7 @@
 |244|Shortest Word Distance II|用map记录所有string出现的位置。2个string就能通过map拿到2个存放这两个string所有出现位置的vector，然后求最小差值即可|
 |227|Basic Calculator II|处理好算符优先级就好。和282一样，多一个变量储存上一个数字|
 |251|Flatten 2D Vector|记录移动和结束的向量指针，同时一个变量计行内数即可。hasnext负责换行，每次next都要call它。但是hasnext return值我还没搞懂为什么这样可以过|
+|261|Graph Valid Tree|**union find**|
 |267|Palindrome Permutation II|**深搜**|
 |**277**|Find the Celebrity|O(n)就能做。第一遍loop，不断把candidate赋值为被别人认识的那个人。这样一圈下来，前一部分人都认识别人，后一部分人can都不认识，所以都不能做can。再2个循环确认这个can是不是真can即可|
 |**282**|Expression Add Operators|**深搜。** 需要**应对运算符优先级不同的小技巧**：需要cur和pre来记录数据。cur代表截至目前直接计算出来的结果，而pre表示上一个数字单元的内容，相当于一个浅栈，如果遇到一个\*,就从cur中回退（减）掉pre，pre和现在的数字相乘，放入cur和pre|
@@ -334,8 +335,15 @@ bottom up top down?
 Greedy:
 
 Union find:
+有个问题要注意，新出现的点，第一种情况是只可能造成group-1，这种好办，遇到一个就总数-1，第二种可能 -2，-3，不好弄，要注意最后数数的方法
+
+在find函数中，最后要加上一句 ```leader[x] = res;```路径压缩，对于长路径少group应该能快不少
+还一种压缩是```roots[id] = roots[roots[id]]```,压缩为原来一半
+
 |题号|题目|本质|
 |---|---|---|
+|305|Number of Islands II|比较上下左右，leader不一样，则合并，count--|
 |323|Number of Connected Components in an Undirected Graph|**union find** 找到2个元素的”队长“，如果队长不一样，结果-1，队长置为一样的|
 |684|Redundant Connection|**union find**|
+|839|Similar String Groups|常规UF特别慢|
 
