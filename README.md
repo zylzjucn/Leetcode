@@ -187,6 +187,7 @@
 |477|Total Hamming Distance|用两个等长vector，分别存储该位0的个数，和该位1的个数。遍历其长度，两者对应相乘，就是该位总的不一样的数量，累加即可|
 |**484**|Find Permutation|遇到I或者结束，就倒序赋好左边的值，其它时间i空跑什么都不做|
 |**560**|Subarray Sum Equals K|**prefix sum。** 这个不错。遍历所有元素，将开始于0，结束于此的sum存入map，这样每步都能检查出，本次sum，减去之前map中的key，也就是之前的sum，得出subarray，的个数（map的value）```res += m[sum - k];```|
+|567|Permutation in String|**滑窗双指针。** 想清楚什么时候该进，什么时候该退即可|
 |617|Merge Two Binary Trees|有个小trick，如果t1，t2有个点为NULL，那不为NULL的那个也不用往下走了，直接返回它就好|
 |621|Task Scheduler|找出次数最多的进程，可能是多个，return重复足够次数这些进程以及idle，和v.size()的较大值|
 |647|Palindromic Substrings|另写一个extend函数，遍历string过程中不断调用它，给它起始位置，一次奇数，一次偶数，然后满足条件就向两边扩展，同时res++。这个很快。另写了一个方阵dp，还有点麻烦，慢一点|
@@ -329,6 +330,7 @@ DP:
 |132|Palindrome Partitioning II||向量n+1|截至此处最小切割数（但更新向量时，是身处中心点更新其右端）|尾值|
 |174|Dungeon Game||矩阵mn|逆序，到达此处前所需的最小生命值|首值|
 |**312**|Burst Balloons||矩阵|dp[i][j]表示打破i到j之间所有气球获得的最大金币，可以分为，左边最大值+右边最大值+左边界\*本身\*右边界。同时是逆序往回加，而不是打破。维护它需要left逆序，right顺序，i（本次插入的点）顺序，这样才能提前预置好之后需要的值|首行尾值|
+|727|Minimum Window Subsequence||矩阵m+1,n+1|2个string以此处为结尾的结果的子序列长度|末行极小值|
 
 bottom up top down?
 
@@ -343,7 +345,15 @@ Union find:
 |题号|题目|本质|
 |---|---|---|
 |305|Number of Islands II|比较上下左右，leader不一样，则合并，count--|
-|323|Number of Connected Components in an Undirected Graph|**union find** 找到2个元素的”队长“，如果队长不一样，结果-1，队长置为一样的|
+|323|Number of Connected Components in an Undirected Graph|**union find** 找到2个元素的“队长”，如果队长不一样，结果-1，队长置为一样的|
 |684|Redundant Connection|**union find**|
 |839|Similar String Groups|常规UF特别慢|
+
+Sliding Window:
+判断清楚何时该进，何时该退，即可
+
+|题号|题目|本质|
+|---|---|---|
+|340|Longest Substring with At Most K Distinct Characters||
+|992|Subarrays with K Different Integers|可以自成一派，f(k) = f(<=k) - f(<=k - 1), 后者好算太多|
 
