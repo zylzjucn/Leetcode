@@ -16,6 +16,13 @@
 |解释执行|低|不依赖|
 |编译执行|高|依赖|
 
+### 动态规划
+背包问题 Knapsack problem
+
+无法解决：
+1. 购入连续（非离散）物品问题，例如大米或红豆，但可用贪心算法解决；
+2. 在伦敦旅游时，想去巴黎景点的问题。因为伦敦至巴黎需要时间，一旦决定将卢浮宫放入背包，那么埃菲尔铁塔也将变得“便宜”，这样不满足每隔子问题离散的条件。
+
 ### 哈希表
 > used to index large amounts of data
 
@@ -44,6 +51,12 @@ Worst: linear time(O(n))
 3. easy to calculate
 4. resolve any collisions
 
+### Sort
+
+![sort](resources/sort.jpg)
+
+由于快速排序时间复杂度中的常量比归并排序更小，前者的速度会更快，因为大概率会遇到平均情况。
+
 ### Dijkstra's algorithm
 
 对于加权图使用：
@@ -57,7 +70,6 @@ Worst: linear time(O(n))
 To do:
 
 - 术语，各种术语
-- 背包和旅行商问题
 - 线程进程
 - 垃圾回收？java?
 - 分布式
