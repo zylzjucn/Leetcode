@@ -23,9 +23,15 @@ for(auto x : range)
 A && B, A 为 False 就不会计算B
 A & B, A 为 False 还会计算B
 
-### 语法
+### 时间
 
-> 基于C++，其它语言参考意义不大
+```
+#include<ctime>
+
+clock_t　s = clock();
+MergeSort(data, n);
+clock_t　e = clock();
+```
 
 ### Emplace
 
