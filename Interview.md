@@ -66,6 +66,22 @@ Worst: linear time(O(n))
 3. 重复这个过程，直至更新所有节点
 4. 计算最终路径
 
+### Somaphore
+
+```
+wait()  // P  --
+
+critical section
+
+signal() // V  ++
+```
+
+### Sharding
+
+> Database sharding is the process of making partitions of data in a database or search engine, such that the data is divided into various smaller distinct chunks, or shards.
+
+- horizontal sharding (sharding key)
+- vertical sharding
 
 To do:
 
@@ -78,6 +94,10 @@ To do:
 - objects and pointers, matrix, and adjacency list
 - traveling salesman and the knapsack problem （NP）
 - Dijkstra and A*
+- SQL vs NoSQL
+- virtual memory
+- networking
+- lambda表达式
 
 Tips:
 
@@ -89,3 +109,15 @@ Tips:
 提前3天看对应公司的面经
 面试期间要多交流
 dp hard, 分类刷
+
+
+系统设计：
+
+- TinyURL
+- Recommendation System
+- NetFlix
+- Whatsapp/weChat
+- LinkedIn和Delay Scheduling
+- Google三驾马车
+- 大数据平台
+- Uber

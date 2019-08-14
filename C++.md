@@ -25,6 +25,8 @@ A & B, A 为 False 还会计算B
 
 ### 时间
 
+> return clock ticks. The actual time is related to the system. (often 1000 per second)
+
 ```
 #include<ctime>
 
@@ -87,6 +89,50 @@ auto it1 = lower_bound(t.begin(),t.end(),4);  // 第一个>=目标的元素
 auto it2 = upper_bound(t.begin(),t.end(),4);  // 第一个>目标的元素
 bool b = binary_search(t.begin(),t.end(),4);  // 是否存在
 ```
+
+### sort
+
+效率由高到低：
+
+1. partition
+2. stable_partition
+3. nth_element
+4. partial_sort
+5. sort
+6. stable_sort
+
+> 只要前面一小部分：partial_sort()
+
+> 前后都不要只要第n个：nth_element();
+
+> 按某种特征归类: partition();
+
+```
+vector<int> v = {9,8,7,6,5,4,3,2,1,0};
+
+partial_sort(v.begin(), v.begin() + 3, v.end());  // 0 1 2 9 8 7 6 5 4 3 , 第3个开始顺序不保证
+
+nth_element(v.begin(), v.begin() + 3, v.end());  // 第3个元素一定会在正确的位置上
+
+vector<int>::iterator bound = partition(v.begin(), v.end(), isOdd)
+// isOdd 为另一个判断是否为奇数的函数
+// partition返回值为第二部分的头指针
+// 另外还有stable_partition
+
+```
+
+常规sort都是升序，相当于最后一个参数为重载函数```less<int>()```
+
+同理，如果要降序，可以加入参数```greater<int>()```
+
+```sort()```使用改良后的快排
+
+```stable_sort()```使用归并排序
+
+```partial_sort()```使用堆排序
+
+
+
 
 ### bitset
 
