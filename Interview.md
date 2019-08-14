@@ -27,7 +27,9 @@
 > used to index large amounts of data
 
 可能会出现collision,解决办法：
+
 chaining：如果有collision，就存在linked list中
+
 open addressing:
 
 - linear probing: 如果被占用，则向后找到第一个可填充的位子。到end了则从start再开始。找的时候，同样linear searching
