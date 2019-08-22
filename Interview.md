@@ -1,3 +1,14 @@
+### C++ vs Java vs Python
+
+||C++|Java|Python|
+|---|---|---|---|
+|Type|Object Oriented Programming|Object Oriented Programming|Object Oriented Programming|
+|Pointer|Yes|No|No|
+|When using other files|include|import package||
+|Garbage comllection|Coder|Language||
+|Efficiency|High||Low|
+|When to use|Code to be run many times||Code to be run few times|
+
 ### 解释执行和编译执行
 
 - 解释执行
@@ -16,10 +27,20 @@
 |解释执行|低|不依赖|
 |编译执行|高|依赖|
 
+### DBMS
+
+||MongoDB|MySQL|Redis|
+|---|---|---|---|
+|Primary database model|Document store|Relational DBMS|Key-value store|
+
+
+
+
 ### 动态规划
 背包问题 Knapsack problem
 
 无法解决：
+
 1. 购入连续（非离散）物品问题，例如大米或红豆，但可用贪心算法解决；
 2. 在伦敦旅游时，想去巴黎景点的问题。因为伦敦至巴黎需要时间，一旦决定将卢浮宫放入背包，那么埃菲尔铁塔也将变得“便宜”，这样不满足每隔子问题离散的条件。
 
@@ -88,6 +109,7 @@ signal() // V  ++
 To do:
 
 - 术语，各种术语
+- 数据库问题
 - 线程进程
 - 垃圾回收？java?
 - 分布式

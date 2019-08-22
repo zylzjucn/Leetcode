@@ -78,6 +78,15 @@ vector<pair<int, int>> v;
     // v: (1,1),(2,2),(3,3)
 ```
 
+### priority_queue
+
+```
+auto comp = [&nums1, &nums2](pair<int, int> a, pair<int, int> b) {
+            return nums1[a.first] + nums2[a.second] > nums1[b.first] + nums2[b.second];
+        };
+priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(comp)> pq(comp);
+```
+
 ### 游标二分查找
 
 > 用二分实现，所以O(lgn)

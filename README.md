@@ -30,6 +30,7 @@
 |20|Valid Parentheses|用stack，左进，右按条件匹配，出。简单|
 |21|Merge Two Sorted Lists|递归。比较2个链表第1个node大小，取小的，递归剩余|
 |22|Generate Parentheses|递归。每次记录剩余左括号和右括号（或者较左括号多）的数量，依此确定是否终止|
+|23|Merge k Sorted Lists|**priority_queue**|
 |24|Swap Nodes in Pairs|new一个新的头。很适合这种头node会变的情况|
 |25|Reverse Nodes in k-Group|**链表反转。** 递归。只要标记本次处理和下次处理的head，就可以将本次head逐一推向本次队尾，而不需要记录本次队尾（记录队尾是链表最讨厌的操作）。本次操作只处理本次K个node。后面的node递归操作，返回一个处理后的head，由本次操作的最后一个node指向|
 |26|Remove Duplicates from Sorted Array|比较相邻的两个元素，数总共有多少个重复元素。不相等时，把该元素放入前面不重复对应的地方|
@@ -320,18 +321,22 @@ DP:
 
 总体思路：空间换时间，数学归纳法
 返回值经常是极值或尾值，所以特征变量元素一般与函数签名中返回值类型变量相同
+dp感觉有一些BFS的思想
 
 |题号|题目|本质|特征变量|存储信息|返回值|
 |---|---|---|---|---|---|
 |10|Regular Expression Matching|字符串转换|矩阵m+1,n+1|截至目前是否能相互转换|尾值|
 |32|Longest Valid Parentheses||向量n|截至此处结尾的最长括号|极值|
 |72|Edit Distance|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
+|**85**|Maximal Rectangle||3个矩阵m,n|以此处向上延伸到最高处，得到一条边，再继续延左右延伸这条边得到一个面|极值|
 |115|Distinct Subsequences|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
 |123|Best Time to Buy and Sell Stock III||双向量n，一左一右|截至此处左边或右边的最大值|极值|
 |132|Palindrome Partitioning II||向量n+1|截至此处最小切割数（但更新向量时，是身处中心点更新其右端）|尾值|
 |174|Dungeon Game||矩阵mn|逆序，到达此处前所需的最小生命值|首值|
 |**312**|Burst Balloons||矩阵|dp[i][j]表示打破i到j之间所有气球获得的最大金币，可以分为，左边最大值+右边最大值+左边界\*本身\*右边界。同时是逆序往回加，而不是打破。维护它需要left逆序，right顺序，i（本次插入的点）顺序，这样才能提前预置好之后需要的值|首行尾值|
+|377|Combination Sum IV||向量v+1|到达此处数字的可能性，通过回忆来更新|尾值|
 |727|Minimum Window Subsequence||矩阵m+1,n+1|2个string以此处为结尾的结果的子序列长度|末行极小值|
+|1155|Number of Dice Rolls With Target Sum||矩阵m+1,n+1|row个骰子摇出col的种类|尾值|
 
 bottom up top down?
 
