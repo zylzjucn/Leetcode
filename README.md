@@ -77,6 +77,7 @@
 |**72**|Edit Distance|**[i][j] = f([i-1][j], [i][j-1])。** 空间换时间。用一个矩阵存储，其中元素表示所在行列数对应的2个string相互转换需要的步数|
 |**73**|Set Matrix Zeroes|用首行和首列的元素来储存这一行/列是否应该置0。所以对于第一行和第一列来说，需要额外一个变量来储存首行/首列的状态。剩下的首列/首行自然放在[0][0]中|
 |74|Search a 2D Matrix|**二分法。** 左上至右下严格递增，就可以将二维矩阵看作一个一维数组，通过求商和求余，将一维的序号（我们给它的）转换为题目要求的二维坐标|
+|75|Sort Colors|三游标，将目标vector分段成，0，1，待sort和2|
 |**76**|Minimum Window Substring|**滑窗双指针。** 见模板。巧妙的地方是，如果s和t都有某个元素，而s中的比t中的多，那么直接可以handle这个元素的计数。因为所有元素count永远 >=0,而某个元素的计数可以 <0（表示此时substring中多出此元素多出几次）|
 |77|Combinations|**深搜。** 递归中套循环，满足条件就push进res。然后pop，继续寻找|
 |78|Subsets|**广搜。** 初始在res中放一个空vector，每次取到一个元素，都将它与res中所有vector复制后结合，再放回res。总共有2的幂次个|
@@ -163,10 +164,12 @@
 |**296**|Best Meeting Point|二维问题一维化。因为这是不计算斜边的曼哈顿距离，所以实际上就是在x,y方向上找中位数。同时x,y不相干，因此甚至所有点的横纵坐标不需要一一对应，分别找出x,y的中位数即可|
 |299|Bulls and Cows|这个不难，两个map对照数量就可以了。不用记A在哪里出现，几个总数，计算B的时候减掉就可以|
 |**300**|Longest Increasing Subsequence|O(lgn),用lower_bound()可以达到，因为我们迅速定位新来元素应该在的位置。不一定总是插入，如果有更大的元素，就把*更大的元素换成新来的元素*，因为这样有利于后来元素形成更长的序列|
+|310|Minimum Height Trees|BFS。vector<set<int>>。从每个叶节点往里面找，找到最后就是所要的|
 |316|Remove Duplicate Letters|控制什么时候这个char能进，什么时候不行。如果后面还有前面的char，且这个char比我大，我就能进。有点像sliding window maximum|
 |322|Coin Change|跟377有点像，站在现在节点上，看过去有哪些节点能到本节点，依此来更新本节点。但是反过来，通过本节点更新未来将要到达的所有点，时间就过不了|
 |323|Number of Connected Components in an Undirected Graph|**union find** 找到2个元素的”队长“，如果队长不一样，结果-1，队长置为一样的|
 |333|Largest BST Subtree|因为需要参考的返回值比较多，所以要另写一个struct。时间上看这个解法不是特别快，还行|
+|347|Top K Frequent Elements|重载sort|
 |366|Find Leaves of Binary Tree|一般都只检查到本节点状态，但这里检查到了本节点的子的子的状态|
 |**373**|Find K Pairs with Smallest Sums|**priority_queue。** 增删O(lgN), 找最大值或最小值O(1)。如果找最小值，需要自己写compare。这也相当于k-mergesort。还有一个小技巧是，矩阵中往右的路径全部由一边负责，另一边只负责第一列向下，因为第一列无法通过向右达到|
 |377|Combination Sum IV|dp解法按理说可以，但是加了一个大case过不了了。就是像楼梯一样，站在这里，把之前所有能到这里的通路个数，加过来，O(n2)就行。还欠一个正确答案|
@@ -182,13 +185,17 @@
 |417|Pacific Atlantic Water Flow|**深搜。** 因为水流朝四个方向都有可能，所以不能dp，只能DFS。用2个矩阵分别表示能到达太平洋和大西洋的水，然后均为1，就是我们要的点|
 |426|Convert Binary Search Tree to Sorted Doubly Linked List|**分治。** 有点点慢，根据左右子是否为空，让左、右与自身合并。注意自身先须成环|
 |430|Flatten a Multilevel Doubly Linked List|常规操作，有右有子，就拼一下|
+|456|132 Pattern|用stack,尽量使得n3大，stack里存n3的candidates|
 |435|Non-overlapping Intervals|先sort，再遍历。如果遇到重叠，删除尾大的那个，贪心算法，每次这样操作就能保证最优|
 |450|Delete Node in a BST|处理好最麻烦的case就可以：被删除的节点有左右子。此时可以在左子树中找最大元素，将其值赋给root，然后递归删除这个最大元素。这里不一定要直接删除最大元素，可以一步一步再走到最大元素，否则需要先找到最大元素的父，才能指向它。相反走右边也可以。O(h)，为高度|
 |451|Sort Characters By Frequency|两个map就好，其中一个要ordered的|
 |452|Minimum Number of Arrows to Burst Balloons|还是interval问题。这种问题都是先sort，然后greedy，不难|
 |454|4Sum II|四循环拆成2个二循环，用一个map，速度还可以|
+|469|Convex Polygon|叉乘，能够得到手转过的方向，也就是向左转还是向右转|
+|470|Implement Rand10() Using Rand7()|注意一定要均匀|
 |477|Total Hamming Distance|用两个等长vector，分别存储该位0的个数，和该位1的个数。遍历其长度，两者对应相乘，就是该位总的不一样的数量，累加即可|
 |**484**|Find Permutation|遇到I或者结束，就倒序赋好左边的值，其它时间i空跑什么都不做|
+|487|Max Consecutive Ones II|**双向遍历**|
 |**560**|Subarray Sum Equals K|**prefix sum。** 这个不错。遍历所有元素，将开始于0，结束于此的sum存入map，这样每步都能检查出，本次sum，减去之前map中的key，也就是之前的sum，得出subarray，的个数（map的value）```res += m[sum - k];```|
 |567|Permutation in String|**滑窗双指针。** 想清楚什么时候该进，什么时候该退即可|
 |617|Merge Two Binary Trees|有个小trick，如果t1，t2有个点为NULL，那不为NULL的那个也不用往下走了，直接返回它就好|
