@@ -168,8 +168,10 @@
 |316|Remove Duplicate Letters|控制什么时候这个char能进，什么时候不行。如果后面还有前面的char，且这个char比我大，我就能进。有点像sliding window maximum|
 |322|Coin Change|跟377有点像，站在现在节点上，看过去有哪些节点能到本节点，依此来更新本节点。但是反过来，通过本节点更新未来将要到达的所有点，时间就过不了|
 |323|Number of Connected Components in an Undirected Graph|**union find** 找到2个元素的”队长“，如果队长不一样，结果-1，队长置为一样的|
+|332|Reconstruct Itinerary|**深搜。** 这个DFS非常厉害。他把push进res的这行放在了递归的尾部，所以得到的是反向的res。这样做的好处是，遇到分叉的死路时，他不用回退，而是，反着记录下来，遇到来时的分岔路口，继续反向记录下来，这样刚好就是我们需要的结果的反向。因为我们遇到死路，这就说明只有这一条路过来，也就是终点，所以先记录下来并没有错|
 |333|Largest BST Subtree|因为需要参考的返回值比较多，所以要另写一个struct。时间上看这个解法不是特别快，还行|
 |347|Top K Frequent Elements|重载sort|
+|353|Design Snake Game|比较直接。用set而不是矩阵来记录是否撞到自己会好一点|
 |366|Find Leaves of Binary Tree|一般都只检查到本节点状态，但这里检查到了本节点的子的子的状态|
 |**373**|Find K Pairs with Smallest Sums|**priority_queue。** 增删O(lgN), 找最大值或最小值O(1)。如果找最小值，需要自己写compare。这也相当于k-mergesort。还有一个小技巧是，矩阵中往右的路径全部由一边负责，另一边只负责第一列向下，因为第一列无法通过向右达到|
 |377|Combination Sum IV|dp解法按理说可以，但是加了一个大case过不了了。就是像楼梯一样，站在这里，把之前所有能到这里的通路个数，加过来，O(n2)就行。还欠一个正确答案|
@@ -192,17 +194,22 @@
 |452|Minimum Number of Arrows to Burst Balloons|还是interval问题。这种问题都是先sort，然后greedy，不难|
 |454|4Sum II|四循环拆成2个二循环，用一个map，速度还可以|
 |469|Convex Polygon|叉乘，能够得到手转过的方向，也就是向左转还是向右转|
-|470|Implement Rand10() Using Rand7()|注意一定要均匀|
+|470|Implement Rand10() Using Rand7()|注意一定要均匀。比较好的方法是，类似于十进制，不同位上不会互相冲突|
 |477|Total Hamming Distance|用两个等长vector，分别存储该位0的个数，和该位1的个数。遍历其长度，两者对应相乘，就是该位总的不一样的数量，累加即可|
 |**484**|Find Permutation|遇到I或者结束，就倒序赋好左边的值，其它时间i空跑什么都不做|
 |487|Max Consecutive Ones II|**双向遍历**|
+|498|Diagonal Traverse|结合flag判断清楚到边界时候怎么转头|
 |**560**|Subarray Sum Equals K|**prefix sum。** 这个不错。遍历所有元素，将开始于0，结束于此的sum存入map，这样每步都能检查出，本次sum，减去之前map中的key，也就是之前的sum，得出subarray，的个数（map的value）```res += m[sum - k];```|
 |567|Permutation in String|**滑窗双指针。** 想清楚什么时候该进，什么时候该退即可|
+|616|Add Bold Tag in String|不难，逐位找，用个vector存本位是否为bold|
 |617|Merge Two Binary Trees|有个小trick，如果t1，t2有个点为NULL，那不为NULL的那个也不用往下走了，直接返回它就好|
 |621|Task Scheduler|找出次数最多的进程，可能是多个，return重复足够次数这些进程以及idle，和v.size()的较大值|
 |647|Palindromic Substrings|另写一个extend函数，遍历string过程中不断调用它，给它起始位置，一次奇数，一次偶数，然后满足条件就向两边扩展，同时res++。这个很快。另写了一个方阵dp，还有点麻烦，慢一点|
 |684|Redundant Connection|**union find**|
+|731|My Calendar II|找到一个overlap，拿着这个overlap，遍历后面的，看看还有没有overlap|
+|734|Sentence Similarity|easy|
 |759|Employee Free Time|可以用常规的interval sort，但是不快|
+|777|Swap Adjacent in LR String|不用管X，只需要搞清楚LR的相对顺序即可|
 |973|K Closest Points to Origin|不难，用multimap，但是好像不快|
 
 
@@ -361,6 +368,7 @@ Union find:
 |305|Number of Islands II|比较上下左右，leader不一样，则合并，count--|
 |323|Number of Connected Components in an Undirected Graph|**union find** 找到2个元素的“队长”，如果队长不一样，结果-1，队长置为一样的|
 |684|Redundant Connection|**union find**|
+|737|Sentence Similarity II|UF的时候记住一点，特征向量中可能存的不是自己的队长，还是需要找多次。因此比较的时候，需要调函数，找多次知道某人队长为自己，这人肯定是队长|
 |839|Similar String Groups|常规UF特别慢|
 
 Sliding Window:
