@@ -168,6 +168,7 @@
 |316|Remove Duplicate Letters|控制什么时候这个char能进，什么时候不行。如果后面还有前面的char，且这个char比我大，我就能进。有点像sliding window maximum|
 |322|Coin Change|跟377有点像，站在现在节点上，看过去有哪些节点能到本节点，依此来更新本节点。但是反过来，通过本节点更新未来将要到达的所有点，时间就过不了|
 |323|Number of Connected Components in an Undirected Graph|**union find** 找到2个元素的”队长“，如果队长不一样，结果-1，队长置为一样的|
+|328|Odd Even Linked List|还是寻找一般规律。在重排过程中，想象整个链表由左至右分为三部分：排好的奇数，排好的偶数和待排的部分。分界点我们用变量跟踪好，每次就把待排部分第一个塞到前两个中间，然后跟踪变量。每次维护这个关系即可。|
 |332|Reconstruct Itinerary|**深搜。** 这个DFS非常厉害。他把push进res的这行放在了递归的尾部，所以得到的是反向的res。这样做的好处是，遇到分叉的死路时，他不用回退，而是，反着记录下来，遇到来时的分岔路口，继续反向记录下来，这样刚好就是我们需要的结果的反向。因为我们遇到死路，这就说明只有这一条路过来，也就是终点，所以先记录下来并没有错|
 |333|Largest BST Subtree|因为需要参考的返回值比较多，所以要另写一个struct。时间上看这个解法不是特别快，还行|
 |347|Top K Frequent Elements|重载sort|
@@ -199,6 +200,7 @@
 |**484**|Find Permutation|遇到I或者结束，就倒序赋好左边的值，其它时间i空跑什么都不做|
 |487|Max Consecutive Ones II|**双向遍历**|
 |498|Diagonal Traverse|结合flag判断清楚到边界时候怎么转头|
+|524|Longest Word in Dictionary through Deleting|直截了当的解法。每个字典中的单词和s进行比较，符合条件，每次记录最长且字典序靠前的|
 |**560**|Subarray Sum Equals K|**prefix sum。** 这个不错。遍历所有元素，将开始于0，结束于此的sum存入map，这样每步都能检查出，本次sum，减去之前map中的key，也就是之前的sum，得出subarray，的个数（map的value）```res += m[sum - k];```|
 |567|Permutation in String|**滑窗双指针。** 想清楚什么时候该进，什么时候该退即可|
 |616|Add Bold Tag in String|不难，逐位找，用个vector存本位是否为bold|
@@ -208,6 +210,7 @@
 |684|Redundant Connection|**union find**|
 |731|My Calendar II|找到一个overlap，拿着这个overlap，遍历后面的，看看还有没有overlap|
 |734|Sentence Similarity|easy|
+|742|Closest Leaf in a Binary Tree|**BFS.** 这种跟层数有关系（远近）的，适合BFS。从叶节点出发，谁先找到，就是谁的。同时因为有可能通过子找父，所以需要用一个map来储存子到父的关系|
 |759|Employee Free Time|可以用常规的interval sort，但是不快|
 |777|Swap Adjacent in LR String|不用管X，只需要搞清楚LR的相对顺序即可|
 |973|K Closest Points to Origin|不难，用multimap，但是好像不快|
@@ -350,6 +353,7 @@ dp感觉有一些BFS的思想
 |174|Dungeon Game||矩阵mn|逆序，到达此处前所需的最小生命值|首值|
 |**312**|Burst Balloons||矩阵|dp[i][j]表示打破i到j之间所有气球获得的最大金币，可以分为，左边最大值+右边最大值+左边界\*本身\*右边界。同时是逆序往回加，而不是打破。维护它需要left逆序，right顺序，i（本次插入的点）顺序，这样才能提前预置好之后需要的值|首行尾值|
 |377|Combination Sum IV||向量v+1|到达此处数字的可能性，通过回忆来更新|尾值|
+|518|Coin Change 2||矩阵m+1,n+1|现在有前i种钱，组合出j元的可能性|尾值|
 |727|Minimum Window Subsequence||矩阵m+1,n+1|2个string以此处为结尾的结果的子序列长度|末行极小值|
 |1155|Number of Dice Rolls With Target Sum||矩阵m+1,n+1|row个骰子摇出col的种类|尾值|
 
