@@ -208,12 +208,14 @@
 |621|Task Scheduler|找出次数最多的进程，可能是多个，return重复足够次数这些进程以及idle，和v.size()的较大值|
 |647|Palindromic Substrings|另写一个extend函数，遍历string过程中不断调用它，给它起始位置，一次奇数，一次偶数，然后满足条件就向两边扩展，同时res++。这个很快。另写了一个方阵dp，还有点麻烦，慢一点|
 |684|Redundant Connection|**union find**|
+|708|Insert into a Cyclic Sorted List|找到位置，或者是最小值，最大值，插入。如果一圈下来没插入，那就说明里面元素全等，插在哪里，包括当下，都可以|
 |731|My Calendar II|找到一个overlap，拿着这个overlap，遍历后面的，看看还有没有overlap|
 |734|Sentence Similarity|easy|
 |742|Closest Leaf in a Binary Tree|**BFS.** 这种跟层数有关系（远近）的，适合BFS。从叶节点出发，谁先找到，就是谁的。同时因为有可能通过子找父，所以需要用一个map来储存子到父的关系|
 |759|Employee Free Time|可以用常规的interval sort，但是不快|
 |777|Swap Adjacent in LR String|不用管X，只需要搞清楚LR的相对顺序即可|
 |973|K Closest Points to Origin|不难，用multimap，但是好像不快|
+|1146|Snapshot Array|直接用矩阵空间会超，改用map嵌map，这样会比较稀疏，只存储修改的值，这样二分查找能够找到上一次修改的。注意map的upper_bound的语法与vector的不同|
 
 
 
@@ -355,6 +357,7 @@ dp感觉有一些BFS的思想
 |377|Combination Sum IV||向量v+1|到达此处数字的可能性，通过回忆来更新|尾值|
 |518|Coin Change 2||矩阵m+1,n+1|现在有前i种钱，组合出j元的可能性|尾值|
 |727|Minimum Window Subsequence||矩阵m+1,n+1|2个string以此处为结尾的结果的子序列长度|末行极小值|
+|837|New 21 Game||向量n+1|落在这个数上的概率|尾部数值之和|
 |1155|Number of Dice Rolls With Target Sum||矩阵m+1,n+1|row个骰子摇出col的种类|尾值|
 
 bottom up top down?
