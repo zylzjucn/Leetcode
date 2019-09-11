@@ -33,10 +33,8 @@
 |---|---|---|---|
 |Primary database model|Document store|Relational DBMS|Key-value store|
 
-
-
-
 ### 动态规划
+
 背包问题 Knapsack problem
 
 无法解决：
@@ -45,6 +43,7 @@
 2. 在伦敦旅游时，想去巴黎景点的问题。因为伦敦至巴黎需要时间，一旦决定将卢浮宫放入背包，那么埃菲尔铁塔也将变得“便宜”，这样不满足每隔子问题离散的条件。
 
 ### 哈希表
+
 > used to index large amounts of data
 
 可能会出现collision,解决办法：
@@ -98,6 +97,19 @@ critical section
 
 signal() // V  ++
 ```
+
+### Process and Thread
+
+||Process|Thread|
+|---|---|---|
+|Definition|Any program in Execution|Segment of a Thread|
+|Time to terminate|More|Less|
+|Time for creation|More|Less|
+|Time for context switching|More|Less|
+|Term of communication|More efficient|Less efficient|
+|Resource consuming|More|Less|
+|Isolated|Yes|No, shared memory|
+
 
 ### Sharding
 

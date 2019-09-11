@@ -165,6 +165,7 @@
 |299|Bulls and Cows|这个不难，两个map对照数量就可以了。不用记A在哪里出现，几个总数，计算B的时候减掉就可以|
 |**300**|Longest Increasing Subsequence|O(lgn),用lower_bound()可以达到，因为我们迅速定位新来元素应该在的位置。不一定总是插入，如果有更大的元素，就把*更大的元素换成新来的元素*，因为这样有利于后来元素形成更长的序列|
 |310|Minimum Height Trees|BFS。vector<set<int>>。从每个叶节点往里面找，找到最后就是所要的|
+|315|Count of Smaller Numbers After Self|可以用merge_sort，右边元素插入时，数着个数，左边元素插入，加上这个个数，相当于被插了多少个空。或者可以用vector，直接右边一个个往里面加，找位置。但是这个是n^2，因为vector的插入特性|
 |316|Remove Duplicate Letters|控制什么时候这个char能进，什么时候不行。如果后面还有前面的char，且这个char比我大，我就能进。有点像sliding window maximum|
 |322|Coin Change|跟377有点像，站在现在节点上，看过去有哪些节点能到本节点，依此来更新本节点。但是反过来，通过本节点更新未来将要到达的所有点，时间就过不了|
 |323|Number of Connected Components in an Undirected Graph|**union find** 找到2个元素的”队长“，如果队长不一样，结果-1，队长置为一样的|
@@ -212,9 +213,16 @@
 |731|My Calendar II|找到一个overlap，拿着这个overlap，遍历后面的，看看还有没有overlap|
 |734|Sentence Similarity|easy|
 |742|Closest Leaf in a Binary Tree|**BFS.** 这种跟层数有关系（远近）的，适合BFS。从叶节点出发，谁先找到，就是谁的。同时因为有可能通过子找父，所以需要用一个map来储存子到父的关系|
+|743|Network Delay Time|Dijkstra. 用priority_queue实现每次最短节点的查找，更新vector|
 |759|Employee Free Time|可以用常规的interval sort，但是不快|
+|767|Reorganize String|实际上要求你每次都要得到剩余频率最大的两个字母，不只是一个。还是用priority_queue，只不过需要每次拿出放进，因为要两个|
 |777|Swap Adjacent in LR String|不用管X，只需要搞清楚LR的相对顺序即可|
+|939|Minimum Area Rectangle|用map set存储每个x对应的几个y，然后O(n)遍历其中的两个点，将其作为对角，看看能不能找到合法的矩形|
+|951|Flip Equivalent Binary Trees|**递归。** 检查本点即可|
 |973|K Closest Points to Origin|不难，用multimap，但是好像不快|
+|981|Time Based Key-Value Store|map套map,upper_bound查找|
+|1055|Shortest Way to Form String|不难，不断循环短string知道长string结束为止|
+|1110|Delete Nodes And Return Forest|**深搜。** 只需考虑本点，不需要考虑左右|
 |1146|Snapshot Array|直接用矩阵空间会超，改用map嵌map，这样会比较稀疏，只存储修改的值，这样二分查找能够找到上一次修改的。注意map的upper_bound的语法与vector的不同|
 
 
@@ -370,6 +378,14 @@ Union find:
 在find函数中，最后要加上一句 ```leader[x] = res;```路径压缩，对于长路径少group应该能快不少
 还一种压缩是```roots[id] = roots[roots[id]]```,压缩为原来一半
 
+递归版 find:
+
+```
+if (m[x] != x)
+	m[x] = find(m[x], m, res);
+   return m[x];
+```
+
 |题号|题目|本质|
 |---|---|---|
 |305|Number of Islands II|比较上下左右，leader不一样，则合并，count--|
@@ -377,6 +393,7 @@ Union find:
 |684|Redundant Connection|**union find**|
 |737|Sentence Similarity II|UF的时候记住一点，特征向量中可能存的不是自己的队长，还是需要找多次。因此比较的时候，需要调函数，找多次知道某人队长为自己，这人肯定是队长|
 |839|Similar String Groups|常规UF特别慢|
+|947|Most Stones Removed with Same Row or Column|这个用了递归版的find|
 
 Sliding Window:
 判断清楚何时该进，何时该退，即可
