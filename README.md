@@ -172,8 +172,10 @@
 |328|Odd Even Linked List|还是寻找一般规律。在重排过程中，想象整个链表由左至右分为三部分：排好的奇数，排好的偶数和待排的部分。分界点我们用变量跟踪好，每次就把待排部分第一个塞到前两个中间，然后跟踪变量。每次维护这个关系即可。|
 |332|Reconstruct Itinerary|**深搜。** 这个DFS非常厉害。他把push进res的这行放在了递归的尾部，所以得到的是反向的res。这样做的好处是，遇到分叉的死路时，他不用回退，而是，反着记录下来，遇到来时的分岔路口，继续反向记录下来，这样刚好就是我们需要的结果的反向。因为我们遇到死路，这就说明只有这一条路过来，也就是终点，所以先记录下来并没有错|
 |333|Largest BST Subtree|因为需要参考的返回值比较多，所以要另写一个struct。时间上看这个解法不是特别快，还行|
+|334|Increasing Triplet Subsequence|用两个var，第一个保存现在遇到的最小值，遇到比第一个大的就更新第二个，遇到第三个就return true|
 |347|Top K Frequent Elements|重载sort|
 |353|Design Snake Game|比较直接。用set而不是矩阵来记录是否撞到自己会好一点|
+|364|Nested List Weight Sum II|**深搜。** 注意好API接口|
 |366|Find Leaves of Binary Tree|一般都只检查到本节点状态，但这里检查到了本节点的子的子的状态|
 |**373**|Find K Pairs with Smallest Sums|**priority_queue。** 增删O(lgN), 找最大值或最小值O(1)。如果找最小值，需要自己写compare。这也相当于k-mergesort。还有一个小技巧是，矩阵中往右的路径全部由一边负责，另一边只负责第一列向下，因为第一列无法通过向右达到|
 |377|Combination Sum IV|dp解法按理说可以，但是加了一个大case过不了了。就是像楼梯一样，站在这里，把之前所有能到这里的通路个数，加过来，O(n2)就行。还欠一个正确答案|
@@ -189,9 +191,10 @@
 |417|Pacific Atlantic Water Flow|**深搜。** 因为水流朝四个方向都有可能，所以不能dp，只能DFS。用2个矩阵分别表示能到达太平洋和大西洋的水，然后均为1，就是我们要的点|
 |426|Convert Binary Search Tree to Sorted Doubly Linked List|**分治。** 有点点慢，根据左右子是否为空，让左、右与自身合并。注意自身先须成环|
 |430|Flatten a Multilevel Doubly Linked List|常规操作，有右有子，就拼一下|
-|456|132 Pattern|用stack,尽量使得n3大，stack里存n3的candidates|
 |435|Non-overlapping Intervals|先sort，再遍历。如果遇到重叠，删除尾大的那个，贪心算法，每次这样操作就能保证最优|
 |450|Delete Node in a BST|处理好最麻烦的case就可以：被删除的节点有左右子。此时可以在左子树中找最大元素，将其值赋给root，然后递归删除这个最大元素。这里不一定要直接删除最大元素，可以一步一步再走到最大元素，否则需要先找到最大元素的父，才能指向它。相反走右边也可以。O(h)，为高度|
+|456|132 Pattern|用stack,尽量使得n3大，stack里存n3的candidates|
+|458|Poor Pigs|**Math.** 先用总时间除以单个测试时间，+1（到最后没死就说明是最后没喝的那桶有毒）得到每头猪的测试次数。然后两头就是平方，因为一头确定行，一头确定列，那么n头就是n次幂。这个n次幂大于总的桶的数量时，就够了|
 |451|Sort Characters By Frequency|两个map就好，其中一个要ordered的|
 |452|Minimum Number of Arrows to Burst Balloons|还是interval问题。这种问题都是先sort，然后greedy，不难|
 |454|4Sum II|四循环拆成2个二循环，用一个map，速度还可以|
@@ -208,6 +211,7 @@
 |617|Merge Two Binary Trees|有个小trick，如果t1，t2有个点为NULL，那不为NULL的那个也不用往下走了，直接返回它就好|
 |621|Task Scheduler|找出次数最多的进程，可能是多个，return重复足够次数这些进程以及idle，和v.size()的较大值|
 |647|Palindromic Substrings|另写一个extend函数，遍历string过程中不断调用它，给它起始位置，一次奇数，一次偶数，然后满足条件就向两边扩展，同时res++。这个很快。另写了一个方阵dp，还有点麻烦，慢一点|
+|670|Maximum Swap|从右往左找最大值，并且找到这个最大值下比它小的最左边的值。然后再根据最小值往右找一遍最大值（因为最后保存的最大值可能在最小值左边，不是一对），交换|
 |684|Redundant Connection|**union find**|
 |708|Insert into a Cyclic Sorted List|找到位置，或者是最小值，最大值，插入。如果一圈下来没插入，那就说明里面元素全等，插在哪里，包括当下，都可以|
 |731|My Calendar II|找到一个overlap，拿着这个overlap，遍历后面的，看看还有没有overlap|
