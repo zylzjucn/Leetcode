@@ -86,6 +86,7 @@ auto comp = [&nums1, &nums2](pair<int, int> a, pair<int, int> b) {
         };
 priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(comp)> pq(comp);
 ```
+用multiset删除元素，如果不指定游标而是指定值，那么如果这个值有多个，就会都删掉。反之游标不会
 
 ### 游标二分查找
 

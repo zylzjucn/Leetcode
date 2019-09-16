@@ -159,8 +159,10 @@
 |251|Flatten 2D Vector|记录移动和结束的向量指针，同时一个变量计行内数即可。hasnext负责换行，每次next都要call它。但是hasnext return值我还没搞懂为什么这样可以过|
 |261|Graph Valid Tree|**union find**|
 |267|Palindrome Permutation II|**深搜**|
+|272|Closest Binary Search Tree Value II|不难，构建好2个stack，从target处分开。然后比较距离target的远近放入结果即可|
 |**277**|Find the Celebrity|O(n)就能做。第一遍loop，不断把candidate赋值为被别人认识的那个人。这样一圈下来，前一部分人都认识别人，后一部分人can都不认识，所以都不能做can。再2个循环确认这个can是不是真can即可|
 |**282**|Expression Add Operators|**深搜。** 需要**应对运算符优先级不同的小技巧**：需要cur和pre来记录数据。cur代表截至目前直接计算出来的结果，而pre表示上一个数字单元的内容，相当于一个浅栈，如果遇到一个\*,就从cur中回退（减）掉pre，pre和现在的数字相乘，放入cur和pre|
+|**291**|Word Pattern II|**DFS.** 用map或vector储存char到string的映射，发现不对就回退。注意还需要一个set，来记录已经出现的单词，|
 |**296**|Best Meeting Point|二维问题一维化。因为这是不计算斜边的曼哈顿距离，所以实际上就是在x,y方向上找中位数。同时x,y不相干，因此甚至所有点的横纵坐标不需要一一对应，分别找出x,y的中位数即可|
 |299|Bulls and Cows|这个不难，两个map对照数量就可以了。不用记A在哪里出现，几个总数，计算B的时候减掉就可以|
 |**300**|Longest Increasing Subsequence|O(lgn),用lower_bound()可以达到，因为我们迅速定位新来元素应该在的位置。不一定总是插入，如果有更大的元素，就把*更大的元素换成新来的元素*，因为这样有利于后来元素形成更长的序列|
@@ -187,6 +189,7 @@
 |396|Rotate Function|数学方法，找出变化的通项公式即可|
 |397|Integer Replacement|偶数没的说，奇数就往能被4整除的方向发展，这样递减的快。例外是3，遇到3，直接返回res+2|
 |403|Frog Jump|用的BFS，速度不算快。跟另一个frog差不多，都是走在当下，根据当下来提醒后面能达到的步数。尽量避免set和map的遍历，感觉比较慢，vector就会好一些。类似的写法，java竟然比cpp快很多|
+|410|Split Array Largest Sum|**二分法。** 最小为最大元素，最大为总和。在两者之间用二分法逼近。每次都检查设定的结果，数组以及份数是否满足，满足则往小，不满足则往大|
 |413|Arithmetic Slices|简单，每次数着到这里一共前面连续等差了几次，不等差的时候，高斯公式算一下这段距离产生了多少个符合要求的序列，加到结果里面就行。如果一直等差，最后一次结果可能没有加上，需要在循环结束外加上|
 |417|Pacific Atlantic Water Flow|**深搜。** 因为水流朝四个方向都有可能，所以不能dp，只能DFS。用2个矩阵分别表示能到达太平洋和大西洋的水，然后均为1，就是我们要的点|
 |426|Convert Binary Search Tree to Sorted Doubly Linked List|**分治。** 有点点慢，根据左右子是否为空，让左、右与自身合并。注意自身先须成环|
@@ -221,6 +224,9 @@
 |759|Employee Free Time|可以用常规的interval sort，但是不快|
 |767|Reorganize String|实际上要求你每次都要得到剩余频率最大的两个字母，不只是一个。还是用priority_queue，只不过需要每次拿出放进，因为要两个|
 |777|Swap Adjacent in LR String|不用管X，只需要搞清楚LR的相对顺序即可|
+|912|Sort an Array|容易|
+|915|Partition Array into Disjoint Intervals|有点意思。其实可以one pass，右边未遍历的元素情况暂时未知也没关系。因为等会儿发现不满足，还是会覆盖掉左边的结果。如果一直没覆盖掉，就说明之前的是合法的。如果手中的元素小于之前结果序列中的最大元素，则以前的结果不合法，需要覆盖，并且把子序列最大元素赋值为出现过的最大元素；如果手中元素比出现过的最大元素还大，就更新最大元素|
+|916|Word Subsets|很直接的做法|
 |939|Minimum Area Rectangle|用map set存储每个x对应的几个y，然后O(n)遍历其中的两个点，将其作为对角，看看能不能找到合法的矩形|
 |951|Flip Equivalent Binary Trees|**递归。** 检查本点即可|
 |973|K Closest Points to Origin|不难，用multimap，但是好像不快|
