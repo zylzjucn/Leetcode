@@ -378,6 +378,7 @@ dp感觉有一些BFS的思想
 |518|Coin Change 2||矩阵m+1,n+1|现在有前i种钱，组合出j元的可能性|尾值|
 |727|Minimum Window Subsequence||矩阵m+1,n+1|2个string以此处为结尾的结果的子序列长度|末行极小值|
 |837|New 21 Game||向量n+1|落在这个数上的概率|尾部数值之和|
+|1007|Minimum Domino Rotations For Equal Row|分别检查两个头是不是结果就可以|
 |1155|Number of Dice Rolls With Target Sum||矩阵m+1,n+1|row个骰子摇出col的种类|尾值|
 
 bottom up top down?
