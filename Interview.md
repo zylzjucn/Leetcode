@@ -41,6 +41,15 @@
 |---|---|---|---|
 |Primary database model|Document store|Relational DBMS|Key-value store|
 
+||SQL|NOSQL|
+|---|---|---|
+|Speed|Good at write|Good at read|
+|Data use schema|Yes|No|
+|Relations|Yes|No|
+|Data is distributed in multiple tables|Yes|No|
+||Horizontal scaling is difficult or impossible while Vertical scaling is possible|Both OK|
+|Lots of R/W queries or requests|Limitation|Great performance|
+
 ### 动态规划
 
 背包问题 Knapsack problem

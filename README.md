@@ -191,6 +191,7 @@
 |396|Rotate Function|数学方法，找出变化的通项公式即可|
 |397|Integer Replacement|偶数没的说，奇数就往能被4整除的方向发展，这样递减的快。例外是3，遇到3，直接返回res+2|
 |403|Frog Jump|用的BFS，速度不算快。跟另一个frog差不多，都是走在当下，根据当下来提醒后面能达到的步数。尽量避免set和map的遍历，感觉比较慢，vector就会好一些。类似的写法，java竟然比cpp快很多|
+|404|Sum of Left Leaves|**递归**|
 |410|Split Array Largest Sum|**二分法。** 最小为最大元素，最大为总和。在两者之间用二分法逼近。每次都检查设定的结果，数组以及份数是否满足，满足则往小，不满足则往大|
 |413|Arithmetic Slices|简单，每次数着到这里一共前面连续等差了几次，不等差的时候，高斯公式算一下这段距离产生了多少个符合要求的序列，加到结果里面就行。如果一直等差，最后一次结果可能没有加上，需要在循环结束外加上|
 |417|Pacific Atlantic Water Flow|**深搜。** 因为水流朝四个方向都有可能，所以不能dp，只能DFS。用2个矩阵分别表示能到达太平洋和大西洋的水，然后均为1，就是我们要的点|
@@ -229,6 +230,7 @@
 |912|Sort an Array|容易|
 |915|Partition Array into Disjoint Intervals|有点意思。其实可以one pass，右边未遍历的元素情况暂时未知也没关系。因为等会儿发现不满足，还是会覆盖掉左边的结果。如果一直没覆盖掉，就说明之前的是合法的。如果手中的元素小于之前结果序列中的最大元素，则以前的结果不合法，需要覆盖，并且把子序列最大元素赋值为出现过的最大元素；如果手中元素比出现过的最大元素还大，就更新最大元素|
 |916|Word Subsets|很直接的做法|
+|930|Binary Subarrays With Sum|**结束于此，向回看**|
 |939|Minimum Area Rectangle|用map set存储每个x对应的几个y，然后O(n)遍历其中的两个点，将其作为对角，看看能不能找到合法的矩形|
 |951|Flip Equivalent Binary Trees|**递归。** 检查本点即可|
 |973|K Closest Points to Origin|不难，用multimap，但是好像不快|
@@ -414,6 +416,7 @@ Sliding Window:
 |题号|题目|本质|
 |---|---|---|
 |340|Longest Substring with At Most K Distinct Characters||
+|438|Find All Anagrams in a String||
 |992|Subarrays with K Different Integers|可以自成一派，f(k) = f(<=k) - f(<=k - 1), 后者好算太多|
 
 Sort:

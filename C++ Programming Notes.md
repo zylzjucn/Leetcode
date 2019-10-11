@@ -121,3 +121,97 @@ Mystring &Mystring::operator=(Mystring &&rhs) {
 3. heap: dynamic storage (large pool of memory, not allocated in contiguous order).
 
 静态数据成员每个class有一份，所以也叫类变量；普通数据成员每个object有一份，也叫实例变量
+
+
+### Polymorphism
+
+- Compile-time binding = Early binding = Static binding
+
+> Polymorphism by **Function Overloading** and **Operator Overloading**
+
+- Run-time binding = Late binding = Dynamic binding
+
+> Polymorphism by **Function Overriding**
+
+Polymorphism allows us to think more abstractly
+
+- Think **General** vs. **Specific**
+- Let C++ figure out which function to call at run-time
+
+Compile-time binding is default (to make program fast)
+
+While run-time binding we must have:
+
+1. Inheritance
+2. Base class pointers and references
+3. Virtual functions
+
+#### Using Base class pointers:
+
+#### Virtual functions
+
+> - Redifined functions are bound statically
+> - Overridden functions are bound dynamically
+> - Virtual functions are overridden
+> - Allow us to treat all objects generally as objects of the Base class
+
+#### Declaring virtual functions
+
+> - Declare the function you want to override as virtual in the Base class
+> - Virtual functions are virtual all the way down the heirarchy from this point
+> - Dynamic polymorphism only via Base pointer or reference
+> - Override the functions in the Derived class
+> - Function signature and return type must match exactly
+> - Virtual keyword not required but is best practice
+
+```
+// Savings 继承 Account
+
+Account *p = new Savings();
+p->withdraw(1000);
+```
+
+> 不使用 virtual 则调用父类的 withdraw ,使用virtual则调用子类的
+
+> 需要在 destructor 前也加 virtual ，否则只会调用父类的 destructor ，而不会先调用子类的 destructor
+
+如果要override，必须要保证函数签名一模一样，否则就是重定义。因此我们可以在子类要重写的函数签名后加上关键字 override ，这样如果我们签名不一样，就会报错提醒我们。否则可能会在我们不知道的情况下重定义
+
+#### Final (关键字)
+
+1. Prevents a class from being derived from
+2. Prevents virtual method from being overridden in derived class
+
+#### Using Base class References:
+
+```
+Savings s;
+Account &ref = s;
+ref.withdraw(1000);
+```
+
+> 会调用 Savings 的函数，正如我们所想
+
+- Abstract class
+
+> Can not instantiate objects
+
+> Used as base classes
+
+> contains at least one pure virtual function
+
+- Concrete class
+
+> All their mumber functions are defined
+
+#### Pure virtual function
+
+```
+virtual void function() = 0;        // pure virtual function
+```
+
+> Pure virtual function typically do not provide implementations
+
+> Derived classes must override all the pure virtual functions in base class, or still be Abstract class
+
+Abstract classes as interface
