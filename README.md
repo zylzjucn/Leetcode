@@ -212,10 +212,17 @@
 |498|Diagonal Traverse|结合flag判断清楚到边界时候怎么转头|
 |524|Longest Word in Dictionary through Deleting|直截了当的解法。每个字典中的单词和s进行比较，符合条件，每次记录最长且字典序靠前的|
 |**560**|Subarray Sum Equals K|**prefix sum。** 这个不错。遍历所有元素，将开始于0，结束于此的sum存入map，这样每步都能检查出，本次sum，减去之前map中的key，也就是之前的sum，得出subarray，的个数（map的value）```res += m[sum - k];```|
+|562|Longest Line of Consecutive One in Matrix|四个矩阵存|
 |567|Permutation in String|**滑窗双指针。** 想清楚什么时候该进，什么时候该退即可|
+|573|Squirrel Simulation|
+|576|Out of Boundary Paths|逐个move更新矩阵|
+|582|Kill Process|**BFS, 路径压缩。** 要用到哈希进行路径压缩，只跑一边，用空间储存需要的信息|
+|593|Valid Square|判断是否直角用求平方，然后在判断对角线是否2倍，再把4个点换顺序代入试一遍即可|
+|611|Valid Triangle Number|**3sum**|
 |616|Add Bold Tag in String|不难，逐位找，用个vector存本位是否为bold|
 |617|Merge Two Binary Trees|有个小trick，如果t1，t2有个点为NULL，那不为NULL的那个也不用往下走了，直接返回它就好|
 |621|Task Scheduler|找出次数最多的进程，可能是多个，return重复足够次数这些进程以及idle，和v.size()的较大值|
+|635|Design Log Storage System||
 |647|Palindromic Substrings|另写一个extend函数，遍历string过程中不断调用它，给它起始位置，一次奇数，一次偶数，然后满足条件就向两边扩展，同时res++。这个很快。另写了一个方阵dp，还有点麻烦，慢一点|
 |670|Maximum Swap|从右往左找最大值，并且找到这个最大值下比它小的最左边的值。然后再根据最小值往右找一遍最大值（因为最后保存的最大值可能在最小值左边，不是一对），交换|
 |684|Redundant Connection|**union find**|
@@ -227,6 +234,7 @@
 |759|Employee Free Time|可以用常规的interval sort，但是不快|
 |767|Reorganize String|实际上要求你每次都要得到剩余频率最大的两个字母，不只是一个。还是用priority_queue，只不过需要每次拿出放进，因为要两个|
 |777|Swap Adjacent in LR String|不用管X，只需要搞清楚LR的相对顺序即可|
+|829|Consecutive Numbers Sum|数学方法。找出通项公式，一个个试，能整除就res++|
 |912|Sort an Array|容易|
 |915|Partition Array into Disjoint Intervals|有点意思。其实可以one pass，右边未遍历的元素情况暂时未知也没关系。因为等会儿发现不满足，还是会覆盖掉左边的结果。如果一直没覆盖掉，就说明之前的是合法的。如果手中的元素小于之前结果序列中的最大元素，则以前的结果不合法，需要覆盖，并且把子序列最大元素赋值为出现过的最大元素；如果手中元素比出现过的最大元素还大，就更新最大元素|
 |916|Word Subsets|很直接的做法|
@@ -378,6 +386,8 @@ dp感觉有一些BFS的思想
 |**312**|Burst Balloons||矩阵|dp[i][j]表示打破i到j之间所有气球获得的最大金币，可以分为，左边最大值+右边最大值+左边界\*本身\*右边界。同时是逆序往回加，而不是打破。维护它需要left逆序，right顺序，i（本次插入的点）顺序，这样才能提前预置好之后需要的值|首行尾值|
 |377|Combination Sum IV||向量v+1|到达此处数字的可能性，通过回忆来更新|尾值|
 |518|Coin Change 2||矩阵m+1,n+1|现在有前i种钱，组合出j元的可能性|尾值|
+|576|Out of Boundary Paths||矩阵m,n|该move下各点可能性|某点各move sum|
+|583|Delete Operation for Two Strings|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
 |727|Minimum Window Subsequence||矩阵m+1,n+1|2个string以此处为结尾的结果的子序列长度|末行极小值|
 |837|New 21 Game||向量n+1|落在这个数上的概率|尾部数值之和|
 |1007|Minimum Domino Rotations For Equal Row|分别检查两个头是不是结果就可以|

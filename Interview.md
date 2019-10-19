@@ -50,6 +50,16 @@
 ||Horizontal scaling is difficult or impossible while Vertical scaling is possible|Both OK|
 |Lots of R/W queries or requests|Limitation|Great performance|
 
+### Normal forms
+
+1NF: the values in each column of a table must be atomic
+2NF: every non-key attribute must depend on the whole key, not just part of it(compound key, 不能有哪一个属性只依赖于其中一列，否则分表)
+3NF: has no transitive dependencies
+
+### Database Index
+
+> A data structure that improves the speed of data retrieval. Can be created using one or more columns of a database table
+
 ### 动态规划
 
 背包问题 Knapsack problem
@@ -57,7 +67,7 @@
 无法解决：
 
 1. 购入连续（非离散）物品问题，例如大米或红豆，但可用贪心算法解决；
-2. 在伦敦旅游时，想去巴黎景点的问题。因为伦敦至巴黎需要时间，一旦决定将卢浮宫放入背包，那么埃菲尔铁塔也将变得“便宜”，这样不满足每隔子问题离散的条件。
+2. 在伦敦旅游时，想去巴黎景点的问题。因为伦敦至巴黎需要时间，一旦决定将卢浮宫放入背包，那么埃菲尔铁塔也将变得“便宜”，这样不满足每个子问题离散的条件。
 
 ### 哈希表
 
