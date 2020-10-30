@@ -11,7 +11,7 @@
 |1|Two Sum|用unordered_map，降至O(n)|
 |2|Add Two Numbers|一个变量存储进位，当l1,l2,进位非均为空时，继续计算|
 |3|Longest Substring Without Repeating Characters|用一个数组存储字符出现的次数。if为0，则没出现过，end++; else出现过，start++。每步操作都要修改数组|
-|**4**|Median of Two Sorted Arrays|**二分法。** 确定了i，就能确定第二个数组里j的位置，在比较大小就可以决定向左还是向右。或者写一个辅助函数，寻找第k个元素，递归辅助函数也可以做|
+|**4**|Median of Two Sorted Arrays|**二分法。** 确定了i，就能确定第二个数组里j的位置，在比较大小就可以决定向左还是向右。注意要保证n1长度小于n2,因为只有这样才能确保，无论n1上的i是多少，n2上的j才不会太左或者太右而越界。或者写一个辅助函数，寻找第k个元素，递归辅助函数也可以做|
 |5|Longest Palindromic Substring||
 |6|ZigZag Conversion||
 |7|Reverse Integer||
