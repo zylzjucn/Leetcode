@@ -214,7 +214,8 @@
 |**560**|Subarray Sum Equals K|**prefix sum。** 这个不错。遍历所有元素，将开始于0，结束于此的sum存入map，这样每步都能检查出，本次sum，减去之前map中的key，也就是之前的sum，得出subarray，的个数（map的value）```res += m[sum - k];```|
 |562|Longest Line of Consecutive One in Matrix|四个矩阵存|
 |567|Permutation in String|**滑窗双指针。** 想清楚什么时候该进，什么时候该退即可|
-|573|Squirrel Simulation|
+|572|Subtree of Another Tree|递归|
+|573|Squirrel Simulation|找到总路径中，固定的部分，然后只要比较每个nut不固定的部分，找到最小的，相加即可|
 |576|Out of Boundary Paths|逐个move更新矩阵|
 |582|Kill Process|**BFS, 路径压缩。** 要用到哈希进行路径压缩，只跑一边，用空间储存需要的信息|
 |593|Valid Square|判断是否直角用求平方，然后在判断对角线是否2倍，再把4个点换顺序代入试一遍即可|
@@ -239,10 +240,12 @@
 |915|Partition Array into Disjoint Intervals|有点意思。其实可以one pass，右边未遍历的元素情况暂时未知也没关系。因为等会儿发现不满足，还是会覆盖掉左边的结果。如果一直没覆盖掉，就说明之前的是合法的。如果手中的元素小于之前结果序列中的最大元素，则以前的结果不合法，需要覆盖，并且把子序列最大元素赋值为出现过的最大元素；如果手中元素比出现过的最大元素还大，就更新最大元素|
 |916|Word Subsets|很直接的做法|
 |930|Binary Subarrays With Sum|**结束于此，向回看**|
+|937|Reorder Data in Log Files|sort|
 |939|Minimum Area Rectangle|用map set存储每个x对应的几个y，然后O(n)遍历其中的两个点，将其作为对角，看看能不能找到合法的矩形|
 |951|Flip Equivalent Binary Trees|**递归。** 检查本点即可|
 |973|K Closest Points to Origin|不难，用multimap，但是好像不快|
 |981|Time Based Key-Value Store|map套map,upper_bound查找|
+|1007|Minimum Domino Rotations For Equal Row|分别检查两个头是不是结果就可以|
 |1055|Shortest Way to Form String|不难，不断循环短string知道长string结束为止|
 |1110|Delete Nodes And Return Forest|**深搜。** 只需考虑本点，不需要考虑左右|
 |1146|Snapshot Array|直接用矩阵空间会超，改用map嵌map，这样会比较稀疏，只存储修改的值，这样二分查找能够找到上一次修改的。注意map的upper_bound的语法与vector的不同|
@@ -390,7 +393,7 @@ dp感觉有一些BFS的思想
 |583|Delete Operation for Two Strings|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
 |727|Minimum Window Subsequence||矩阵m+1,n+1|2个string以此处为结尾的结果的子序列长度|末行极小值|
 |837|New 21 Game||向量n+1|落在这个数上的概率|尾部数值之和|
-|1007|Minimum Domino Rotations For Equal Row|分别检查两个头是不是结果就可以|
+|1143|Longest Common Subsequence|字符串转换|矩阵m+1,n+1|2个string以此处为结尾的结果|尾值|
 |1155|Number of Dice Rolls With Target Sum||矩阵m+1,n+1|row个骰子摇出col的种类|尾值|
 
 bottom up top down?
