@@ -387,7 +387,7 @@ dp感觉有一些BFS的思想
 |132|Palindrome Partitioning II||向量n+1|截至此处最小切割数。for寻找以当前处为中心（包括奇偶）能组成的回文，更新右边|尾值|
 |174|Dungeon Game||矩阵mn|逆序，到达此处前所需的最小生命值|首值|
 |**312**|Burst Balloons||矩阵|dp[i][j]表示打破i到j之间所有气球获得的最大金币，可以分为，左边最大值+右边最大值+左边界\*本身\*右边界。同时是逆序往回加，而不是打破。维护它需要left逆序，right顺序，i（本次插入的点）顺序，这样才能提前预置好之后需要的值|首行尾值|
-|377|Combination Sum IV||向量v+1|到达此处数字的可能性，通过回忆来更新|尾值|
+|377|Combination Sum IV||向量v+1|可以通过现在的一个点更新将来的多个点，也可以通过过去的多个点更新现在的一个点。注意要unsigned int，要不然会溢出|尾值|
 |518|Coin Change 2||矩阵m+1,n+1|现在有前i种钱，组合出j元的可能性|尾值|
 |576|Out of Boundary Paths||矩阵m,n|该move下各点可能性|某点各move sum|
 |583|Delete Operation for Two Strings|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
