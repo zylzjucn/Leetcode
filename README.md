@@ -381,7 +381,7 @@ dp感觉有一些BFS的思想
 |10|Regular Expression Matching|字符串转换|矩阵m+1,n+1|截至目前是否能相互转换|尾值|
 |32|Longest Valid Parentheses||向量n|截至此处结尾的最长括号|极值|
 |72|Edit Distance|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
-|**85**|Maximal Rectangle||3个矩阵m,n|以此处向上延伸到最高处，得到一条边，再继续延左右延伸这条边得到一个面|极值|
+|**85**|Maximal Rectangle||3个矩阵m,n|以此处为底，向上捅到能捅到的最高出，得到一个轴，再左右延伸得到一个面。本身为0处，left和right矩阵中分别为0和.size()，这只是为了不在min或max的时候产生影响|极值|
 |115|Distinct Subsequences|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
 |123|Best Time to Buy and Sell Stock III||双向量n，一左一右|截至此处左边或右边的最大值|极值|
 |132|Palindrome Partitioning II||向量n+1|截至此处最小切割数（但更新向量时，是身处中心点更新其右端）|尾值|
