@@ -384,7 +384,7 @@ dp感觉有一些BFS的思想
 |**85**|Maximal Rectangle||3个矩阵m,n|以此处为底，向上捅到能捅到的最高出，得到一个轴，再左右延伸得到一个面。本身为0处，left和right矩阵中分别为0和.size()，这只是为了不在min或max的时候产生影响|极值|
 |115|Distinct Subsequences|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
 |123|Best Time to Buy and Sell Stock III||双向量n，一左一右|截至此处左边或右边的最大值|极值|
-|132|Palindrome Partitioning II||向量n+1|截至此处最小切割数（但更新向量时，是身处中心点更新其右端）|尾值|
+|132|Palindrome Partitioning II||向量n+1|截至此处最小切割数。for寻找以当前处为中心（包括奇偶）能组成的回文，更新右边|尾值|
 |174|Dungeon Game||矩阵mn|逆序，到达此处前所需的最小生命值|首值|
 |**312**|Burst Balloons||矩阵|dp[i][j]表示打破i到j之间所有气球获得的最大金币，可以分为，左边最大值+右边最大值+左边界\*本身\*右边界。同时是逆序往回加，而不是打破。维护它需要left逆序，right顺序，i（本次插入的点）顺序，这样才能提前预置好之后需要的值|首行尾值|
 |377|Combination Sum IV||向量v+1|到达此处数字的可能性，通过回忆来更新|尾值|
