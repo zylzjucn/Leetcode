@@ -19,7 +19,7 @@
 |9|Palindrome Number|设置一个sum来存储x从右边吐出数字的倒序，直到sum > x，相当于折半。如果此时两者相等或者为10倍关系，则返回true|
 |10|Regular Expression Matching|**dp.** 矩阵来存结果，返回最后一个元素。考虑仔细\*的case，就非常简单|
 |11|Container With Most Water|O(n2)降至O(n)。由外而内，不断替换短边。因为宽度在减少，要找到更大的必须高度增加。而只有替换短边，才可能高度增加。|
-|12|Integer to Roman||
+|12|Integer to Roman||18
 |13|Roman to Integer||
 |14|Longest Common Prefix||
 |15|3Sum|时间复杂度大于O(n2)。可以直接sort，然后每个外层循环固定游标1，游标2在可达到最左侧（游标1右1位），游标3在最右侧。根据三者和与目标值（0）的大小关系，决定是2进，还是3退。注意如果有重复元素，需要多加一个循环来跳过。|
@@ -388,7 +388,7 @@ dp感觉有一些BFS的思想
 |174|Dungeon Game||矩阵mn|逆序，到达此处前所需的最小生命值|首值|
 |**312**|Burst Balloons||矩阵|dp[i][j]表示打破i到j之间所有气球获得的最大金币，可以分为，左边最大值+右边最大值+左边界\*本身\*右边界。同时是逆序往回加，而不是打破。维护它需要left逆序，right顺序，i（本次插入的点）顺序，这样才能提前预置好之后需要的值|首行尾值|
 |377|Combination Sum IV||向量v+1|可以通过现在的一个点更新将来的多个点，也可以通过过去的多个点更新现在的一个点。注意要unsigned int，要不然会溢出|尾值|
-|518|Coin Change 2||矩阵m+1,n+1|现在有前i种钱，组合出j元的可能性|尾值|
+|518|Coin Change 2||矩阵m+1,n+1|现在有前i种钱，组合出j元的可能性。注意跟377不同，这里是组合不是排列，所以需要将硬币分面值，for中遍历每个面值，每次只更新当前面值产生的影响|尾值|
 |576|Out of Boundary Paths||矩阵m,n|该move下各点可能性|某点各move sum|
 |583|Delete Operation for Two Strings|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
 |727|Minimum Window Subsequence||矩阵m+1,n+1|2个string以此处为结尾的结果的子序列长度|末行极小值|
