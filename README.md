@@ -391,7 +391,7 @@ dp感觉有一些BFS的思想
 |518|Coin Change 2||矩阵m+1,n+1|现在有前i种钱，组合出j元的可能性。注意跟377不同，这里是组合不是排列，所以需要将硬币分面值，for中遍历每个面值，每次只更新当前面值产生的影响|尾值|
 |576|Out of Boundary Paths||矩阵m,n|该move下各点可能性|某点各move sum|
 |583|Delete Operation for Two Strings|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
-|727|Minimum Window Subsequence||矩阵m+1,n+1|2个string以此处为结尾的结果的子序列长度|末行极小值|
+|727|Minimum Window Subsequence||矩阵m+1,n+1|2个string以此处为结尾的结果的子序列长度。注意，在矩阵中，s要强制以这一位为结尾，而不是选择过去遇到过的最优。最后在遍历一遍最后一行找到最优。确定矩阵中应该存什么元素一个好方法是，看题目需要什么，可能就是什么|末行极小值|
 |837|New 21 Game||向量n+1|落在这个数上的概率|尾部数值之和|
 |1143|Longest Common Subsequence|字符串转换|矩阵m+1,n+1|2个string以此处为结尾的结果|尾值|
 |1155|Number of Dice Rolls With Target Sum||矩阵m+1,n+1|row个骰子摇出col的种类|尾值|
