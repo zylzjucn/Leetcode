@@ -249,6 +249,7 @@
 |1055|Shortest Way to Form String|不难，不断循环短string知道长string结束为止|
 |1110|Delete Nodes And Return Forest|**深搜。** 只需考虑本点，不需要考虑左右|
 |1146|Snapshot Array|直接用矩阵空间会超，改用map嵌map，这样会比较稀疏，只存储修改的值，这样二分查找能够找到上一次修改的。注意map的upper_bound的语法与vector的不同|
+|1283|Find the Smallest Divisor Given a Threshold|二分法。找到左右边界就行，注意不要除以0|
 
 
 
