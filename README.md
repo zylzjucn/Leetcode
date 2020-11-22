@@ -397,6 +397,7 @@ dp感觉有一些BFS的思想
 |837|New 21 Game||向量n+1|落在这个数上的概率。用一个sum来记录过去W个，维护这个sum，直接求出目标处的概率||
 |1143|Longest Common Subsequence|字符串转换|矩阵m+1,n+1|2个string以此处为结尾的结果|尾值|
 |1155|Number of Dice Rolls With Target Sum||矩阵m+1,n+1|row个骰子摇出col的种类|尾值|
+|1335|Minimum Difficulty of a Job Schedule||矩阵m+1,n+1|以i为天数，分割输入数组截止j处，的结果。需要额外引进一层循环k，k在i和j之间，表示k之后的元素统统交由最后一天来处理，也就只需要找到k右边所有元素的最大值，加上之前左上的结果即可。注意k要从右往左更新，这样才能不让左边的较大值影响到现在正在更新的最大值|尾值|
 
 bottom up top down?
 
