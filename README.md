@@ -142,7 +142,7 @@
 |**149**|Max Points on a Line|双层循环遍历所有点，得到所有2个点组成的线的组合。用斜率（需要用到最小公约数）来储存这条直线。因为都过第一个点，所以斜率相等，就在同一条线上。注意一下水平和竖直的线即可|
 |150|Evaluate Reverse Polish Notation|后缀表达式当然要用stack|
 |151|Reverse Words in a String|stringstream ss(s), ss >> tmp, 是前往后吐出来，新出来的内容加在前面即可|
-|152|Maximum Product Subarray|**结束于此，向回看。** 这是一个将O(n2)将为O(n)很好的方法。同时因为有负数，用两个值来记录出现的最大值和最小值。如果当前为负数，则两个值swap|
+|152|Maximum Product Subarray|**结束于此，向回看。** 这是一个将O(n2)降为O(n)很好的方法。同时因为有负数，用两个值来记录出现的最大值和最小值。如果当前为负数，则两个值swap|
 |153|Find Minimum in Rotated Sorted Array|**二分法**|
 |154|Find Minimum in Rotated Sorted Array II|**二分法。** 一个避免重复元素的小技巧是，如果左中右三者相等，那么就可能中间两侧有元素比较小，此时就可以同时将左右往中间缩1|
 |155|Min Stack|用2个stack，1个stack正常存，另1个存最小值|
