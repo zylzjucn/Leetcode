@@ -167,7 +167,7 @@
 |**296**|Best Meeting Point|二维问题一维化。因为这是不计算斜边的曼哈顿距离，所以实际上就是在x,y方向上找中位数。同时x,y不相干，因此甚至所有点的横纵坐标不需要一一对应，分别找出x,y的中位数即可|
 |**297**|Serialize and Deserialize Binary Tree|正常递归。但是速度不快。注意每次跟进游标i的位置|
 |299|Bulls and Cows|这个不难，两个map对照数量就可以了。不用记A在哪里出现，几个总数，计算B的时候减掉就可以|
-|**300**|Longest Increasing Subsequence|O(lgn),用lower_bound()可以达到，因为我们迅速定位新来元素应该在的位置。不一定总是插入，如果有更大的元素，就把*更大的元素换成新来的元素*，因为这样有利于后来元素形成更长的序列|
+|**300**|Longest Increasing Subsequence|**最长子序列。** O(lgn),用lower_bound()。我们在res中总是储存最优最长子序列。最优表明，在各个位置上，总是要保证取到最小的，这样能够尽量给后来元素腾出地方。所以在进来一个元素时，如果它最大，那就append到末尾；如果比某些元素小，那么就找到lower_bound，将那个点更新为新进来的这个元素，这样就确保了，如果我们在更新，永远是在往小的，也就是更优的方向更新|
 |310|Minimum Height Trees|BFS。vector<set<int>>。从每个叶节点往里面找，找到最后就是所要的|
 |315|Count of Smaller Numbers After Self|可以用merge_sort，右边元素插入时，数着个数，左边元素插入，加上这个个数，相当于被插了多少个空。或者可以用vector，直接右边一个个往里面加，找位置。但是这个是n^2，因为vector的插入特性|
 |316|Remove Duplicate Letters|控制什么时候这个char能进，什么时候不行。如果后面还有前面的char，且这个char比我大，我就能进。有点像sliding window maximum|
@@ -180,6 +180,7 @@
 |334|Increasing Triplet Subsequence|用两个var，第一个保存现在遇到的最小值，遇到比第一个大的就更新第二个，遇到第三个就return true|
 |347|Top K Frequent Elements|重载sort|
 |353|Design Snake Game|比较直接。用set而不是矩阵来记录是否撞到自己会好一点|
+|354|Russian Doll Envelopes|**最长子序列。** 两点。第一是用信封的宽度sort，宽度相等则把长度大的放在前面。这样做的目的是，因为我们sort的原因就是要先排除宽度的因素，只看长度，那么因为题目说长度或者宽度相等的信封是无法套娃的，那么这样做就能保证不该套娃的不会被套娃。第二点就是求长度的最长子序列，二维一维化，好做了|
 |364|Nested List Weight Sum II|**深搜。** 注意好API接口|
 |366|Find Leaves of Binary Tree|一般都只检查到本节点状态，但这里检查到了本节点的子的子的状态|
 |**373**|Find K Pairs with Smallest Sums|**priority_queue。** 增删O(lgN), 找最大值或最小值O(1)。如果找最小值，需要自己写compare。这也相当于k-mergesort。还有一个小技巧是，矩阵中往右的路径全部由一边负责，另一边只负责第一列向下，因为第一列无法通过向右达到|
