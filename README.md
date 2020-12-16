@@ -139,7 +139,7 @@
 |145|Binary Tree Postorder Traversal|**树模板**|
 |147|Insertion Sort List|两个指针，一个遍历，一个定位插入的位置|
 |148|Sort List|标准版merge sort，快。函数1分半，返回时调用函数2合并的结果|
-|**149**|Max Points on a Line|双层循环遍历所有点，得到所有2个点组成的线的组合。用斜率（需要用到最小公约数）来储存这条直线。因为都过第一个点，所以斜率相等，就在同一条线上。注意一下水平和竖直的线即可|
+|**149**|Max Points on a Line|双层循环遍历所有点，得到所有2个点组成的线的组合。用斜率（需要用到最大公约数）来储存这条直线。因为都过第一个点，所以斜率相等，就在同一条线上。注意一下水平和竖直的线即可|
 |150|Evaluate Reverse Polish Notation|后缀表达式当然要用stack|
 |151|Reverse Words in a String|stringstream ss(s), ss >> tmp, 是前往后吐出来，新出来的内容加在前面即可|
 |152|Maximum Product Subarray|**结束于此，向回看。** 这是一个将O(n2)降为O(n)很好的方法。同时记录最大值和最小值，注意，这两个值都一定要确保带上当前值，而不一定带上之前的值。这样才有意义，不遗漏。如果当前为负数，则两个值swap|
