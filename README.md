@@ -2,10 +2,6 @@
 
 ### 总结 (updating)
 
-- ![#1589F0](https://placehold.it/15/008000/000000?text=+) `Easy`
-- ![#c5f015](https://placehold.it/15/F4D03F/000000?text=+) `Medium`
-- ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `Hard`
-
 |#|Title|Solution|
 |---|---|---|
 |1|Two Sum|用unordered_map，降至O(n)|
@@ -382,7 +378,7 @@ dp感觉有一些BFS的思想
 |题号|题目|本质|特征变量|存储信息|返回值|
 |---|---|---|---|---|---|
 |10|Regular Expression Matching|字符串转换|矩阵m+1,n+1|截至目前是否能相互转换|尾值|
-|32|Longest Valid Parentheses||向量n|截至此处结尾的最长括号|极值|
+|32|Longest Valid Parentheses||向量n|截至此处结尾的最长括号。code很简单，我们每次先找，此处的)对应的(在哪里，然后再加上这个(左边的那个点对应的结果，也就是合并|极值|
 |72|Edit Distance|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
 |**85**|Maximal Rectangle||3个矩阵m,n|以此处为底，向上捅到能捅到的最高出，得到一个轴，再左右延伸得到一个面。本身为0处，left和right矩阵中分别为0和.size()，这只是为了不在min或max的时候产生影响|极值|
 |115|Distinct Subsequences|字符串转换|矩阵m+1,n+1|截至目前2个string转换的距离|尾值|
