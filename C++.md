@@ -156,9 +156,6 @@ bitset<13> bitset4(s2);　　//0000000010101
 ```
 
 
-
-decltype 问大佬
-
 加了&快了非常多：
 
 ```
@@ -166,3 +163,8 @@ auto comp = [&nums1, &nums2](pair<int, int> a, pair<int, int> b) {
             return nums1[a.first] + nums2[a.second] > nums1[b.first] + nums2[b.second];
         };
 ```
+
+### Travelling salesman problem 旅行家问题
+
+> 暴力解法: O(n!)
+> 优化解法: O(2^n)
