@@ -150,6 +150,19 @@ signal() // V  ++
 - horizontal sharding (sharding key)
 - vertical sharding
 
+### Graph representation
+
+1. objects and pointers
+2. matrix
+3. adjacency list
+
+> matrix 浪费空间，不适合稀疏的图
+> list not easy to handle
+
+
+
+
+
 To do:
 
 - 术语，各种术语
