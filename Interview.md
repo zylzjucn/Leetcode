@@ -159,8 +159,13 @@ signal() // V  ++
 > matrix 浪费空间，不适合稀疏的图
 > list not easy to handle
 
-
-
+||map|unordered_map|
+|---|---|---|
+|Ordering|increasing order|no ordering|
+|Implementation|Self balancing tree|Hash table|
+|Search time|log(n)|avg: O(1); worst: O(n)|
+|Insertion time|log(n) + rebalancing|avg: O(1); worst: O(n)|
+|Deletion time|log(n) + rebalancing|avg: O(1); worst: O(n)|
 
 
 To do:
