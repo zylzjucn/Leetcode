@@ -1,31 +1,30 @@
 class Solution {
 public:
-    bool canFinish(int n, vector<vector<int>>& pre) {
-        vector<int> v;
-        vector<vector<int>> vv(n, v);
-        vector<int> count(n, 0);
-        
-        for (auto& p : pre) {
-            vv[p[1]].push_back(p[0]);
-            count[p[0]]++;
-        }
-        
-        queue<int> q;
+    bool canFinish(int n, vector<vector<int>>& prerequisites) {
+        vector<int> locked(n, 0);
+        vector<vector<int>> locking(n, vector<int>());
+        unordered_set<int> noPreCourses;
         for (int i = 0; i < n; i++)
-            if (count[i] == 0)
-                q.push(i);
-        
+            noPreCourses.insert(i);
+        for (const auto& v : prerequisites) {
+            noPreCourses.erase(v[0]);
+            locked[v[0]]++;
+            locking[v[1]].push_back(v[0]);
+        }
+        queue<int> q;
+        for (const auto& k : noPreCourses)
+            q.push(k);
+        int countTaken = 0;
         while (!q.empty()) {
-            int cur = q.front();
+            int course = q.front();
             q.pop();
-            n--;
-            for (auto& i : vv[cur]) {
-                count[i]--;
-                if (count[i] == 0) {
-                    q.push(i);
-                }
+            countTaken++;
+            for (const auto& courseUnlock : locking[course]) {
+                locked[courseUnlock]--;
+                if (locked[courseUnlock] == 0)
+                    q.push(courseUnlock);
             }
         }
-        return n == 0;
+        return countTaken == n;
     }
 };
