@@ -4,41 +4,28 @@
  *     int val;
  *     TreeNode *left;
  *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
 class Solution {
 public:
     vector<vector<int>> findLeaves(TreeNode* root) {
         vector<vector<int>> res;
-        TreeNode* newroot = new TreeNode(0);
-        newroot->left = root;
-        vector<int> v;
-        while (newroot->left) {
-            res.push_back(v);
-            trim(res, newroot);
-        }
+        find(root, res);
         return res;
     }
     
-    void trim(vector<vector<int>>& res, TreeNode* root) {
-        if (!root || (!root->left && !root->right))
-            return;
-        if (root->left) {
-            if (!root->left->left && !root->left->right) {
-                res.back().push_back(root->left->val);
-                root->left = NULL;
-            }
-            else
-                trim(res, root->left);
-        }
-        if (root->right) {
-            if (!root->right->left && !root->right->right) {
-                res.back().push_back(root->right->val);
-                root->right = NULL;
-            }
-            else
-                trim(res, root->right);
-        }
+    int find(TreeNode* root, vector<vector<int>>& res) {
+        if (!root)
+            return -1;
+        int l = find(root->left, res);
+        int r = find(root->right, res);
+        int h = max(l, r) + 1;
+        if (res.size() <= h)
+            res.push_back({});
+        res[h].push_back(root->val);
+        return h;
     }
 };
