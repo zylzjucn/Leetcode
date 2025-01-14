@@ -3,26 +3,27 @@
  * struct ListNode {
  *     int val;
  *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
 class Solution {
 public:
-    ListNode* reverseBetween(ListNode* head, int m, int n) {
-        ListNode *first = new ListNode(0), *p = first, *q = first;
-        first->next = head;
-        stack<int> s;
-        for (int i = 0; i < m; i++, p = p->next, q = q->next);
-        while (i <= n) {
-            s.push(p->val);
-            p = p->next;
-            i++;
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        ListNode* newhead = new ListNode();
+        newhead->next = head;
+        ListNode* pre = newhead;
+        int pos = 1;
+        for (; pos < left; pos++, pre = pre->next);
+        ListNode* cur = pre->next;
+        ListNode* tail = cur;
+        while (pos++ < right) {
+            pre->next = tail->next;
+            tail->next = tail->next->next;
+            pre->next->next = cur;
+            cur = pre->next;
         }
-        while (!s.empty()) {
-            q->val = s.top();
-            s.pop();
-            q = q->next;
-        }
-        return first->next;
+        return newhead->next;
     }
 };
