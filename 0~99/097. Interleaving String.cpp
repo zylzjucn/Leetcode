@@ -1,21 +1,28 @@
 class Solution {
 public:
     bool isInterleave(string s1, string s2, string s3) {
-        if (s1.length() + s2.length() != s3.length())
+        if (s1.length() + s2.length() != s3.length()) {
             return false;
-        return is(s1, s2, s3, 0, 0, 0);
-    }
-    bool is(string &s1, string &s2, string &s3, int i1, int i2, int i3) {
-        if (i1 == s1.length())
-            return s2.substr(i2) == s3.substr(i3);
-        if (i2 == s2.length())
-            return s1.substr(i1) == s3.substr(i3);
-        if (s1[i1] == s3[i3] && s2[i2] == s3[i3])
-            return is(s1, s2, s3, i1 + 1, i2, i3 + 1) || is(s1, s2, s3, i1, i2 + 1, i3 + 1);
-        if (s1[i1] == s3[i3])
-            return is(s1, s2, s3, i1 + 1, i2, i3 + 1);
-        if (s2[i2] == s3[i3])
-            return is(s1, s2, s3, i1, i2 + 1, i3 + 1);
-        return false;
+        }
+        vector<vector<bool>> v(s1.length() + 1, vector<bool>(s2.length() + 1, false));
+        v[0][0] = true;
+        for (int i = 1; i < v.size(); i++) {
+            if (v[i-1][0] && s1[i-1] == s3[i-1]) {
+                v[i][0] = true;
+            }
+        }
+        for (int j = 1; j < v[0].size(); j++) {
+            if (v[0][j-1] && s2[j-1] == s3[j-1]) {
+                v[0][j] = true;
+            }
+        }
+        for (int i = 1; i < v.size(); i++) {
+            for (int j = 1; j < v[0].size(); j++) {
+                if ((v[i-1][j] && s1[i-1] == s3[i+j-1]) || (v[i][j-1] && s2[j-1] == s3[i+j-1])) {
+                    v[i][j] = true;
+                }
+            }
+        }
+        return v.back().back();
     }
 };
