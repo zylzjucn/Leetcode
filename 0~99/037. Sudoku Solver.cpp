@@ -1,44 +1,54 @@
 class Solution {
 public:
-    void solveSudoku(vector<vector<char>>& m) {
+    void solveSudoku(vector<vector<char>>& board) {
         bool found = false;
-        find(m, 0, 0, found);
+        solveSudoku(board, 0, 0, found);
     }
-    void find(vector<vector<char>>& m, int row, int col, bool &found) { // should set a bool found here
-        if (m[row][col] == '.') {
+
+    void solveSudoku(vector<vector<char>>& board, int row, int col, bool& found) {
+        if (found) {
+            return;
+        }
+        if (col == 9) {
+            col = 0;
+            row++;
+        }
+        if (row == 9) {
+            found = true;
+            return;
+        }
+        if (board[row][col] == '.') {
             for (char c = '1'; c <= '9'; c++) {
-                if (isvalid(m, row, col, c)) {
-                    m[row][col] = c;
-                    if (col != 8)
-                        find(m, row, col + 1, found);
-                    else if (row != 8)
-                        find(m, row + 1, 0, found);
-                    else
-                        found = true;
-                    if (found)
+                if (isValid(board, row, col, c)) {
+                    board[row][col] = c;
+                    solveSudoku(board, row, col + 1, found);
+                    if (found) {
                         return;
-                    m[row][col] = '.';
+                    }
+                    board[row][col] = '.';
                 }
             }
-        }
-        else {
-            if (col != 8)
-                find(m, row, col + 1, found);
-            else if (row != 8)
-                find(m, row + 1, 0, found);
-            else
-                found = true;
+        } else {
+            solveSudoku(board, row, col + 1, found);
         }
     }
-    bool isvalid(vector<vector<char>>& m, int row, int col, char c) {
-        for (int i = 0; i < 9; i++)
-            if (m[row][i] == c || m[i][col] == c)
+
+    bool isValid(const vector<vector<char>>& board, int row, int col, char c) {
+        for (int i = 0; i < board.size(); i++) {
+            if (board[i][col] == c) {
                 return false;
+            }
+        }
+        for (int j = 0; j < board[0].size(); j++) {
+            if (board[row][j] == c) {
+                return false;
+            }
+        }
         int brow = row / 3 * 3;
         int bcol = col / 3 * 3;
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
-                if (m[brow + i][bcol + j] == c)
+                if (board[brow + i][bcol + j] == c)
                     return false;
         return true;
     }
