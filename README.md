@@ -83,7 +83,7 @@
 |81|Search in Rotated Sorted Array II||
 |82|Remove Duplicates from Sorted List II|pre-node，看后面多个node的情况，来决定是自己步进，还是删掉后面的几个节点|
 |83|Remove Duplicates from Sorted List|同上。不需要pre-node|
-|**84**|Largest Rectangle in Histogram|**左右边界。** 两个对向循环，找到以每个元素为高的左右边界|
+|**84**|Largest Rectangle in Histogram|**左右边界。** 两个对向循环，找到以每个元素为高的左右边界。另一种办法是用stack，永远维持一个非单调递增的stack，每次push进来的时候，计算被卡出去的之前的以这个i为高度的面积。这个时候左边界是stack中前一个的值，有边界就是当下将它顶出去的值。记得，最后stack完成后，再走一遍循环将它们全部pop出来，因为之前没有计算以这些i对应的height的结果。O(n)|
 |86|Partition List||
 |88|Merge Sorted Array|三个指针，从后往前，2个指针比较大小，1个存储。从后往前的原因是不会写到有用的数据，而只会写到分配好的空间里|
 |89|Gray Code|找到其中的数学关系，f(n) = g(f(n - 1))。将n-1的结果，翻转，后一半加上pow(2, i-1)，即可|
