@@ -123,7 +123,7 @@
 |129|Sum Root to Leaf Numbers|用一个sum记录，符合条件就+=|
 |130|Surrounded Regions|从四条边上递归寻找所有没有被包围的点|
 |131|Palindrome Partitioning|**深搜**|
-|132|Palindrome Partitioning II|**数组dp。** 由之前的substring对称情况决定本位是多少|
+|132|Palindrome Partitioning II|**数组dp。** 总体思路是确定一个中轴线然后分奇偶情况向两边展开。用一个vector即可。注意这个vector要多存一位|
 |133|Clone Graph|**深搜。** 因为可能会多次遍历到同一个点，所以需要一个map来避免重复，同时记录第一次生成的node地址，往后便利到就拿出来用（不用set的原因）|
 |134|Gas Station|从最低点出发即可。寻找最低点|
 |135|Candy|不难。找到其中的每个局部最低点。因为其它的每个点的值左右会至少有一个支撑边，所以从左和右各遍历一次，更新其它值，即可|
