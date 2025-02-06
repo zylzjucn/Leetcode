@@ -160,6 +160,7 @@
 |251|Flatten 2D Vector|记录移动和结束的向量指针，同时一个变量计行内数即可。hasnext负责换行，每次next都要call它。但是hasnext return值我还没搞懂为什么这样可以过|
 |261|Graph Valid Tree|**union find**|
 |267|Palindrome Permutation II|**深搜**|
+|**269**|Alien Dictionary|经典的Topological Sort. 1）构建节点关系（edge），2）将入度为0的节点放入queue，3）不断更新剩余点的入度，为0则放入q|
 |272|Closest Binary Search Tree Value II|不难，构建好2个stack，从target处分开。然后比较距离target的远近放入结果即可|
 |**277**|Find the Celebrity|O(n)就能做。第一遍loop，不断把candidate赋值为被别人认识的那个人。这样一圈下来，前一部分人都认识别人，后一部分人can都不认识，所以都不能做can。再2个循环确认这个can是不是真can即可|
 |**282**|Expression Add Operators|**深搜。** 需要**应对运算符优先级不同的小技巧**：需要cur和pre来记录数据。cur代表截至目前直接计算出来的结果，而pre表示上一个数字单元的内容，相当于一个浅栈，如果遇到一个\*,就从cur中回退（减）掉pre，pre和现在的数字相乘，放入cur和pre|
