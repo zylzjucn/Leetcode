@@ -152,6 +152,7 @@
 |**214**|Shortest Palindrome|**KMP.** 应该是最快的。原问题实际是寻找输入string s的最长对称前缀。将s翻转，拼接于原s后（中间用一个不相关字符隔开），就变成了寻找新字符串最长相等的前后缀。这实际上就是KMP特征向量的最后一位。计算特征向量时，相同则i,j都进，不相同则j退回与i相同的位置或0，i进。注意字符串中的位置对应特征向量的前一位|
 |**218**|The Skyline Problem|O(nlgn).关键点只会在矩形的两条边上，处理好这些信息即可。先将输入拆分成独立的垂直边，vector<pair>即可，入边正常，出边可以高度记为负，作为标记。sort，注意可能需要重载comp，否则可能同一个位置有高度相等的出入边时会有多的点，要先入后出。然后用multiset，可以记录有重复的当前x处有的所有矩形，同时利用了heap的性质，能一直拿到最大值。遍历关键点，高度变了就push进去，根据正负来决定加还是删边。关键点1：overload比较函数，要将second从大到小排，这样能够handle同一个位置上同时有墙进出的问题，因为这样能够让墙先出后进，然后永远比较最高墙有没有改变，没有就不更新。关键点2:multiset删除单一元素一定要查找，再删，否则会删除所有相同值的元素|
 |224|Basic Calculator|用stack。考虑清楚可能出现的char情况，见到（正负反一下即可|
+|233|Number of Digit One|按照个十百千万的顺序逐位分析。考虑好>1,<1,==1即可|
 |234|Palindrome Linked List|还是老老实实用stack|
 |239|Sliding Window Maximum|O(n)。维护一个递减的deque（有点像86），存index。priority_queue也能过，但是nlgn，慢|
 |244|Shortest Word Distance II|用map记录所有string出现的位置。2个string就能通过map拿到2个存放这两个string所有出现位置的vector，然后求最小差值即可|
