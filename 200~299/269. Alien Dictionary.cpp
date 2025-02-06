@@ -2,51 +2,54 @@ class Solution {
 public:
     string alienOrder(vector<string>& words) {
         string res;
+        unordered_map<char, unordered_set<char>> dependencies;
+        unordered_map<char, int> map;
+        for (const string& word : words) {
+            for (const char& c : word) {
+                map[c] = 0;
+            }
+        }
+        for (int i = 0; i < words.size(); i++) {
+            string s1 = words[i];
+            for (int j = i + 1; j < words.size(); j++) {
+                string s2 = words[j];
+                int k = 0;
+                for (; k < min(s1.length(), s2.length()); k++) {
+                    if (s1[k] != s2[k]) {
+                        if (dependencies[s2[k]].count(s1[k])) {
+                            return res;
+                        }
+                        if (!dependencies[s1[k]].count(s2[k])) {
+                            dependencies[s1[k]].insert(s2[k]);
+                            map[s2[k]]++;
+                        }
+                        break;
+                    }
+                }
+                if (k == min(s1.length(), s2.length()) && s1.length() > s2.length()) {
+                    return res;
+                }
+            }
+        }
         queue<char> q;
-        unordered_map<char, int> dependencies;
-        unordered_map<char, unordered_set<char>> m;
-        unordered_set<char> met;
-        unordered_set<char> s;
-        unordered_set<char> total;
-        for (const auto& str : words) {
-            for (const auto& c : str) {
-                total.insert(c);
-                s.insert(c);
+        auto it = map.begin();
+        while (it != map.end()) {
+            if (it->second == 0) {
+                q.push(it->first);
             }
-        }
-        for (int i = 0; i < words.size() - 1; i++) {
-            int j = 0;
-            for (; j < min(words[i].length(), words[i + 1].length()); j++) {
-                if (words[i][j] != words[i + 1][j])
-                    break;
-            }
-                
-            if (j == words[i].length())
-                continue;
-            if (!m[words[i][j]].count(words[i + 1][j])) {
-                dependencies[words[i + 1][j]]++;
-                s.erase(words[i + 1][j]);
-                m[words[i][j]].insert(words[i + 1][j]);
-            }
-        }
-        for (const auto& it : s) {
-            q.push(it);
-            met.insert(it);
+            it++;
         }
         while (!q.empty()) {
             char c = q.front();
             q.pop();
-            res.push_back(c);
-            for (const auto& c1 : m[c]) {
-                if (dependencies[c1] > 0) {
-                    dependencies[c1]--;
-                    if (dependencies[c1] == 0 && !met.count(c1)) {
-                        q.push(c1);
-                        met.insert(c1);
-                    }
+            for (const auto& c_next : dependencies[c]) {
+                map[c_next]--;
+                if (map[c_next] == 0) {
+                    q.push(c_next);
                 }
             }
+            res.push_back(c);
         }
-        return res.length() == total.size() ? res : "";
+        return res.length() == map.size() ? res : "";
     }
 };
