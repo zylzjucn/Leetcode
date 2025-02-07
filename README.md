@@ -169,6 +169,7 @@
 |**297**|Serialize and Deserialize Binary Tree|正常递归。但是速度不快。注意每次跟进游标i的位置|
 |299|Bulls and Cows|这个不难，两个map对照数量就可以了。不用记A在哪里出现，几个总数，计算B的时候减掉就可以|
 |**300**|Longest Increasing Subsequence|**最长子序列。** O(lgn),用lower_bound()。我们在res中总是储存最优最长子序列。最优表明，在各个位置上，总是要保证取到最小的，这样能够尽量给后来元素腾出地方。所以在进来一个元素时，如果它最大，那就append到末尾；如果比某些元素小，那么就找到lower_bound，将那个点更新为新进来的这个元素，这样就确保了，如果我们在更新，永远是在往小的，也就是更优的方向更新|
+|**301**|Remove Invalid Parentheses|**递归。**循环中套循环套递归。外层循环负责找出出问题的地方，比如说当下i处多了一个)；内层循环负责找出机遇这个i，在之前可以删掉(以使得它变得valid的position，这是j；在此处递归进去，用同样的code继续处理此处i和j之后的情况，因此需要另外穿两个参数，用来mark上一层的i和j。同时传入一个去掉j处内容的string。TODO：搞明白内层循环结束后为什么需要马上return，为什么不这么做会造成重复。正着过完一遍之后，reverse s，反过来在过一遍(造成的invalidation，然后return|
 |310|Minimum Height Trees|BFS。vector<set<int>>。从每个叶节点往里面找，找到最后就是所要的|
 |315|Count of Smaller Numbers After Self|可以用merge_sort，右边元素插入时，数着个数，左边元素插入，加上这个个数，相当于被插了多少个空。或者可以用vector，直接右边一个个往里面加，找位置。但是这个是n^2，因为vector的插入特性|
 |316|Remove Duplicate Letters|控制什么时候这个char能进，什么时候不行。如果后面还有前面的char，且这个char比我大，我就能进。有点像sliding window maximum|
