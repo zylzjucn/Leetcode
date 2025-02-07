@@ -1,16 +1,17 @@
 class Solution {
 public:
-    int maxCoins(vector<int>& n) {
-        vector<int> v = {1};
-        for (const auto& i : n)
-            v.push_back(i);
-        v.push_back(1);
-        int len = v.size();
-        vector<vector<int>> res(len, vector<int>(len, 0));
-        for (int left = len - 2; left >= 0; left--)
-            for (int right = left + 2; right < len; right++)
-                for (int i = left + 1; i < right; i++)
-                    res[left][right] = max(res[left][right], res[left][i] + v[left] * v[i] * v[right] + res[i][right]);
-        return res[0].back();
+    int maxCoins(vector<int>& nums) {
+        nums.insert(nums.begin(), 1);
+        nums.push_back(1);
+        vector dp(nums.size(), vector<int>(nums.size(), 0));
+        for (int len = 2; len < nums.size(); len++) {
+            for (int i = 0; i + len < nums.size(); i++) {
+                int j = i + len;
+                for (int k = i + 1; k < j; k++) {
+                    dp[i][j] = max(dp[i][j], dp[i][k] + dp[k][j] + nums[i] * nums[k] * nums[j]);
+                }
+            }
+        }
+        return dp[0].back();
     }
 };
