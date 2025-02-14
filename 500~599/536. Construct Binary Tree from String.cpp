@@ -12,29 +12,37 @@
 class Solution {
 public:
     TreeNode* str2tree(string s) {
-        if (s.length() == 0)
+        return str2tree(s, 0, s.length() - 1);
+    }
+
+    TreeNode* str2tree(const string& s, int start, int end) {
+        if (start > end) {
             return nullptr;
-        if (to_string(stoi(s)) == s) {
-            TreeNode* root = new TreeNode(stoi(s));
-            return root;
         }
-        int start = 0;
-        int end = 0;
-        for (; s[end] != '('; end++);
-        TreeNode* root = new TreeNode(stoi(s.substr(0, end)));
-        start = end + 1;
-        end = start;
-        int level = 1;
-        while (level > 0) {
-            if (s[end] == '(')
-                level++;
-            else if (s[end] == ')')
-                level--;
-            end++;
+        // start: 0
+        // end:   6
+        int i = start; // 0
+        for (; i <= end && (s[i] == '-' || isdigit(s[i])); i++);
+        int val = stoi(s.substr(start, i - start));
+        TreeNode* node = new TreeNode(val);
+        if (i > end) {
+            return node;
         }
-        root->left = str2tree(s.substr(start, end - start - 1));
-        if (end < s.length())
-            root->right = str2tree(s.substr(end + 1, s.length() - end - 2));
-        return root;
+        int count = 0;
+        int j = i;
+        for (; j <= end; j++) {
+            if (s[j] == '(') {
+                count++;
+            } else if (s[j] == ')') {
+                count--;
+            }
+            if (count == 0) {
+                break;
+            }
+        }
+        // j = 3
+        node->left = str2tree(s, i + 1, j - 1);
+        node->right = j > end ? nullptr : str2tree(s, j + 2, end - 1);
+        return node;
     }
 };
