@@ -215,7 +215,9 @@
 |**484**|Find Permutation|遇到I或者结束，就倒序赋好左边的值，其它时间i空跑什么都不做|
 |487|Max Consecutive Ones II|**双向遍历**|
 |498|Diagonal Traverse|结合flag判断清楚到边界时候怎么转头|
+|523|Continuous Subarray Sum|prefixsum + hashmap|
 |524|Longest Word in Dictionary through Deleting|直截了当的解法。每个字典中的单词和s进行比较，符合条件，每次记录最长且字典序靠前的|
+|525|Contiguous Array|prefixsum + hashmap|
 |**560**|Subarray Sum Equals K|**prefix sum。** 这个不错。遍历所有元素，将开始于0，结束于此的sum存入map，这样每步都能检查出，本次sum，减去之前map中的key，也就是之前的sum，得出subarray，的个数（map的value）```res += m[sum - k];```|
 |562|Longest Line of Consecutive One in Matrix|四个矩阵存|
 |567|Permutation in String|**滑窗双指针。** 想清楚什么时候该进，什么时候该退即可|
