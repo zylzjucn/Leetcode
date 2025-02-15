@@ -19,9 +19,7 @@ public:
         if (start > end) {
             return nullptr;
         }
-        // start: 0
-        // end:   6
-        int i = start; // 0
+        int i = start;
         for (; i <= end && (s[i] == '-' || isdigit(s[i])); i++);
         int val = stoi(s.substr(start, i - start));
         TreeNode* node = new TreeNode(val);
@@ -40,7 +38,6 @@ public:
                 break;
             }
         }
-        // j = 3
         node->left = str2tree(s, i + 1, j - 1);
         node->right = j > end ? nullptr : str2tree(s, j + 2, end - 1);
         return node;
