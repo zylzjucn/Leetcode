@@ -175,6 +175,7 @@
 |315|Count of Smaller Numbers After Self|可以用merge_sort，右边元素插入时，数着个数，左边元素插入，加上这个个数，相当于被插了多少个空。或者可以用vector，直接右边一个个往里面加，找位置。但是这个是n^2，因为vector的插入特性|
 |316|Remove Duplicate Letters|控制什么时候这个char能进，什么时候不行。如果后面还有前面的char，且这个char比我大，我就能进。有点像sliding window maximum|
 |317|Shortest Distance from All Buildings|**BFS**。从每个building出发，更新整个地图，然后sum每个点的结果。需要注意的是，对于最后更新结果的时候，需要确认这个点能够被所有building reach。以及，**永远在入`queue`的时候就标记visited，否则会多次入队。**|
+|321|Create Maximum Number|O((n1 + n2)^2). 1，核心思想，将`k`这个值划分为`i`和`k-i`，分给`nums1`和`nums2`。然后merge他们，找到其中结果最大的即可。在你已经知道长度为`i`的最大子数字，找`i-1`最大子数组的时候，可能可以通过删掉一个来优化，而不是从头开始build|
 |322|Coin Change|跟377有点像，站在现在节点上，看过去有哪些节点能到本节点，依此来更新本节点。但是反过来，通过本节点更新未来将要到达的所有点，时间就过不了|
 |323|Number of Connected Components in an Undirected Graph|**union find** 找到2个元素的”队长“，如果队长不一样，结果-1，队长置为一样的|
 |328|Odd Even Linked List|还是寻找一般规律。在重排过程中，想象整个链表由左至右分为三部分：排好的奇数，排好的偶数和待排的部分。分界点我们用变量跟踪好，每次就把待排部分第一个塞到前两个中间，然后跟踪变量。每次维护这个关系即可。|
