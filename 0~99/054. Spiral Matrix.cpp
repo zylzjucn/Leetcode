@@ -1,29 +1,35 @@
 class Solution {
 public:
-    vector<int> spiralOrder(vector<vector<int>>& m) {
-        int rbegin = 0, cbegin = 0, rend = m.size() - 1;
-        vector<int> v;
-        if (rend == -1)
-            return v;
-        int cend = m[0].size()-1;
-        while(rbegin <= rend && cbegin <= cend) {
-            for (int i = cbegin; i <= cend; i++)
-                v.push_back(m[rbegin][i]);
-            rbegin++;
-            for (int i = rbegin; i <= rend; i++)
-                v.push_back(m[i][cend]);
-            cend--;
-            if (rbegin <= rend) {
-                for (int i = cend; i >= cbegin; i--)
-                    v.push_back(m[rend][i]);
-                rend--;
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        int up = 0;
+        int bottom = matrix.size() - 1;
+        int left = 0;
+        int right = matrix[0].size() - 1;
+        vector<int> res;
+        vector<pair<int, int>> directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+        vector<pair<int, int>> fix_directions = {{1, -1}, {-1, -1}, {-1, 1}, {1, 1}};
+        int dir = 0;
+        int i = 0;
+        int j = 0;
+        while (res.size() < matrix.size() * matrix[0].size()) {
+            if (i < up || i > bottom || j < left || j > right) {
+                i += fix_directions[dir].first;
+                j += fix_directions[dir].second;
+                if (dir == 0) {
+                    up++;
+                } else if (dir == 1) {
+                    right--;
+                } else if (dir == 2) {
+                    bottom--;
+                } else {
+                    left++;
+                }
+                dir = (dir + 1) % 4;
             }
-            if(cbegin <= cend) {
-                for(int i = rend; i >= rbegin; i--)
-                    v.push_back(m[i][cbegin]);
-                cbegin++;
-            }
+            res.push_back(matrix[i][j]);
+            i += directions[dir].first;
+            j += directions[dir].second;
         }
-        return v;
+        return res;
     }
 };
