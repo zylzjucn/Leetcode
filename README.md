@@ -32,6 +32,7 @@
 |26|Remove Duplicates from Sorted Array|比较相邻的两个元素，数总共有多少个重复元素。不相等时，把该元素放入前面不重复对应的地方|
 |27|Remove Element||
 |28|Implement strStr()|很直接。i遍历所有substring，j逐位比较|
+|30|Substring with Concatenation of All Words|经典的双指针问题，两个指针`start`和`end`，用两个map来记录目标与当前的情况。根据情况来决定怎么进。注意可以通过整个单词的跳来加速|
 |31|Next Permutation|反向找出第一个较右边元素更小的点i，然后从它右边元素中找出一个比i大的所有点中最小的点j，交换i，j，这样能够确保整体变大，一点点。然后将原来i位置右边的所有元素按照升序排列|
 |33|Search in Rotated Sorted Array|**二分法。** 注意边界|
 |35|Search Insert Position|**二分法**|
