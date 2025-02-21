@@ -233,7 +233,7 @@
 |611|Valid Triangle Number|**3sum**|
 |616|Add Bold Tag in String|不难，逐位找，用个vector存本位是否为bold|
 |617|Merge Two Binary Trees|有个小trick，如果t1，t2有个点为NULL，那不为NULL的那个也不用往下走了，直接返回它就好|
-|621|Task Scheduler|找出次数最多的进程，可能是多个，return重复足够次数这些进程以及idle，和v.size()的较大值|
+|621|Task Scheduler|找出次数最多的进程，可能是多个，return重复足够次数这些进程以及idle，和`v.size()`的较大值。核心思想是，如果结果取决于瓶颈`n`，那么就直接计算它，否则，就意味着我们可以不使用idle，全部用valid的task填好空，那就是`v.size()`|
 |635|Design Log Storage System||
 |647|Palindromic Substrings|另写一个extend函数，遍历string过程中不断调用它，给它起始位置，一次奇数，一次偶数，然后满足条件就向两边扩展，同时res++。这个很快。另写了一个方阵dp，还有点麻烦，慢一点|
 |670|Maximum Swap|从右往左找最大值，并且找到这个最大值下比它小的最左边的值。然后再根据最小值往右找一遍最大值（因为最后保存的最大值可能在最小值左边，不是一对），交换|
