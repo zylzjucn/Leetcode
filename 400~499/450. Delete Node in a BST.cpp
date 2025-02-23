@@ -29,7 +29,6 @@ public:
             root->val = findMaxValue(root->left);
             root->left = deleteNode(root->left, root->val);
         }
-        
         return root;
     }
 
