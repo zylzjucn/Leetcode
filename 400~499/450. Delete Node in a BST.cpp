@@ -4,32 +4,39 @@
  *     int val;
  *     TreeNode *left;
  *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
 class Solution {
 public:
-    TreeNode* deleteNode(TreeNode* root, int k) {
-        if (!root)
-            return root;
-        if (root->val > k)
-            root->left = deleteNode(root->left, k);
-        else if (root->val < k)
-            root->right = deleteNode(root->right, k);
-        else {
-            if (!root->left)
-                return root->right;
-            else if (!root->right)
-                return root->left;
-            TreeNode *p = find(root->right);
-            root->val = p->val;
-            root->right = deleteNode(root->right, root->val);
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if (!root) {
+            return nullptr;
         }
+        if (key < root->val) {
+            root->left = deleteNode(root->left, key);
+        } else if (key > root->val) {
+            root->right = deleteNode(root->right, key);
+        } else {
+            if (!root->left) {
+                return root->right;
+            }
+            if (!root->right) {
+                return root->left;
+            }
+            root->val = findMaxValue(root->left);
+            root->left = deleteNode(root->left, root->val);
+        }
+        
         return root;
     }
-    TreeNode* find(TreeNode* root) {
-        while(root->left)
-            root = root->left;
-        return root;
+
+    int findMaxValue(TreeNode* root) {
+        while (root->right) {
+            root = root->right;
+        }
+        return root->val;
     }
 };
