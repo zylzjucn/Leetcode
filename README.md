@@ -164,7 +164,7 @@
 |**269**|Alien Dictionary|经典的Topological Sort. 1）构建节点关系（edge），2）将入度为0的节点放入queue，3）不断更新剩余点的入度，为0则放入q|
 |272|Closest Binary Search Tree Value II|不难，构建好2个stack，从target处分开。然后比较距离target的远近放入结果即可|
 |**277**|Find the Celebrity|O(n)就能做。第一遍loop，不断把candidate赋值为被别人认识的那个人。这样一圈下来，前一部分人都认识别人，后一部分人can都不认识，所以都不能做can。再2个循环确认这个can是不是真can即可|
-|**282**|Expression Add Operators|**深搜。** 需要**应对运算符优先级不同的小技巧**：需要cur和pre来记录数据。cur代表截至目前直接计算出来的结果，而pre表示上一个数字单元的内容，相当于一个浅栈，如果遇到一个\*,就从cur中回退（减）掉pre，pre和现在的数字相乘，放入cur和pre|
+|**282**|Expression Add Operators|**深搜。** 需要**应对运算符优先级不同的小技巧**：需要`cur`和`pre`来记录数据。`cur`代表截至目前直接计算出来的结果，而`pre`表示上一个数字单元的内容，相当于一个浅栈，如果遇到一个\*,就从`cur`中回退（减）掉`pre`，`pre`和现在的数字相乘，放入`cur`和`pre`|
 |**291**|Word Pattern II|**DFS.** 用map或vector储存char到string的映射，发现不对就回退。注意还需要一个set，来记录已经出现的单词，保证不会出现两个不同的char对应同一个string的情况，即一一映射|
 |**296**|Best Meeting Point|二维问题一维化。因为这是不计算斜边的曼哈顿距离，所以实际上就是在x,y方向上找中位数。同时x,y不相干，所以可以解构xy在一维坐标下分别处理。想象有两对人相向而行。此时，永远让人少的一方向前迈一步，然后接上新的人，即可|
 |**297**|Serialize and Deserialize Binary Tree|正常递归。但是速度不快。注意每次跟进游标i的位置|
@@ -173,7 +173,8 @@
 |**301**|Remove Invalid Parentheses|**递归**。循环中套循环套递归。外层循环负责找出出问题的地方，比如说当下i处多了一个)；内层循环负责找出机遇这个i，在之前可以删掉(以使得它变得valid的position，这是j；在此处递归进去，用同样的code继续处理此处i和j之后的情况，因此需要另外穿两个参数，用来mark上一层的i和j。同时传入一个去掉j处内容的string。TODO：搞明白内层循环结束后为什么需要马上return，为什么不这么做会造成重复。正着过完一遍之后，reverse s，反过来在过一遍(造成的invalidation，然后return|
 |310|Minimum Height Trees|BFS。vector<set<int>>。从每个叶节点往里面找，找到最后就是所要的|
 |312|**Burst Balloons**|DP。`dp[i][j]`表示这段区间内的结果，`i`为左，`j`为右，左右均不包含（所以要在`nums`左右补上1）。在这个区间内选择一个气球最后一个打爆，坐标为`k`。那么转移方程就是`dp[i][j] = max(dp[i][j], dp[i][k] + dp[k][j] + nums[i] * nums[k] * nums[j]);`最后的结果就是`dp[0][size]`|
-|315|Count of Smaller Numbers After Self|可以用merge_sort，右边元素插入时，数着个数，左边元素插入，加上这个个数，相当于被插了多少个空。或者可以用vector，直接右边一个个往里面加，找位置。但是这个是n^2，因为vector的插入特性|
+|314|Binary Tree Vertical Order Traversal|BFS。本身DFS差不多也可以做，而且代码更简单，但是因为对于每个`vector`内部的元素顺序有要求，所以BFS|
+|315|Count of Smaller Numbers After Self|可以用merge_sort，右边元素插入时，数着个数，左边元素插入，加上这个个数，相当于被插了多少个空。或者可以用`vector`，直接右边一个个往里面加，找位置。但是这个是n^2，因为`vector`的插入特性|
 |316|Remove Duplicate Letters|控制什么时候这个char能进，什么时候不行。如果后面还有前面的char，且这个char比我大，我就能进。有点像sliding window maximum|
 |317|Shortest Distance from All Buildings|**BFS**。从每个building出发，更新整个地图，然后sum每个点的结果。需要注意的是，对于最后更新结果的时候，需要确认这个点能够被所有building reach。以及，**永远在入`queue`的时候就标记visited，否则会多次入队。**|
 |321|Create Maximum Number|O((n1 + n2)^2). 1，核心思想，将`k`这个值划分为`i`和`k-i`，分给`nums1`和`nums2`。然后merge他们，找到其中结果最大的即可。在你已经知道长度为`i`的最大子数字，找`i-1`最大子数组的时候，可能可以通过删掉一个来优化，而不是从头开始build|
