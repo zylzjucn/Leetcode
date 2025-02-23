@@ -182,6 +182,7 @@
 |323|Number of Connected Components in an Undirected Graph|**union find** 找到2个元素的”队长“，如果队长不一样，结果-1，队长置为一样的|
 |328|Odd Even Linked List|还是寻找一般规律。在重排过程中，想象整个链表由左至右分为三部分：排好的奇数，排好的偶数和待排的部分。分界点我们用变量跟踪好，每次就把待排部分第一个塞到前两个中间，然后跟踪变量。每次维护这个关系即可。|
 |329|Longest Increasing Path in a Matrix|priority_queue能做，没有很快。从小的数到大的数，每次更新一下周围一圈的数（+1）|
+|331|Verify Preorder Serialization of a Binary Tree|根本就不用管元素是什么内容，甚至具体树的样子。只需要知道，每一次遇到一个valid的元素，就意味着它占用了本身需要用`nullptr`来填补的位置，但是又多了两个位置需要用`nullptr`来填补。因此每次遇到一个valid的元素，`count++`，反之`--`。最后和0比较即可|
 |332|Reconstruct Itinerary|**深搜。** 这个DFS非常巧妙。他把push进res的这行放在了递归的尾部，bottom up，所以得到的是反向的res。这样做的好处是，遇到分叉的死路时，他不用回退，而是，反着记录下来，遇到来时的分岔路口，继续反向记录下来，这样刚好就是我们需要的结果的反向。因为我们遇到死路，这就说明只有这一条路过来，也就是终点，所以先记录下来并没有错|
 |333|Largest BST Subtree|因为需要参考的返回值比较多，所以要另写一个struct。时间上看这个解法不是特别快，还行|
 |334|Increasing Triplet Subsequence|用两个var，第一个保存现在遇到的最小值，遇到比第一个大的就更新第二个，遇到第三个就return true|
