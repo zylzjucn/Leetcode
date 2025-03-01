@@ -40,7 +40,6 @@ public:
     }
     
     void put(int key, int value) {
-        // if exists
         if (m.count(key)) {
             get(key);
             m[key]->val = value;
