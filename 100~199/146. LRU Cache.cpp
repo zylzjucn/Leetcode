@@ -1,94 +1,62 @@
-struct DBListNode {
-    DBListNode* left;
-    DBListNode* right;
+struct Node {
+    Node* prev;
+    Node* next;
+    int key;
     int val;
-    int k;
-    DBListNode(int _k, int _val): left(nullptr), right(nullptr), k(_k), val(_val) {}
+    Node(int key, int val): prev(nullptr), next(nullptr), key(key), val(val) {}
+    Node(int key, int val, Node* prev, Node* next): prev(prev), next(next), key(key), val(val) {}
 };
 
 class LRUCache {
-    int capacity = 0;
-    int count = 0;
-    unordered_map<int, DBListNode*> m;
-    DBListNode* head = new DBListNode(0, 0);
-    DBListNode* tail = head;
-    
+private:
+    int count_;
+    int capacity_;
+    unordered_map<int, Node*> m;
+    Node* head;
+    Node* tail;
+
 public:
-    LRUCache(int n) {
-        capacity = n;
+    LRUCache(int capacity) {
+        head = new Node(0, 0);
+        tail = new Node(0, 0);
+        head->next = tail;
+        tail->prev = head;
+        count_ = 0;
+        capacity_ = capacity;
     }
     
     int get(int key) {
-        if (!m.count(key))
-            return -1;
-        DBListNode* cur = m[key];
-        if (cur == tail)
-            return cur->val;
-        if (cur == head) {
-            head = cur->right;
-            head->left = nullptr;
-            cur->right = nullptr;
-            cur->left = tail;
-            tail->right = cur;
-            tail = cur;
-            return cur->val;
+        if (m.count(key)) {
+            Node* node = m[key];
+            node->next->prev = node->prev;
+            node->prev->next = node->next;
+            node->prev = tail->prev;
+            node->next = tail;
+            tail->prev->next = node;
+            tail->prev = node;
+            return node->val;
         }
-        DBListNode* l = cur->left;
-        DBListNode* r = cur->right;
-        l->right = r;
-        r->left = l;
-        tail->right = cur;
-        cur->left = tail;
-        cur->right = nullptr;
-        tail = cur;
-        return cur->val;
+        return -1;
     }
     
     void put(int key, int value) {
-        if (count == 0) {
-            DBListNode* cur = head;
-            cur->k = key;
-            cur->val = value;
-            count++;
-            m[key] = cur;
-        }
-        else if (m.count(key)) {
-            DBListNode* cur = m[key];
-            cur->val = value;
-            if (cur == tail)
-                return;
-            if (cur == head) {
-                head = cur->right;
-                head->left = nullptr;
-                cur->right = nullptr;
-                cur->left = tail;
-                tail->right = cur;
-                tail = cur;
-                return;
-            }
-            DBListNode* l = cur->left;
-            DBListNode* r = cur->right;
-            l->right = r;
-            r->left = l;
-            tail->right = cur;
-            cur->left = tail;
-            cur->right = nullptr;
-            tail = cur;
-        }
-        else {
-            DBListNode* cur = new DBListNode(key, value);
-            tail->right = cur;
-            cur->left = tail;
-            tail = cur;
-            m[key] = cur;
-            count++;
-            if (count > capacity) {
-                DBListNode* p = head;
-                head = head->right;
-                head->left = nullptr;
-                m.erase(p->k);
-                delete p; // test
-                count--;
+        // if exists
+        if (m.count(key)) {
+            get(key);
+            m[key]->val = value;
+        } else {
+            Node* node = new Node(key, value, tail->prev, tail);
+            m[key] = node;
+            tail->prev->next = node;
+            tail->prev = node;
+            count_++;
+            if (count_ > capacity_) {
+                count_--;
+                Node* old_head = head->next;
+                old_head->next->prev = head;
+                head->next = old_head->next;
+                m.erase(old_head->key);
+                delete old_head;
             }
         }
     }
