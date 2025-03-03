@@ -215,6 +215,7 @@
 |451|Sort Characters By Frequency|两个map就好，其中一个要ordered的|
 |452|Minimum Number of Arrows to Burst Balloons|还是interval问题。这种问题都是先sort，然后greedy，不难|
 |454|4Sum II|四循环拆成2个二循环，用一个map，速度还可以|
+|460|LFU Cache|**doubly linked list**. 这种要求O(1)读写的很多都是用双端链表。这里注意的点是，当我们put或者get某个存在的key时，需要将它从一个链表中取出来，放入另一个(`freq+1`)链表。这时一定要注意讲这个`node`的左右指向空|
 |469|Convex Polygon|叉乘，能够得到手转过的方向，也就是向左转还是向右转|
 |470|Implement Rand10() Using Rand7()|注意一定要均匀。比较好的方法是，类似于十进制，不同位上不会互相冲突|
 |477|Total Hamming Distance|用两个等长vector，分别存储该位0的个数，和该位1的个数。遍历其长度，两者对应相乘，就是该位总的不一样的数量，累加即可|
