@@ -1,55 +1,87 @@
+struct Node {
+    int key;
+    int val;
+    int freq;
+    Node* prev;
+    Node* next;
+    Node(int key, int val, int freq): key(key), val(val), freq(freq), prev(nullptr), next(nullptr) {}
+};
+
 class LFUCache {
-    
+
 private:
-    int count = 0;
-    int capacity = 0;
-    int min_freq = 0;
-    unordered_map<int, pair<int, int>> key_to_val_freq;
-    unordered_map<int, list<int>> freq_lists;
-    unordered_map<int, list<int>::iterator> key_to_it;
-    
-public:
-    LFUCache(int n) {
-        capacity = n;
+    int min_freq_;
+    unordered_map<int, Node*> key_to_node_;
+    unordered_map<int, pair<Node*, Node*>> freq_to_doubly_linked_list_;
+    int capacity_;
+    int count_;
+
+    void addNodeToFreq(Node* node, int freq) {
+        if (freq_to_doubly_linked_list_.count(freq)) {
+            Node* tail = freq_to_doubly_linked_list_[freq].second;
+            tail->next = node;
+            node->prev = tail;
+            node->next = nullptr;
+            freq_to_doubly_linked_list_[freq].second = node;
+        } else {
+            node->prev = nullptr;
+            node->next = nullptr;
+            freq_to_doubly_linked_list_[freq] = make_pair(node, node);
+        }
     }
+
+    void removeNodeFromFreq(Node* node) {
+        int freq = node->freq;
+        if (node->prev && node->next) {
+            node->prev->next = node->next;
+            node->next->prev = node->prev;
+        } else if (node->prev) {
+            node->prev->next = nullptr;
+            freq_to_doubly_linked_list_[freq].second = node->prev;
+        } else if (node->next) {
+            node->next->prev = nullptr;
+            freq_to_doubly_linked_list_[freq].first = node->next;
+        } else {
+            freq_to_doubly_linked_list_.erase(freq);
+            if (min_freq_ == freq) {
+                min_freq_++;
+            }
+        }
+    }
+
+public:
+    LFUCache(int capacity): min_freq_(0), count_(0), capacity_(capacity) {}
     
     int get(int key) {
-        if (!key_to_val_freq.count(key))
+        if (!key_to_node_.count(key)) {
             return -1;
-        
-        freq_lists[key_to_val_freq[key].second].erase(key_to_it[key]);
-        key_to_val_freq[key].second++;
-        freq_lists[key_to_val_freq[key].second].push_back(key);
-        key_to_it[key] = --freq_lists[key_to_val_freq[key].second].end();
-        
-        if (freq_lists[min_freq].empty())
-            min_freq++;
-        
-        return key_to_val_freq[key].first;
+        }
+        Node* node = key_to_node_[key];
+        int freq = node->freq;
+        removeNodeFromFreq(node);
+        node->freq = freq + 1;
+        addNodeToFreq(node, freq + 1);
+        return key_to_node_[key]->val;
     }
     
     void put(int key, int value) {
-        if (capacity <= 0)
-            return;
-        int old_val = get(key);
-        if (old_val != -1) {
-            key_to_val_freq[key].first = value;
-            return;
+        if (key_to_node_.count(key)) {
+            get(key);
+            key_to_node_[key]->val = value;
+        } else {
+            if (count_ == capacity_) {
+                Node* node = freq_to_doubly_linked_list_[min_freq_].first;
+                removeNodeFromFreq(node);
+                key_to_node_.erase(node->key);
+                delete node;
+                count_--;
+            }
+            min_freq_ = 1;
+            count_++;
+            Node* node = new Node(key, value, 1);
+            key_to_node_[key] = node;
+            addNodeToFreq(node, 1);
         }
-        
-        if (count >= capacity) {
-            int del_key = freq_lists[min_freq].front();
-            key_to_val_freq.erase(del_key);
-            key_to_it.erase(del_key);
-            freq_lists[min_freq].pop_front();
-            count--;
-        }
-        
-        freq_lists[1].push_back(key);
-        key_to_val_freq[key] = {value, 1};
-        key_to_it[key] = --freq_lists[1].end();
-        min_freq = 1;
-        count++;
     }
 };
 
