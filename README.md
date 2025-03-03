@@ -208,6 +208,7 @@
 |417|Pacific Atlantic Water Flow|**深搜。** 因为水流朝四个方向都有可能，所以不能dp，只能DFS。用2个矩阵分别表示能到达太平洋和大西洋的水，然后均为1，就是我们要的点|
 |426|Convert Binary Search Tree to Sorted Doubly Linked List|**分治。** 有点点慢，根据左右子是否为空，让左、右与自身合并。注意自身先须成环|
 |430|Flatten a Multilevel Doubly Linked List|常规操作，有右有子，就拼一下|
+|432|All O`one Data Structure|**doubly linked list**. 每个node代表一个frequency，里面包含了一个`unordered_set`存储`string`。这样就能够不断的keep track of最小和最大频率的`string`|
 |435|Non-overlapping Intervals|先sort，再遍历。如果遇到重叠，删除尾大的那个，贪心算法，每次这样操作就能保证最优|
 |450|Delete Node in a BST|处理好最麻烦的case就可以：被删除的节点有左右子。此时可以在左子树中找最大元素，将其值赋给root，然后递归删除这个最大元素。这里不一定要直接删除最大元素，可以一步一步再走到最大元素，否则需要先找到最大元素的父，才能指向它。相反走右边也可以。O(h)，为高度|
 |456|132 Pattern|用stack,尽量使得n3大，stack里存n3的candidates|
