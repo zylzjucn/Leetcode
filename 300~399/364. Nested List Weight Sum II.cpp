@@ -30,25 +30,26 @@
 class Solution {
 public:
     int depthSumInverse(vector<NestedInteger>& nestedList) {
-        vector<int> res;
-        int result = 0;
-        for (auto l : nestedList)
-            DFS(l, 0, res);
-        for (int i = res.size() - 1, level = 1; i >= 0; i--, level++) {
-            result += res[i] * level;
+        int sum = 0;
+        int max_dep = 0;
+        int res = 0;
+        for (const auto& list : nestedList) {
+            res += depthSumInverse(list, sum, 1, max_dep);
         }
-        return result;
+        return sum * (max_dep + 1) - res;
     }
-    
-    void DFS(NestedInteger& l, int level, vector<int>& res) {
-        if (res.size() < level + 1)
-            res.push_back(0);
-        if (l.isInteger())
-            res[level] += l.getInteger();
-        else {
-            for (auto lnested : l.getList()) {
-                DFS(lnested, level + 1, res);
-            }
+
+    int depthSumInverse(const NestedInteger& nestedList, int& sum, int depth, int& max_dep) {
+        if (nestedList.isInteger()) {
+            int val = nestedList.getInteger();
+            sum += val;
+            max_dep = max(max_dep, depth);
+            return val * depth;
         }
+        int res = 0;
+        for (const auto& list : nestedList.getList()) {
+            res += depthSumInverse(list, sum, depth + 1, max_dep);
+        }
+        return res;
     }
 };
