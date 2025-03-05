@@ -266,6 +266,7 @@
 |1110|Delete Nodes And Return Forest|**深搜。** 只需考虑本点，不需要考虑左右|
 |1146|Snapshot Array|直接用矩阵空间会超，改用map嵌map，这样会比较稀疏，只存储修改的值，这样二分查找能够找到上一次修改的。注意map的upper_bound的语法与vector的不同|
 |1283|Find the Smallest Divisor Given a Threshold|二分法。找到左右边界就行，注意不要除以0|
+|2964|Number of Divisible Triplet Sums|通过`hashmap`的方式降为`O(n2)`.`map`,实际上是`vector`储存的是余数为次处的个数，三者相处即可。麻烦的是去重。根据排列组合(permutation and combination)，两个相同/2，三个相同/6（阶乘）|
 
 
 
