@@ -6,21 +6,12 @@ public:
     }
     
     int shortest(string s1, string s2) {
-        int res = INT_MAX;
+        int i = 0, j = 0, res = INT_MAX;
         vector<int> v1 = m[s1];
         vector<int> v2 = m[s2];
-        int i = 0;
-        int j = 0;
         while (i < v1.size() && j < v2.size()) {
             res = min(res, abs(v1[i] - v2[j]));
-            if (v1[i] < v2[j])
-                i++;
-            else if (v1[i] > v2[j])
-                j++;
-            else {
-                i++;
-                j++;
-            }
+            v1[i] < v2[j] ? i++ : j++;
         }
         return res;
     }
