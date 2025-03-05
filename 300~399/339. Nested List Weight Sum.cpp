@@ -31,19 +31,21 @@ class Solution {
 public:
     int depthSum(vector<NestedInteger>& nestedList) {
         int res = 0;
-        int depth = 0;
-        for (const auto& nest : nestedList)
-            find(nest, res, depth + 1);
+        for (const auto list : nestedList) {
+            res += depthSum(list, 1);
+        }
         return res;
     }
-    
-    void find(NestedInteger nestedList, int& res, int depth) {
+
+    int depthSum(const NestedInteger& nestedList, int weight) {
+        int res = 0;
         if (nestedList.isInteger()) {
-            res += nestedList.getInteger() * depth;
-            return;
+            return nestedList.getInteger() * weight;
         }
-        vector<NestedInteger> nests = nestedList.getList();
-        for (const auto& nest : nests)
-            find(nest, res, depth + 1);
+        vector<NestedInteger> v = nestedList.getList();
+        for (const auto list : v) {
+            res += depthSum(list, weight + 1);
+        }
+        return res;
     }
 };
