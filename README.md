@@ -458,3 +458,13 @@ Sort:
 |题号|题目|本质|
 |---|---|---|
 |164|Maximum Gap|用bucket sort，把握好bucket的尺寸和个数，然后比较桶间的gap即可|
+
+Binary Search
+
+|目标|	while 条件|	left 变化|	right 变化|	返回值|
+|查找确定存在的数|	left <= right	|mid + 1	|mid - 1|	mid 或 -1|
+|查找插入位置|	left < right	|mid + 1	|mid|	left|
+|找 >= target 的最小索引| (Lower Bound)	|left < right	|mid + 1	|mid	|left|
+|找 > target 的最小索引| (Upper Bound)	|left < right	|mid + 1	|mid	|left|
+|找平方根|	left <= right|	mid + 1|	mid - 1|	right|
+
