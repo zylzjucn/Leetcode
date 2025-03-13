@@ -1,19 +1,21 @@
 class Solution {
 public:
-    string removeDuplicates(string str, int k) {
-        string res;
-        stack<pair<char, int>> s;
-        for (const auto& c : str) {                
-            if (!s.empty() && s.top().first == c)
-                s.top().second++;
-            else
-                s.emplace(c, 1);
-            if (s.top().second == k)
-                s.pop();
+    string removeDuplicates(string s, int k) {
+        vector<pair<char, int>> v;
+        for (int i = 0; i < s.length(); i++) {
+            if (!v.empty() && v.back().first == s[i]) {
+                v.back().second++;
+            } else {
+                v.emplace_back(s[i], 1);
+            }
+            if (v.back().second == k) {
+                v.pop_back();
+            }
         }
-        for (; !s.empty(); s.pop())
-            res.append(s.top().second, s.top().first);
-        reverse(res.begin(), res.end());
+        string res;
+        for (const auto& p : v) {
+            res.append(p.second, p.first);
+        }
         return res;
-    }
+    }   
 };
