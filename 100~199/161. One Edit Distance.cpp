@@ -1,21 +1,12 @@
 class Solution {
 public:
     bool isOneEditDistance(string s, string t) {
-        if (s.length() > t.length())
-            swap(s, t);
         int i = 0;
-        while (s[i] == t[i] && i < s.length())
-            i++;
-        if (s.length() == t.length()) {
-            if (i == s.length())
-                return false;
-            if (s.substr(i + 1) == t.substr(i + 1))
-                return true;
+        for (; i < s.length() && i < t.length(); i++) {
+            if (s[i] != t[i]) {
+                return s.substr(i + 1) == t.substr(i) || s.substr(i) == t.substr(i + 1) || s.substr(i + 1) == t.substr(i + 1);
+            }
         }
-        if (s.length() == t.length() - 1) {
-            if (s.substr(i) == t.substr(i + 1))
-                return true;
-        }
-        return false;
+        return (i == s.length() && i == t.length() - 1) || (i == t.length() && i == s.length() - 1);
     }
 };
