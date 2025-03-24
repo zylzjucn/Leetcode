@@ -37,7 +37,7 @@
 |33|Search in Rotated Sorted Array|**二分法。** 注意边界|
 |35|Search Insert Position|**二分法**|
 |36|Valid Sudoku|用3个9\*9的矩阵来记录9行、9列和9块中是否已经出现1~9。出现了返回false，没出现置为1|
-|37|Sudoku Solver|**深搜。** 写一个函数用来检查是否valid。遇到空位，1~9轮流试。如果找到了，标记一个bool变量为true，并且之后不再找|
+|37|Sudoku Solver|**深搜。** 写一个函数用来检查是否valid。遇到空位，1~9轮流试。如果找到了，标记一个bool变量为true，并且之后不再找。上一次犯的错误：1. bottom up也就是出递归的时候，如果找到了，就要return，避免找到了被set回'.'；2. 先检查col==9，再检查row==9|
 |38|Count and Say|从1出发，一步步计数知道目标值|
 |39|Combination Sum|**深搜。** 全局变量存结果。递归中循环，找完了用pop退，直到循环结束|
 |40|Combination Sum II|**深搜。** 每个元素只能使用一次，因此需要加一句话来跳过重复元素。如果v.back()（意味着我已经使用了这个元素）与之前的几个元素相等，则跳过这几个元素|
