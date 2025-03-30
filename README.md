@@ -432,9 +432,12 @@ Union find:
 递归版 find:
 
 ```
-if (m[x] != x)
-	m[x] = find(m[x], m, res);
-   return m[x];
+int find(vector<int>& leaders, int cur) {
+	if (cur != leaders[cur]) {
+            leaders[cur] = find(leaders, leaders[cur]);
+        }
+        return leaders[cur];
+    }
 ```
 
 |题号|题目|本质|
