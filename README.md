@@ -201,6 +201,7 @@
 |392|Is Subsequence|常规方法简单，但是多string查询的后续问题解法优化要再看一下|
 |396|Rotate Function|数学方法，找出变化的通项公式即可|
 |397|Integer Replacement|偶数没的说，奇数就往能被4整除的方向发展，这样递减的快。例外是3，遇到3，直接返回res+2|
+|399|Evaluate Division|`find`是O(1),因为讲见过的所有点都指向根，也就是树变扁平，时间复杂度是inverse Akerman function|
 |403|Frog Jump|用的BFS，速度不算快。跟另一个frog差不多，都是走在当下，根据当下来提醒后面能达到的步数。尽量避免set和map的遍历，感觉比较慢，vector就会好一些。类似的写法，java竟然比cpp快很多|
 |404|Sum of Left Leaves|**递归**|
 |410|Split Array Largest Sum|**二分法。** 最小为最大元素，最大为总和。在两者之间用二分法逼近。每次都检查设定的结果，数组以及份数是否满足，满足则往小，不满足则往大|
