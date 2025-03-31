@@ -244,6 +244,7 @@
 |647|Palindromic Substrings|另写一个extend函数，遍历string过程中不断调用它，给它起始位置，一次奇数，一次偶数，然后满足条件就向两边扩展，同时res++。这个很快。另写了一个方阵dp，还有点麻烦，慢一点|
 |670|Maximum Swap|从右往左找最大值，并且找到这个最大值下比它小的最左边的值。然后再根据最小值往右找一遍最大值（因为最后保存的最大值可能在最小值左边，不是一对），交换|
 |684|Redundant Connection|**union find**|
+|689|**Maximum Sum of 3 Non-Overlapping Subarrays**|刚好是三个。所以有点像扎气球，先计算出从左边来和从右边来的最大k个sum的subarray（对应的index），然后遍历中间这一段，左中右相加比较即可|
 |708|Insert into a Cyclic Sorted List|找到位置，或者是最小值，最大值，插入。如果一圈下来没插入，那就说明里面元素全等，插在哪里，包括当下，都可以|
 |731|My Calendar II|找到一个overlap，拿着这个overlap，遍历后面的，看看还有没有overlap|
 |734|Sentence Similarity|easy|
