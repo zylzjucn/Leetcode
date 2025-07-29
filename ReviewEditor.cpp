@@ -2,60 +2,57 @@
 #include <iostream>
 #include <unordered_map>
 
+
 using namespace std;
 
 class TrieNode {
 
 public:
-
     unordered_map<char, TrieNode*> children;
     string tag;
+
     TrieNode() {}
+
 };
 
-TrieNode* BuildTrieTreeForMap(const unordered_map<string, string>& map) {
+TrieNode* BuildTrieTreeFromMap(const unordered_map<string, string>& map) {
     TrieNode* root = new TrieNode();
     for (const auto& p : map) {
+        auto [word, tag] = p;
         TrieNode* node = root;
-        for (const auto& c : p.first) {
-            char c_lower = tolower(c);
-            if (!node->children.count(tolower(c_lower))) {
+        for (const auto& c : word) {
+            if (!node->children.count(tolower(c))) {
                 TrieNode* next_node = new TrieNode();
-                node->children[c_lower] = next_node;
+                node->children[tolower(c)] = next_node;
             }
-            node = node->children[c_lower];
+            node = node->children[tolower(c)];
         }
-        node->tag = p.second;
+        node->tag = tag;
     }
     return root;
 }
 
 string ReviewEditor(const string& review, const unordered_map<string, string>& map) {
-    TrieNode* root = BuildTrieTreeForMap(map);
-    int i = 0;
+    TrieNode* root = BuildTrieTreeFromMap(map);
     string res;
+    int i = 0;
     while (i < review.length()) {
         int j = i;
-        TrieNode* node = root;
-        int max_len_found = 0;
+        int k = -1;
         string tag;
-        while (j < review.length()) {
-            if (!node->children.count(tolower(review[j]))) {
-                break;
-            }
-            node = node->children[tolower(review[j])];
+        TrieNode* node = root;
+        while (j < review.length() && node->children.count(tolower(review[j]))) {
+            node = node->children[tolower(review[j++])];
             if (!node->tag.empty()) {
-                max_len_found = j - i + 1;
+                k = j;
                 tag = node->tag;
             }
-            j++;
         }
-        if (max_len_found > 0) {
-            res += "[" + tag + "]" + "{" + review.substr(i, max_len_found) + "}";
-            i += max_len_found;
+        if (k == -1) {
+            res.append(1, review[i++]);
         } else {
-            res.append(1, review[i]);
-            i++;
+            res += "[" + tag + "]" + "{" + review.substr(i, k - i) + "}";
+            i = k;
         }
     }
     return res;
