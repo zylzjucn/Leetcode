@@ -1,102 +1,61 @@
 // Online C++ compiler to run C++ program online
 #include <iostream>
-#include <vector>
 #include <unordered_map>
-#include <algorithm>
-#include <string>
-#include <limits.h>
+#include <climits>
+#include <vector>
 
 using namespace std;
 
-struct EntryItem{
-    double price;
-    int mask;
-};
-
-unordered_map<string, int> item_to_index;
-vector<EntryItem> entry_items;
-vector<int> memo;
-
-int solve(int needed_mask) {
-    // Base Case: 如果什么都不需要了，花费为0
-    if (needed_mask == 0) {
+int solve(const int& items_needed, const unordered_map<int, int>& menu_item_bit_to_price, unordered_map<int, int>& memo) {
+    if (items_needed == 0) {
         return 0;
     }
-
-    // Memoization Check: 如果已经计算过，直接返回结果
-    if (memo[needed_mask] != -1) {
-        return memo[needed_mask];
+    if (memo.count(items_needed)) {
+        return memo[items_needed];
     }
-
     int min_price = INT_MAX;
-
-    // 遍历菜单上的所有选项 (包括单品和套餐)
-    for (const auto& item : entry_items) {
-        // 如果这个菜单项至少提供了一个我们需要的物品
-        if ((needed_mask & item.mask) > 0) {
-            // 递归计算购买此项后，凑齐剩余物品的最低花费
-            int remaining_cost = solve(needed_mask & (~item.mask));
-            
-            // 如果子问题有解 (不是无穷大)
-            if (remaining_cost != INT_MAX) {
-                min_price = min(min_price, (int)item.price + remaining_cost);
+    for (auto [items_bit, price] : menu_item_bit_to_price) {
+        if ((items_bit & items_needed) == 0) {
+            continue;
+        } else {
+            int rest_price = solve(items_needed & (~items_bit), menu_item_bit_to_price, memo);
+            if (rest_price < INT_MAX) {
+                min_price = min(min_price, price + rest_price);
             }
         }
     }
-
-    // 存储结果并返回
-    return memo[needed_mask] = min_price;
+    return memo[items_needed] = min_price;
 }
 
-double findCheapestSolution(const vector<string>& items, vector<vector<string>>& menu) {
+int findCheapestSolution(const vector<string>& items, const vector<vector<string>>& menu) {
+    unordered_map<string, int> item_to_bit;
     int index = 0;
     for (const auto& item : items) {
-        if (!item_to_index.count(item)) {
-            item_to_index[item] = index++;
+        if (!item_to_bit.count(item)) {
+            item_to_bit[item] = index++;
         }
     }
-    unordered_map<int, double> optimized_singles;
-    for (const auto& entry : menu) {
-        EntryItem entry_item;
-        entry_item.price = stod(entry[0]);
-        entry_item.mask = 0;
-        bool is_dish_found = false;
-        for (const auto& dish : entry) {
-            if (item_to_index.count(dish)) {
-                entry_item.mask |= (1 << item_to_index[dish]);
-                is_dish_found = true;
+    unordered_map<int, int> menu_item_bit_to_price;
+    for (const auto& menu_items : menu) {
+        int price = stoi(menu_items[0]);
+        int cur_bit = 0;
+        for (const auto& item : menu_items) {
+            if (item_to_bit.count(item)) {
+                cur_bit |= (1 << item_to_bit[item]);
             }
         }
-        
-        if (is_dish_found) {
-            if (entry.size() == 2) {
-                if (optimized_singles.count(entry_item.mask)) {
-                    optimized_singles[entry_item.mask] = min(optimized_singles[entry_item.mask], entry_item.price);
-                } else {
-                    optimized_singles[entry_item.mask] = entry_item.price;
-                }
-            } else {
-                entry_items.push_back(entry_item);
-            }
+        if (!menu_item_bit_to_price.count(cur_bit) || menu_item_bit_to_price[cur_bit] > price) {
+            menu_item_bit_to_price[cur_bit] = price;
         }
     }
-    
-    for (const auto [mask, price] : optimized_singles) {
-        entry_items.push_back({price, mask});
-    }
-    
-    memo.assign(1 << items.size(), -1);
-    
-    int target_mask = (1 << items.size()) - 1;
-    int result = solve(target_mask);
-
-    return result == INT_MAX ? -1 : result;
+    int items_needed = (1 << index) - 1;
+    unordered_map<int, int> memo;
+    return solve(items_needed, menu_item_bit_to_price, memo);
 }
 
 
 int main() {
-
-vector<vector<string>> menu = {    
+    vector<vector<string>> menu = {    
     {"5.00", "pizza"},
     {"8.00", "sandwich", "coke"},
     {"4.00", "pasta"},
